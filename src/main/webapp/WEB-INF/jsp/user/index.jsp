@@ -62,6 +62,7 @@
               </div>
             </div>
           </div>
+          </div>
       </section>
       <!-- Lates Product -->
 		<jsp:include page="latestproduct.jsp"></jsp:include>

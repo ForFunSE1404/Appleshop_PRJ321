@@ -45,4 +45,9 @@ public class PageControl {
 		return "user/login";
 	}
 
+	@RequestMapping(value = "/wishlist")
+	public String wishlist() {
+		return "user/wishlist";
+	}
+
 }
