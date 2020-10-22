@@ -16,10 +16,6 @@ Load Category Products
  */
 const categoryCenter = document.querySelector(".category__center");
 
-window.addEventListener("DOMContentLoaded", async function () {
-  const products = await getProducts();
-  displayProductItems(products);
-});
 
 const displayProductItems = items => {
   let displayProduct = items.map(

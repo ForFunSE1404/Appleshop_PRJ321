@@ -1,12 +1,15 @@
 package fpt.edu.project.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,6 +40,9 @@ public class Account implements Serializable {
 	private Role role;
 	@Column(name = "avartar", length = 255)
 	private String avartar;
+
+	@OneToMany(mappedBy = "account")
+	private Set<Rating> ratings = new HashSet<>();
 
 	public Account() {
 		// TODO Auto-generated constructor stub
