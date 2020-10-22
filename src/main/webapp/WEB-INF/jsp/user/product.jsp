@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,41 +40,34 @@
 		<div class="container">
 			<section class="category__section section" id="category">
 				<div class="tab__list">
-					<div class="title__container tabs">
-						<div class="section__titles category__titles ">
-							<div class="section__title filter-btn active"
-								data-id="All Products">
-								<span class="dot"></span>
-								<h1 class="primary__title">All Products</h1>
-							</div>
-						</div>
-						<div class="section__titles">
-							<div class="section__title filter-btn"
-								data-id="Trending Products">
-								<span class="dot"></span>
-								<h1 class="primary__title">Trending Products</h1>
-							</div>
-						</div>
-
-						<div class="section__titles">
-							<div class="section__title filter-btn" data-id="Special Products">
-								<span class="dot"></span>
-								<h1 class="primary__title">Special Products</h1>
-							</div>
-						</div>
-
-						<div class="section__titles">
-							<div class="section__title filter-btn"
-								data-id="Featured Products">
-								<span class="dot"></span>
-								<h1 class="primary__title">Featured Products</h1>
-							</div>
-						</div>
-
+					<div class="title__container tabs no-margin">
+						<form>
+							Search Product <input type="text" class="input-search" /> <input
+								type="submit" class="btn" value="Search" />
+						</form>
 					</div>
 				</div>
-				<div class="category__container aos-init"
-					>
+
+				<div class="tab__list">
+					<div class="title__container tabs">
+						<div class="section__titles category__titles ">
+						<div class="section__title filter-btn active"
+									data-id="All Products">
+									<span class="dot"></span>
+									<h1 class="primary__title">All Products</h1>
+								</div>
+							<c:forEach items="${listCategories}" var="category">
+								<div class="section__title filter-btn"
+									data-id="${category.categoryName}">
+									<span class="dot"></span>
+									<h1 class="primary__title">${category.categoryName}</h1>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+
+				<div class="category__container aos-init">
 					<div class="category__center">
 						<div class="product category__products">
 							<div class="product__header">
@@ -81,10 +76,8 @@
 							<div class="product__footer">
 								<h3>Apple iPhone 11</h3>
 								<div class="rating">
-									<svg>
-                          <use
-											xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
+									<svg> <use
+											xlink:href="./images/sprite.svg#icon-star-full"></use></svg>
 									<svg>
                           <use
 											xlink:href="./images/sprite.svg#icon-star-full"></use>
@@ -115,18 +108,22 @@
 												xlink:href="./images/sprite.svg#icon-eye"></use>
                           </svg>
 								</a></li>
+								<li><a data-tip="Add To Wishlist" data-place="left"
+									href="#"> <svg>
+														<use xlink:href="./images/sprite.svg#icon-heart-o"></use>
+													</svg>
+								</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="center">
-				<div class="pagination">
-					<a href="#">&laquo;</a> <a href="#">1</a> <a class="active"
-						href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-					<a href="#">6</a> <a href="#">&raquo;</a>
+					<div class="pagination">
+						<a href="#">&laquo;</a> <a href="#">1</a> <a class="active"
+							href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
+						<a href="#">6</a> <a href="#">&raquo;</a>
+					</div>
 				</div>
-				</div>
-				
 			</section>
 		</div>
 	</main>

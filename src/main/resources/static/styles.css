@@ -702,14 +702,17 @@ span.dot::before {
 }
 
 .section__title.active span.dot {
+	color: red;
   opacity: 1;
 }
 
 .section__title.active span.dot::before {
+	color: red;
   opacity: 1;
 }
 
 .section__title.active .primary__title {
+	color: red;
   opacity: 1;
 }
 
@@ -2454,7 +2457,6 @@ td a {
 }
 
 td img {
-    width: 80px;
     height: 80px;
     margin-right: 10px;
 }
@@ -2513,6 +2515,37 @@ td:last-child {
   border-bottom-right-radius: 5px;
 }
 
+.btn {
+	height: 25px;
+	padding: 0 25px;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.input-search {
+	width: 300px;
+	height: 25px;
+	padding-left: 5px;
+}
+
+.checkout {
+	margin-top: 20px;
+	text-align: right;	
+}
+
+.btn__checkout {
+	background-color: #ff523b;
+	padding: 10px 20px;
+	color: #fff;
+	font-weight: 700;
+	border-radius: 15px;
+}
+/*
+	Login
+
+*/
 
 /*
 ======================

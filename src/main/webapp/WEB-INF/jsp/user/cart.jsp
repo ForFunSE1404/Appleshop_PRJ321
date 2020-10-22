@@ -45,7 +45,7 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="images/buy-1.jpg">
+                        <img src="/images/products/iPhone/iphone6.jpeg">
                         <div>
                             <p>Red Printed Tshirt</p>
                             <small>Price: $50.00</small>
@@ -60,7 +60,7 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="images/buy-2.jpg">
+                        <img src="/images/products/iPhone/iphone6.jpeg">
                         <div>
                             <p>Red Printed Tshirt</p>
                             <small>Price: $75.00</small>
@@ -75,7 +75,7 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="images/buy-3.jpg">
+                        <img src="/images/products/iPhone/iphone6.jpeg">
                         <div>
                             <p>Red Printed Tshirt</p>
                             <small>Price: $50.00</small>
@@ -106,8 +106,10 @@
             </table>
 
         </div>
-
-
+		<div class="checkout">
+			<a class="btn btn__checkout" href="#">Check Out</a>
+		</div>
+		
     </div>
     </main>
 	<jsp:include page="footer.jsp"></jsp:include>

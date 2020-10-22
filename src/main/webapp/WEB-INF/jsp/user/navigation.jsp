@@ -39,6 +39,9 @@
                 <a href="#category" class="nav__link scroll-link">Product</a>
               </li>
               <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Wish List</a>
+              </li>
+              <li class="nav__item">
                 <a href="#contact" class="nav__link scroll-link">Login</a>
               </li>
             </ul>
