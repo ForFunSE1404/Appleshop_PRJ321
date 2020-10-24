@@ -20,27 +20,20 @@ public class PageControl {
 	private AccountDao accountDao;
 	@Autowired
 	private CategoryDao categoryDao;
-
+	
 	@Autowired
 	private ProductDao productDao;
 
 	@RequestMapping(value = "/index")
 	public String index() {
-		categoryDao.newCategory(new Category("C0001", "a1"));
-		categoryDao.newCategory(new Category("C0002", "a2"));
-		categoryDao.update("AP1", "Lol ma may ");
-//		categoryDao.delete("AP5");
-		for (Category cate : categoryDao.getAllCategories()) {
-			System.out.println("Category ID " + cate.getCategoryId() + "|| Category name " + cate.getCategoryName());
-		}
-
+		
 		return "user/index";
 	}
 
 	@RequestMapping(value = "/product")
 	public String product(ModelMap model) {
 		List<Product> listProduct = productDao.getAllProduct();
-		model.addAttribute("listProduct", listProduct);
+		model.addAttribute("listProduct",listProduct);
 		List<Category> listCategories = categoryDao.getAllCategories();
 		model.addAttribute("listCategories", listCategories);
 		return "user/product";
@@ -50,18 +43,18 @@ public class PageControl {
 	public String cart() {
 		return "user/cart";
 	}
-
-	@RequestMapping(value = "/product_search")
-	public String productSearch(@RequestParam String proName, ModelMap model) {
+	
+	@RequestMapping(value= "/product_search")
+	public String productSearch(@RequestParam String proName,ModelMap model) {
 		List<Product> product = productDao.findProductByName(proName);
-		model.addAttribute("listProduct", product);
+		model.addAttribute("listProduct",product);
 		return "user/product";
 	}
 
 	@RequestMapping(value = "/details")
-	public String details(@RequestParam String proId, ModelMap model) {
+	public String details(@RequestParam String proId,ModelMap model) {
 		Product product = productDao.findProductByID(proId);
-		model.addAttribute("product", product);
+		model.addAttribute("product",product);
 		return "user/product_details";
 	}
 
