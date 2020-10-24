@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fpt.edu.project.dao.AccountDao;
 import fpt.edu.project.dao.CategoryDao;
+import fpt.edu.project.model.Account;
 import fpt.edu.project.model.Category;
+import fpt.edu.project.model.Role;
 
 @Controller
 public class PageControl {
@@ -20,12 +22,11 @@ public class PageControl {
 
 	@RequestMapping(value = "/index")
 	public String index() {
-		categoryDao.newCategory(new Category("C0001","a1"));
-		categoryDao.newCategory(new Category("C0002","a2"));
-		categoryDao.update("AP1", "Lol ma may ");
-//		categoryDao.delete("AP5");
-		for(Category cate : categoryDao.getAllCategories()) {
-			System.out.println("Category ID "+cate.getCategoryId()+"|| Category name "+cate.getCategoryName());
+//		accountDao.register(new Account("A0001",new Role(3,"Customer"),"12345","nhan@gmail.com","Nhan", true));
+		accountDao.delete("A0001");
+	accountDao.update(new Account("seller2", new Role(1,"Admin"),"aaaaaaa","agsa@gamail.com", "Nhan nguyen", false));
+		for(Account acc : accountDao.showAll()) {
+			System.out.println("Account ID "+acc.getUserId() + "Account name "+acc.getFullname());
 		}
 		return "user/index";
 	}
