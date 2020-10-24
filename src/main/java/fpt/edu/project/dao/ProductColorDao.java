@@ -9,17 +9,19 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import fpt.edu.project.model.Account;
+import fpt.edu.project.model.ProductColor;
 
 @Repository
-public class AccountDao {
+public class ProductColorDao {
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
-
-	public List<Account> getAllAccount() {
+	
+	public List<ProductColor> getAllProductColor(){
 		Session session = entityManagerFactory.createEntityManager().unwrap(Session.class);
-		String hql = "From Account";
-		Query<Account> aQuery = session.createQuery(hql);
+		String hql = "From ProductColor";
+		Query<ProductColor> aQuery = session.createQuery(hql);
 		return aQuery.getResultList();
 	}
+	
+
 }

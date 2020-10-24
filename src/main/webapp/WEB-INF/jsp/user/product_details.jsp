@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +33,7 @@
 
 <body>
 	<!-- Header -->
+		
 	<header id="header" class="header">
 		<jsp:include page="navigation.jsp"></jsp:include>
 	</header>
@@ -45,31 +47,22 @@
 					<div class="product-detail__left">
 						<div class="details__container--left">
 							<div class="product__pictures">
+								<c:set var="i" value="1"/>
+								<c:forEach items = "${product.images}" var = "images">
+								
 								<div class="pictures__container">
 									<img class="picture"
-										src="./images/products/iPhone/iphone1.jpeg" id="pic1" />
+										src="${images.imgUrl}" id="pic<c:out value="${i }"/>" />
 								</div>
-								<div class="pictures__container">
-									<img class="picture"
-										src="./images/products/iPhone/iphone2.jpeg" id="pic2" />
-								</div>
-								<div class="pictures__container">
-									<img class="picture"
-										src="./images/products/iPhone/iphone3.jpeg" id="pic3" />
-								</div>
-								<div class="pictures__container">
-									<img class="picture"
-										src="./images/products/iPhone/iphone4.jpeg" id="pic4" />
-								</div>
-								<div class="pictures__container">
-									<img class="picture"
-										src="./images/products/iPhone/iphone5.jpeg" id="pic5" />
-								</div>
+															<c:set var="i" value="${i+1}"/>
+								
+								</c:forEach>
+								
 							</div>
 							<div class="product__picture" id="product__picture">
 								<!-- <div class="rect" id="rect"></div> -->
 								<div class="picture__container">
-									<img src="./images/products/iPhone/iphone1.jpeg" id="pic" />
+									<img src="${product.thumbnail}" id="pic" />
 								</div>
 							</div>
 							<div class="zoom" id="zoom"></div>
@@ -91,9 +84,10 @@
 
 					<div class="product-detail__right">
 						<div class="product-detail__content">
-							<h3>Apple iPhone XR</h3>
+						
+							<h3>${product.productName}</h3>
 							<div class="price">
-								<span class="new__price">$250.99</span>
+								<span class="new__price">${product.price}</span>
 							</div>
 							<div class="product__review">
 								<div class="rating">
@@ -116,10 +110,7 @@
 								</div>
 								<a href="#" class="rating__quatity">3 reviews</a>
 							</div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Sunt a doloribus iste natus et facere? dolor sit amet
-								consectetur adipisicing elit. Sunt a doloribus iste natus et
-								facere?</p>
+							<p>${product.description}</p>
 							<div class="product__info-container">
 								<ul class="product__info">
 									<li class="select">
@@ -127,8 +118,10 @@
 											<label for="colors">Color</label> 
 											<select name="colors"
 												id="colors" class="select-box">
-												<option value="blue">blue</option>
-												<option value="red">red</option>
+												<c:forEach items="${product.productColors}" var="pColor">
+													<option value="${pColor.color.colorName}">${pColor.color.colorName}</option>
+												</c:forEach>
+												
 											</select>
 										</div>
 									</li>
@@ -151,9 +144,8 @@
 										</div>
 									</li>
 
-									<li><span>Subtotal:</span> <a href="#" class="new__price">$250.99</a>
-									</li>
-									<li><span>Product Category:</span> <a href="#">Phone</a></li>
+									
+									<li><span>Product Category:</span> <a href="#">${product.category.categoryName}</a></li>
 									<li><span>Availability:</span> <a href="#"
 										class="in-stock">In Stock (7 Items)</a></li>
 								</ul>
@@ -206,11 +198,7 @@
 
 					<div class="detail__content">
 						<div class="content active" id="description">
-							<p>Nam tempus turpis at metus scelerisque placerat nulla
-								deumantos solicitud felis. Pellentesque diam dolor, elementum
-								etos lobortis des mollis ut risus. Sedcus faucibus an
-								sullamcorper mattis drostique des commodo pharetras
-								loremos.Donec pretium egestas sapien et mollis.</p>
+							<p>${product.description}</p>
 							<h2>Sample Unordered List</h2>
 							<ul>
 								<li>Comodous in tempor ullamcorper miaculis</li>
