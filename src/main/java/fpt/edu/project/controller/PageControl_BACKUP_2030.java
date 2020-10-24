@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.dao.AccountDao;
 import fpt.edu.project.dao.CategoryDao;
-import fpt.edu.project.model.Account;
-import fpt.edu.project.model.Category;
-import fpt.edu.project.model.Role;
 import fpt.edu.project.dao.ProductDao;
+import fpt.edu.project.model.Category;
 import fpt.edu.project.model.Product;
 
 @Controller
@@ -26,23 +24,19 @@ public class PageControl {
 	@Autowired
 	private ProductDao productDao;
 
-
 	@RequestMapping(value = "/index")
 	public String index() {
-//		accountDao.register(new Account("A0001",new Role(3,"Customer"),"12345","nhan@gmail.com","Nhan", true));
-		accountDao.delete("A0001");
-	accountDao.update(new Account("seller2", new Role(1,"Admin"),"aaaaaaa","agsa@gamail.com", "Nhan nguyen", false));
-		for(Account acc : accountDao.getAllAccount()) {
-			System.out.println("Account ID "+acc.getUserId() + "Account name "+acc.getFullname());
-		}		
-		categoryDao.newCategory(new Category("C0001", "a1"));
-		categoryDao.newCategory(new Category("C0002", "a2"));
+<<<<<<< HEAD
+		categoryDao.newCategory(new Category("C0001","a1"));
+		categoryDao.newCategory(new Category("C0002","a2"));
 		categoryDao.update("AP1", "Lol ma may ");
 //		categoryDao.delete("AP5");
-		for (Category cate : categoryDao.getAllCategories()) {
-			System.out.println("Category ID " + cate.getCategoryId() + "|| Category name " + cate.getCategoryName());
+		for(Category cate : categoryDao.getAllCategories()) {
+			System.out.println("Category ID "+cate.getCategoryId()+"|| Category name "+cate.getCategoryName());
 		}
-
+=======
+		
+>>>>>>> 3fbca3cebcf74c0f9f9093da7a28e9bf0d77a300
 		return "user/index";
 	}
 
@@ -50,7 +44,6 @@ public class PageControl {
 	public String product(ModelMap model) {
 		List<Product> listProduct = productDao.getAllProduct();
 		model.addAttribute("listProduct",listProduct);
-		model.addAttribute("listProduct", listProduct);
 		List<Category> listCategories = categoryDao.getAllCategories();
 		model.addAttribute("listCategories", listCategories);
 		return "user/product";
@@ -67,7 +60,6 @@ public class PageControl {
 		model.addAttribute("listProduct",product);
 		return "user/product";
 	}
-
 
 	@RequestMapping(value = "/details")
 	public String details(@RequestParam String proId,ModelMap model) {
