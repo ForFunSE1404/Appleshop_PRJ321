@@ -18,7 +18,7 @@ public class AccountDao {
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
-	public List<Account> showAll() {
+	public List<Account> getAllAccount() {
 		Session session = entityManagerFactory.createEntityManager().unwrap(Session.class);
 		String hql = "From Account";
 		Query<Account> aQuery = session.createQuery(hql);

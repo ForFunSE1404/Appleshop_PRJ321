@@ -41,8 +41,8 @@
 			<section class="category__section section" id="category">
 				<div class="tab__list">
 					<div class="title__container tabs no-margin">
-						<form>
-							Search Product <input type="text" class="input-search" /> <input
+						<form action = "product_search">
+							Search Product <input type="text" class="input-search" name ="proName" /> <input
 								type="submit" class="btn" value="Search" />
 						</form>
 					</div>
@@ -69,12 +69,13 @@
 
 				<div class="category__container aos-init">
 					<div class="category__center">
-						<div class="product category__products">
+						<c:forEach items = "${listProduct}" var = "product">
+							<div class="product category__products">
 							<div class="product__header">
-								<img src="./images/products/iphone/iphone3.jpeg" alt="product">
+								<img src="${product.thumbnail}" alt="product">
 							</div>
 							<div class="product__footer">
-								<h3>Apple iPhone 11</h3>
+								<h3>${product.productName}</h3>
 								<div class="rating">
 									<svg> <use
 											xlink:href="./images/sprite.svg#icon-star-full"></use></svg>
@@ -96,13 +97,14 @@
                         </svg>
 								</div>
 								<div class="product__price">
-									<h4>$760</h4>
+									<h4>${product.price}</h4>
 								</div>
 								<a href="#"><button type="submit" class="product__btn">Add
 										To Cart</button></a>
 							</div>
+						
 							<ul>
-								<li><a data-tip="Quick View" data-place="left" href="#">
+								<li><a data-tip="Quick View" data-place="left" href="details?proId=${product.productId}">
 										<svg>
                             <use
 												xlink:href="./images/sprite.svg#icon-eye"></use>
@@ -115,6 +117,8 @@
 								</a></li>
 							</ul>
 						</div>
+												</c:forEach>
+						
 					</div>
 				</div>
 				<div class="center">
