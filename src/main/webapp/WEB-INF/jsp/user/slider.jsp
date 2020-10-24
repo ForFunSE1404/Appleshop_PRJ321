@@ -17,7 +17,7 @@
                   <span class="">New Inspiration 2020</span>
                   <h1 class="">PHONES MADE FOR YOU!</h1>
                   <p>Trending from mobile and headphone style collection</p>
-                  <a href="#"><button class="hero__btn">SHOP NOW</button></a>
+                  <a href="#"><button class="hero__btn">SHOPPING NOW</button></a>
                 </div>
                 <div class="hero__right">
                   <div class="hero__img-container">
@@ -32,7 +32,7 @@
                   <span>New Inspiration 2020</span>
                   <h1>PHONES MADE FOR YOU!</h1>
                   <p>Trending from mobile and headphone style collection</p>
-                  <a href="#"><button class="hero__btn">SHOP NOW</button></a>
+                  <a href="#"><button class="hero__btn">SHOPPING NOW</button></a>
                 </div>
                 <div class="hero__right">
                   <img class="banner_02" src="./images/banner_02.png" alt="banner2" />

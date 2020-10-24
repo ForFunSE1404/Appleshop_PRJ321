@@ -18,13 +18,13 @@
 
           <div class="nav__logo">
             <a href="/" class="scroll-link">
-              PHONE
+              Apple Shop
             </a>
           </div>
 
           <div class="nav__menu">
             <div class="menu__top">
-              <span class="nav__category">PHONE</span>
+              <span class="nav__category">Apple Shop</span>
               <a href="#" class="close__toggle">
                 <svg>
                   <use xlink:href="./images/sprite.svg#icon-cross"></use>

@@ -28,7 +28,7 @@
 <!-- Custom StyleSheet -->
 <link rel="stylesheet" href="styles.css" />
 
-<title>Phone Shop</title>
+<title>Apple Shop</title>
 </head>
 <body>
 	<!-- Header -->
