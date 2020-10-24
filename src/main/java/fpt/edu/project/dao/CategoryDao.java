@@ -24,8 +24,8 @@ public class CategoryDao {
 	public List<Category> getAllCategories() {
 		Session session = entityManagerFactory.createEntityManager().unwrap(Session.class);
 		String hql = "From Category";
-		Query<Category> aQuery = session.createQuery(hql);
-		return aQuery.getResultList();
+		Query<Category> query = session.createQuery(hql);
+		return query.getResultList();
 	}
 	
 	public boolean newCategory(Category category) {
@@ -74,5 +74,17 @@ public class CategoryDao {
 			trans.rollback();
 		}
 		return false;
+	}
+	public Category search(String cateId)  {
+		Session session = entityManagerFactory.createEntityManager().unwrap(Session.class);
+		String hql = "From Category c where c.categoryId = :categoryId";
+		Query<Category> query = session.createQuery(hql);
+		query.setParameter("categoryId",cateId);
+		List<Category> list = query.getResultList();
+		if(!list.isEmpty()) {
+		return list.get(0);
+		}
+		session.close();
+		return null;
 	}
 }

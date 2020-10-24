@@ -54,13 +54,13 @@
 						<div class="section__title filter-btn active"
 									data-id="All Products">
 									<span class="dot"></span>
-									<h1 class="primary__title">All Products</h1>
+									<h1 class="primary__title"><a href="product">All Products</a></h1>
 								</div>
 							<c:forEach items="${listCategories}" var="category">
 								<div class="section__title filter-btn"
 									data-id="${category.categoryName}">
 									<span class="dot"></span>
-									<h1 class="primary__title">${category.categoryName}</h1>
+									<h1 class="primary__title"><a href="product_cat?catId=${category.categoryId}">${category.categoryName}</a></h1>
 								</div>
 							</c:forEach>
 						</div>

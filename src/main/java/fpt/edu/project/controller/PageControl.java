@@ -29,27 +29,22 @@ public class PageControl {
 
 	@RequestMapping(value = "/index")
 	public String index() {
-//		accountDao.register(new Account("A0001",new Role(3,"Customer"),"12345","nhan@gmail.com","Nhan", true));
-		accountDao.delete("A0001");
-	accountDao.update(new Account("seller2", new Role(1,"Admin"),"aaaaaaa","agsa@gamail.com", "Nhan nguyen", false));
-		for(Account acc : accountDao.getAllAccount()) {
-			System.out.println("Account ID "+acc.getUserId() + "Account name "+acc.getFullname());
-		}		
-		categoryDao.newCategory(new Category("C0001", "a1"));
-		categoryDao.newCategory(new Category("C0002", "a2"));
-		categoryDao.update("AP1", "Lol ma may ");
-//		categoryDao.delete("AP5");
-		for (Category cate : categoryDao.getAllCategories()) {
-			System.out.println("Category ID " + cate.getCategoryId() + "|| Category name " + cate.getCategoryName());
-		}
-
+		
 		return "user/index";
 	}
+	@RequestMapping(value= "/product_cat")
+	public String productCategory(@RequestParam String catId,ModelMap model) {
+		List<Category> listCategories = categoryDao.getAllCategories();
+		model.addAttribute("listCategories", listCategories);
+		model.addAttribute("listProduct", categoryDao.search(catId).getProducts());
+
+		return "user/product";
+	}
+	
 
 	@RequestMapping(value = "/product")
 	public String product(ModelMap model) {
 		List<Product> listProduct = productDao.getAllProduct();
-		model.addAttribute("listProduct",listProduct);
 		model.addAttribute("listProduct", listProduct);
 		List<Category> listCategories = categoryDao.getAllCategories();
 		model.addAttribute("listCategories", listCategories);
@@ -63,6 +58,8 @@ public class PageControl {
 	
 	@RequestMapping(value= "/product_search")
 	public String productSearch(@RequestParam String proName,ModelMap model) {
+		List<Category> listCategories = categoryDao.getAllCategories();
+		model.addAttribute("listCategories", listCategories);
 		List<Product> product = productDao.findProductByName(proName);
 		model.addAttribute("listProduct",product);
 		return "user/product";
@@ -80,10 +77,12 @@ public class PageControl {
 	public String login() {
 		return "user/login";
 	}
-
+	@RequestMapping(value = "/register")
+	public String register() {
+		return "user/register";
+	}
 	@RequestMapping(value = "/wishlist")
 	public String wishlist() {
 		return "user/wishlist";
 	}
-
 }
