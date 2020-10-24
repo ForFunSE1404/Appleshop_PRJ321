@@ -20,6 +20,13 @@ public class PageControl {
 
 	@RequestMapping(value = "/index")
 	public String index() {
+		categoryDao.newCategory(new Category("C0001","a1"));
+		categoryDao.newCategory(new Category("C0002","a2"));
+		categoryDao.update("AP1", "Lol ma may ");
+//		categoryDao.delete("AP5");
+		for(Category cate : categoryDao.getAllCategories()) {
+			System.out.println("Category ID "+cate.getCategoryId()+"|| Category name "+cate.getCategoryName());
+		}
 		return "user/index";
 	}
 
