@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +17,13 @@
     <link rel="stylesheet" href="styleLogin.css">
 </head>
 <body>
-
     <div class="main">
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
+            <c:if test="${param.error == 'true'}">
+                          <p style="color:red; text-align:center;">Login Failed ${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
+            </c:if>
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.png" alt="sing up image"></figure>
@@ -28,7 +32,7 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="your_name" id="your_name" placeholder="Username"/>

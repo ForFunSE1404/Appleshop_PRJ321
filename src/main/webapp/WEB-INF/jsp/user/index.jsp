@@ -46,7 +46,7 @@
               <div class="collection__data">
                 <span>New Colors Introduced</span>
                 <h1>IPAD</h1>
-                <a href="#shop">SHOPPING NOW</a>
+                <a href="/product">SHOPPING NOW</a>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
               <div class="collection__data">
                 <span>Phone Device Presets</span>
                 <h1>IPHONE</h1>
-                <a href="#">SHOPPING NOW</a>
+                <a href="/product">SHOPPING NOW</a>
               </div>
             </div>
           </div>
