@@ -14,13 +14,6 @@ import fpt.edu.project.utils.WebUtils;
 @Controller
 public class MainController {
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-	public String welcomePage(Model model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("message", "This is welcome page!");
-		return "welcomePage";
-	}
-
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model, Principal principal) {
 
@@ -75,7 +68,6 @@ public class MainController {
 			model.addAttribute("message", message);
 
 		}
-
 		return "403Page";
 	}
 

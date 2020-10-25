@@ -74,7 +74,7 @@ public class CategoryDao {
 //
 	public Category search(String cateId) {
 		try {
-			String sql = "Select From " + Category.class.getName() + " c where c.categoryId = :categoryId";
+			String sql = "Select c From Category c where c.categoryId = :categoryId";
 			Query query = entityManager.createQuery(sql, Category.class);
 			query.setParameter("categoryId", cateId);
 			return (Category) query.getSingleResult();

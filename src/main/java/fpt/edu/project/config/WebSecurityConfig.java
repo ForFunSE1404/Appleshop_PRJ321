@@ -45,12 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Các trang không yêu cầu login
-		http.authorizeRequests().antMatchers("/product", "/login", "/logout").permitAll();
+		http.authorizeRequests().antMatchers("/", "/product", "/login", "/logout").permitAll();
 
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
-		http.authorizeRequests().antMatchers("/user/index").access("hasAnyRole('ROLE_USER')");
-
+		http.authorizeRequests().antMatchers("/cart").access("hasAnyRole('ROLE_USER')");
 		// Trang chỉ dành cho ADMIN
 		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
 
@@ -64,12 +63,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Submit URL của trang login
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/login")//
-				.defaultSuccessUrl("/userAccountInfo")//
+				.defaultSuccessUrl("/")//
 				.failureUrl("/login?error=true")//
 				.usernameParameter("your_name")//
 				.passwordParameter("your_pass")
 				// Cấu hình cho Logout Page.
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
 
 		// Cấu hình Remember Me.
 		http.authorizeRequests().and() //

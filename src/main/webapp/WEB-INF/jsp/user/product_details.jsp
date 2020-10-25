@@ -142,10 +142,8 @@
 												</span>
 											</div>
 										</div>
-									</li>
-
-									
-									<li><span>Product Category:</span> <a href="#">${product.category.categoryName}</a></li>
+									</li>									
+									<li><span>Product Category:</span> <a href="/category?catId=${product.category.categoryId}">${product.category.categoryName}</a></li>
 									<li><span>Availability:</span> <a href="#"
 										class="in-stock">In Stock (7 Items)</a></li>
 								</ul>

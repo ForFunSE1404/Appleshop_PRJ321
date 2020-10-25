@@ -21,6 +21,9 @@
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
+            <c:if test="${param.error == 'true'}">
+                          <p style="color:red; text-align:center;">Login Failed ${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
+            </c:if>
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.png" alt="sing up image"></figure>

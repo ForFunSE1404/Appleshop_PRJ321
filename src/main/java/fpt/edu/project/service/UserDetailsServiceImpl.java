@@ -13,12 +13,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import fpt.edu.project.dao.AccountDao;
+import fpt.edu.project.dao.RoleDao;
 import fpt.edu.project.model.Account;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private AccountDao accountDao;
+	@Autowired
+	private RoleDao roleDao;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,15 +32,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		} else {
 
 		}
-		 List<String> roleNames = new ArrayList<>
+
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-        if (roleNames != null) {
-            for (String role : roleNames) {
-                // ROLE_USER, ROLE_ADMIN,..
-                GrantedAuthority authority = new SimpleGrantedAuthority(role);
-                grantList.add(authority);
-            }
-        }
+		// ROLE_USER, ROLE_ADMIN,..
+		String roleName = roleDao.getRoleName(account.getRole().getRoleId());
+		switch (roleName) {
+		case "ROLE_ADMIN":
+			grantList.add(new SimpleGrantedAuthority("ROLE_USER"));
+			grantList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+			break;
+		case "ROLE_USER":
+			grantList.add(new SimpleGrantedAuthority("ROLE_USER"));
+			break;
+		}
 		UserDetails userDetails = (UserDetails) new User(account.getUserId(), //
 				account.getPassword(), grantList);
 
