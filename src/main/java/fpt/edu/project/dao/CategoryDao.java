@@ -81,6 +81,29 @@ public class CategoryDao {
 		} catch (NoResultException n) {
 			return null;
 		}
-
 	}
+	
+	public Category delete(String cateId) {
+		try {
+			String sql = "Delete c From Category c where c.categoryId = :categoryId";
+			Query query = entityManager.createQuery(sql, Category.class);
+			query.setParameter("categoryId", cateId);
+			return (Category) query.getSingleResult();
+		} catch (NoResultException n) {
+			return null;
+		}
+	}
+	
+//	public Category update(String cateId) {
+//		try {
+//			String sql = "Update c From Category c set c.categoryName = :categoryName where c.categoryId = :categoryId";
+//			Query query = entityManager.createQuery(sql, Category.class);
+//			query.setParameter("categoryId", cateId);
+//			return (Category) query.getSingleResult();
+//		} catch (NoResultException n) {
+//			return null;
+//		}
+//	}
+	
+	//Còn Update và New chưa làm
 }

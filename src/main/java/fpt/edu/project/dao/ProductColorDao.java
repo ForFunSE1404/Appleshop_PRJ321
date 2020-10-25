@@ -2,10 +2,10 @@ package fpt.edu.project.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +16,15 @@ import fpt.edu.project.model.ProductColor;
 @Transactional
 public class ProductColorDao {
 	@Autowired
-	private EntityManagerFactory entityManagerFactory;
+	private EntityManager entityManager;
 
 	public List<ProductColor> getAllProductColor() {
-		Session session = entityManagerFactory.createEntityManager().unwrap(Session.class);
-		String hql = "From ProductColor";
-		Query<ProductColor> aQuery = session.createQuery(hql);
-		return aQuery.getResultList();
+		try {
+			String sql = "Select p from " + ProductColor.class.getName() + " p ";
+			Query query = entityManager.createQuery(sql, ProductColor.class);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
-
 }
