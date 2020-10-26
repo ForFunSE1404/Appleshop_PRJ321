@@ -1,5 +1,5 @@
 package fpt.edu.project.model;
-// Generated Oct 22, 2020 7:25:52 PM by Hibernate Tools 4.3.1
+// Generated Oct 26, 2020 1:06:17 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +39,8 @@ public class Account implements java.io.Serializable {
 	public Account() {
 	}
 
-	public Account(String userId, Role role, String password, String email, String fullname, boolean isActived) {
+	public Account(String userId, Role role, String password, String email, String fullname,
+			boolean isActived) {
 		this.userId = userId;
 		this.role = role;
 		this.password = password;
@@ -48,9 +49,9 @@ public class Account implements java.io.Serializable {
 		this.isActived = isActived;
 	}
 
-	public Account(String userId, InfoUser infoUser, Role role, String password, String email, String fullname,
-			boolean isActived, String token, String avartar, Set<Cart> carts, Set<WishList> wishLists,
-			Set<Rating> ratings) {
+	public Account(String userId, InfoUser infoUser, Role role, String password, String email,
+			String fullname, boolean isActived, String token, String avartar, Set<Cart> carts,
+			Set<WishList> wishLists, Set<Rating> ratings) {
 		this.userId = userId;
 		this.infoUser = infoUser;
 		this.role = role;

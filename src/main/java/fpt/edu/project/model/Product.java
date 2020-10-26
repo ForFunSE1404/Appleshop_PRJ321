@@ -1,5 +1,5 @@
 package fpt.edu.project.model;
-// Generated Oct 22, 2020 7:25:52 PM by Hibernate Tools 4.3.1
+// Generated Oct 26, 2020 1:06:17 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "Product", schema = "dbo", catalog = "YourAnswer")
 public class Product implements java.io.Serializable {
+
 	/**
 	 * 
 	 */
@@ -30,39 +31,43 @@ public class Product implements java.io.Serializable {
 	private Category category;
 	private String productName;
 	private Date updateDate;
+	private int quantity;
 	private double price;
 	private String thumbnail;
 	private String description;
 	private Boolean visibility;
+	private Set<CartDetail> cartDetails = new HashSet<CartDetail>(0);
 	private Set<Image> images = new HashSet<Image>(0);
-	private Set<ProductColor> productColors = new HashSet<ProductColor>(0);
 	private Set<Rating> ratings = new HashSet<Rating>(0);
 	private Set<WishList> wishLists = new HashSet<WishList>(0);
 
 	public Product() {
 	}
 
-	public Product(String productId, Category category, String productName, double price, String thumbnail) {
+	public Product(String productId, Category category, String productName, int quantity, double price,
+			String thumbnail) {
 		this.productId = productId;
 		this.category = category;
 		this.productName = productName;
+		this.quantity = quantity;
 		this.price = price;
 		this.thumbnail = thumbnail;
 	}
 
-	public Product(String productId, Category category, String productName, Date updateDate, double price,
-			String thumbnail, String description, Boolean visibility, Set<Image> images,
-			Set<ProductColor> productColors, Set<Rating> ratings, Set<WishList> wishLists) {
+	public Product(String productId, Category category, String productName, Date updateDate, int quantity, double price,
+			String thumbnail, String description, Boolean visibility, Set<CartDetail> cartDetails, Set<Image> images,
+			Set<Rating> ratings, Set<WishList> wishLists) {
 		this.productId = productId;
 		this.category = category;
 		this.productName = productName;
 		this.updateDate = updateDate;
+		this.quantity = quantity;
 		this.price = price;
 		this.thumbnail = thumbnail;
 		this.description = description;
 		this.visibility = visibility;
+		this.cartDetails = cartDetails;
 		this.images = images;
-		this.productColors = productColors;
 		this.ratings = ratings;
 		this.wishLists = wishLists;
 	}
@@ -107,6 +112,15 @@ public class Product implements java.io.Serializable {
 		this.updateDate = updateDate;
 	}
 
+	@Column(name = "quantity", nullable = false)
+	public int getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@Column(name = "price", nullable = false, precision = 53, scale = 0)
 	public double getPrice() {
 		return this.price;
@@ -144,21 +158,21 @@ public class Product implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<CartDetail> getCartDetails() {
+		return this.cartDetails;
+	}
+
+	public void setCartDetails(Set<CartDetail> cartDetails) {
+		this.cartDetails = cartDetails;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	public Set<Image> getImages() {
 		return this.images;
 	}
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	public Set<ProductColor> getProductColors() {
-		return this.productColors;
-	}
-
-	public void setProductColors(Set<ProductColor> productColors) {
-		this.productColors = productColors;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")

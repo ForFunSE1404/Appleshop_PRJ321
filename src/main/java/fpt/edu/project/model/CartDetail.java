@@ -1,5 +1,5 @@
 package fpt.edu.project.model;
-// Generated Oct 22, 2020 7:25:52 PM by Hibernate Tools 4.3.1
+// Generated Oct 26, 2020 1:06:17 PM by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,17 +21,17 @@ public class CartDetail implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int cartDetailId;
 	private Cart cart;
-	private ProductColor productColor;
+	private Product product;
 	private int quantity;
 	private double price;
 
 	public CartDetail() {
 	}
 
-	public CartDetail(int cartDetailId, Cart cart, ProductColor productColor, int quantity, double price) {
+	public CartDetail(int cartDetailId, Cart cart, Product product, int quantity, double price) {
 		this.cartDetailId = cartDetailId;
 		this.cart = cart;
-		this.productColor = productColor;
+		this.product = product;
 		this.quantity = quantity;
 		this.price = price;
 	}
@@ -58,13 +58,13 @@ public class CartDetail implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "productColorId", nullable = false)
-	public ProductColor getProductColor() {
-		return this.productColor;
+	@JoinColumn(name = "productId", nullable = false)
+	public Product getProduct() {
+		return this.product;
 	}
 
-	public void setProductColor(ProductColor productColor) {
-		this.productColor = productColor;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@Column(name = "quantity", nullable = false)

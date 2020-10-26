@@ -1,5 +1,5 @@
 package fpt.edu.project.model;
-// Generated Oct 22, 2020 7:25:52 PM by Hibernate Tools 4.3.1
+// Generated Oct 26, 2020 1:06:17 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Role", schema = "dbo", catalog = "YourAnswer")
 public class Role implements java.io.Serializable {
-
 	/**
 	 * 
 	 */

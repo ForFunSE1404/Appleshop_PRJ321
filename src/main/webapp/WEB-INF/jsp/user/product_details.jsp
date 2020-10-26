@@ -33,7 +33,7 @@
 
 <body>
 	<!-- Header -->
-		
+
 	<header id="header" class="header">
 		<jsp:include page="navigation.jsp"></jsp:include>
 	</header>
@@ -47,17 +47,16 @@
 					<div class="product-detail__left">
 						<div class="details__container--left">
 							<div class="product__pictures">
-								<c:set var="i" value="1"/>
-								<c:forEach items = "${product.images}" var = "images">
-								
-								<div class="pictures__container">
-									<img class="picture"
-										src="${images.imgUrl}" id="pic<c:out value="${i }"/>" />
-								</div>
-															<c:set var="i" value="${i+1}"/>
-								
+								<c:set var="i" value="1" />
+								<c:forEach items="${product.images}" var="images">
+									<div class="pictures__container">
+										<img class="picture" src="${images.imgUrl}"
+											id="pic<c:out value="${i }"/>" />
+									</div>
+									<c:set var="i" value="${i+1}" />
+
 								</c:forEach>
-								
+
 							</div>
 							<div class="product__picture" id="product__picture">
 								<!-- <div class="rect" id="rect"></div> -->
@@ -74,8 +73,7 @@
                   </svg>
 							</span> ADD TO CART
 							</a> <a class="buy" href="#"> <span> <svg>
-                    <use
-											xlink:href="./images/sprite.svg#icon-heart-o"></use>
+                    <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
                   </svg>
 							</span> ADD TO WISH LIST
 							</a>
@@ -84,7 +82,7 @@
 
 					<div class="product-detail__right">
 						<div class="product-detail__content">
-						
+
 							<h3>${product.productName}</h3>
 							<div class="price">
 								<span class="new__price">${product.price}</span>
@@ -115,13 +113,12 @@
 								<ul class="product__info">
 									<li class="select">
 										<div class="select__option">
-											<label for="colors">Color</label> 
-											<select name="colors"
+											<label for="colors">Color</label> <select name="colors"
 												id="colors" class="select-box">
 												<c:forEach items="${product.productColors}" var="pColor">
 													<option value="${pColor.color.colorName}">${pColor.color.colorName}</option>
 												</c:forEach>
-												
+
 											</select>
 										</div>
 									</li>
@@ -130,10 +127,9 @@
 										<div class="input-counter">
 											<span>Quantity:</span>
 											<div>
-												<span class="minus-btn"> 
-												<svg> <use xlink:href="./images/sprite.svg#icon-minus"></use> </svg>
-												</span> 
-												<input type="text" min="1" value="1" max="10"
+												<span class="minus-btn"> <svg> <use
+															xlink:href="./images/sprite.svg#icon-minus"></use> </svg>
+												</span> <input type="text" min="1" value="1" max="10"
 													class="counter-btn"> <span class="plus-btn">
 													<svg>
                             <use
@@ -142,8 +138,9 @@
 												</span>
 											</div>
 										</div>
-									</li>									
-									<li><span>Product Category:</span> <a href="/category?catId=${product.category.categoryId}">${product.category.categoryName}</a></li>
+									</li>
+									<li><span>Product Category:</span> <a
+										href="/category?catId=${product.category.categoryId}">${product.category.categoryName}</a></li>
 									<li><span>Availability:</span> <a href="#"
 										class="in-stock">In Stock (7 Items)</a></li>
 								</ul>
