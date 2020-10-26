@@ -8,19 +8,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import fpt.edu.project.dao.CategoryDao;
-import fpt.edu.project.dao.ProductDao;
 import fpt.edu.project.model.Category;
 import fpt.edu.project.model.Product;
+import fpt.edu.project.service.CategoryServiceImpl;
 
 @Controller
 public class PageControl {
-
 	@Autowired
-	private CategoryDao categoryDao;
+	private CategoryServiceImpl categoryDao;
 
-	@Autowired
-	private ProductDao productDao;
 
 	@RequestMapping(value = "/")
 	public String index() {
@@ -33,14 +29,7 @@ public class PageControl {
 		return "user/cart";
 	}
 
-	@RequestMapping(value = "/product_search")
-	public String productSearch(@RequestParam String proName, ModelMap model) {
-		List<Category> listCategories = categoryDao.getAllCategories();
-		model.addAttribute("listCategories", listCategories);
-		List<Product> product = productDao.findProductByName(proName);
-		model.addAttribute("listProduct", product);
-		return "user/product";
-	}
+
 
 	@RequestMapping(value = "/register")
 	public String register() {
