@@ -54,5 +54,8 @@ public class ProductController {
 		model.addAttribute("product", product);
 		return "user/product_details";
 	}
+	
+//	@RequestMapping(value = "/product")
+//	public String 
 
 }
