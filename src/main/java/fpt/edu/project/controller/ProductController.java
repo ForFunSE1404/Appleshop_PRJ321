@@ -55,7 +55,4 @@ public class ProductController {
 		return "user/product_details";
 	}
 	
-//	@RequestMapping(value = "/product")
-//	public String 
-
 }
