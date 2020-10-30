@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Tables</h2>
+						<h2 class="pageheader-title">Data Product</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
@@ -47,8 +47,7 @@
 										class="breadcrumb-link">Dashboard</a></li>
 									<li class="breadcrumb-item"><a href="#"
 										class="breadcrumb-link">Tables</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data
-										Tables</li>
+									<li class="breadcrumb-item active" aria-current="page">Data Product</li>
 								</ol>
 							</nav>
 						</div>
@@ -64,25 +63,14 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Basic Table</h5>
+						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-										<div class="col-sm-12 col-md-6">
-											<div class="dataTables_length" id="DataTables_Table_0_length">
-												<label>Show <select name="DataTables_Table_0_length"
-													aria-controls="DataTables_Table_0"
-													class="custom-select custom-select-sm form-control form-control-sm"><option
-															value="10">10</option>
-														<option value="25">25</option>
-														<option value="50">50</option>
-														<option value="100">100</option></select> entries
-												</label>
-											</div>
-										</div>
-										<div class="col-sm-12 col-md-6">
+										
+										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
 												<label>Search:<input type="search"
 													class="form-control form-control-sm" placeholder=""
@@ -90,8 +78,9 @@
 											</div>
 										</div>
 									</div>
+									<br>
 									<div class="row">
-										<div class="col-sm-12">
+										<div class="col-sm-12 col-md-12">
 											<table
 												class="table table-striped table-bordered first dataTable"
 												id="DataTables_Table_0" role="grid"
@@ -180,6 +169,8 @@
 											</table>
 										</div>
 									</div>
+									<br>
+									<div class="col-sm-12 col-md-12">
 									<div class="row">
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination">
@@ -190,6 +181,7 @@
                                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                 </ul>
                                             </nav>
+									</div>
 									</div>
 								</div>
 								</div>

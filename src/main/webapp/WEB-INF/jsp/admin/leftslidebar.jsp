@@ -20,76 +20,21 @@
                             <li class="nav-divider">
                                 Menu
                             </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
-                                    data-target="#submenu-1" aria-controls="submenu-1"><i
-                                        class="fa fa-fw fa-user-circle"></i>Dashboard <span
-                                        class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                                data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">E Commerce Dashboard</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Product
-                                                            List</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">Product
-                                                            Single</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link"
-                                                            href="ecommerce-product-checkout.html">Product Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                                data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link"
-                                                            href="dashboard-influencer.html">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.html">Influencer
-                                                            Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.html">Influencer
-                                                            Profile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                     data-target="#submenu-2" aria-controls="submenu-2"><i
-                                        class="fas fa-edit"></i>Quản lý</a>
+                                        class="fas fa-edit"></i>Management</a>
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/cards.html">Quản lý nhân viên <span
+                                            <a class="nav-link" href="pages/cards.html">Employee Management <span
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
+<<<<<<< HEAD
+                                            <a class="nav-link" href="/products">Product Management</a>
+=======
                                             <a class="nav-link" href="admin/products">Quản lý sản phẩm</a>
                                         </li>
                                         <li class="nav-item">
@@ -116,16 +61,18 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/multiselect.html">Multiselect</a>
+>>>>>>> 94b4ac93e3306df8753c6c9061a92fe5605c3253
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/datepicker.html">Date Picker</a>
+                                            <a class="nav-link" href="pages/carousel.html">Bill Management</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/bootstrap-select.html">Bootstrap Select</a>
+                                            <a class="nav-link" href="pages/listgroup.html">Category Management</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                     data-target="#submenu-5" aria-controls="submenu-5"><i
