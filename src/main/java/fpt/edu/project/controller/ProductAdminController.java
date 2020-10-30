@@ -18,7 +18,7 @@ public class ProductAdminController {
 		model.addAttribute("listproduct", productService.findAll());
 		return "admin/showallproduct";
 	}
-
+ 
 	@RequestMapping(value = "admin/addproduct", method = RequestMethod.GET)
 	public String addproduct() {
 		return "admin/addproduct";

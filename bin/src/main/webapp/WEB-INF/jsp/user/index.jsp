@@ -22,7 +22,7 @@
 	<!-- Custom StyleSheet -->
 	<link rel="stylesheet" href="styles.css" />
 
-	<title>Phone Shop</title>
+	<title>Apple Shop</title>
 </head>
 
 <body>
@@ -45,8 +45,8 @@
             <div class="collection__content">
               <div class="collection__data">
                 <span>New Colors Introduced</span>
-                <h1>HEADPHONES</h1>
-                <a href="#shop">SHOP NOW</a>
+                <h1>IPAD</h1>
+                <a href="/product">SHOPPING NOW</a>
               </div>
             </div>
           </div>
@@ -57,8 +57,8 @@
             <div class="collection__content">
               <div class="collection__data">
                 <span>Phone Device Presets</span>
-                <h1>SMARTPHONES</h1>
-                <a href="#">SHOP NOW</a>
+                <h1>IPHONE</h1>
+                <a href="/product">SHOPPING NOW</a>
               </div>
             </div>
           </div>

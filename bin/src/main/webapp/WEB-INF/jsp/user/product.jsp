@@ -26,9 +26,10 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <!-- Custom StyleSheet -->
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/styles.css" />
 
-<title>Phone Shop</title>
+<title>Apple Shop</title>
 </head>
 <body>
 	<!-- Header -->
@@ -41,9 +42,10 @@
 			<section class="category__section section" id="category">
 				<div class="tab__list">
 					<div class="title__container tabs no-margin">
-						<form>
-							Search Product <input type="text" class="input-search" /> <input
-								type="submit" class="btn" value="Search" />
+						<form action="product_search">
+							Search Product <input type="text" class="input-search"
+								name="proName" /> <input type="submit" class="btn"
+								value="Search" />
 						</form>
 					</div>
 				</div>
@@ -51,17 +53,32 @@
 				<div class="tab__list">
 					<div class="title__container tabs">
 						<div class="section__titles category__titles ">
-						<div class="section__title filter-btn active"
-									data-id="All Products">
-									<span class="dot"></span>
-									<h1 class="primary__title">All Products</h1>
-								</div>
+							<div class="section__title filter-btn" data-id="All Products">
+								<span class="dot"></span>
+								<h1 class="primary__title">
+									<a href="product">All Products</a>
+								</h1>
+							</div>
 							<c:forEach items="${listCategories}" var="category">
-								<div class="section__title filter-btn"
-									data-id="${category.categoryName}">
-									<span class="dot"></span>
-									<h1 class="primary__title">${category.categoryName}</h1>
-								</div>
+								<!--Check active -->
+								<c:if test="${category.categoryId == param.catId}">
+									<div class="section__title filter-btn active"
+										data-id="${category.categoryName}">
+										<span class="dot"></span>
+										<h1 class="primary__title">
+											<a href="/category?catId=${category.categoryId}">${category.categoryName}</a>
+										</h1>
+									</div>
+								</c:if>
+								<c:if test="${category.categoryId != param.catId}">
+									<div class="section__title filter-btn"
+										data-id="${category.categoryName}">
+										<span class="dot"></span>
+										<h1 class="primary__title">
+											<a href="/category?catId=${category.categoryId}">${category.categoryName}</a>
+										</h1>
+									</div>
+								</c:if>
 							</c:forEach>
 						</div>
 					</div>
@@ -69,52 +86,56 @@
 
 				<div class="category__container aos-init">
 					<div class="category__center">
-						<div class="product category__products">
-							<div class="product__header">
-								<img src="./images/products/iphone/iphone3.jpeg" alt="product">
-							</div>
-							<div class="product__footer">
-								<h3>Apple iPhone 11</h3>
-								<div class="rating">
-									<svg> <use
-											xlink:href="./images/sprite.svg#icon-star-full"></use></svg>
-									<svg>
-                          <use
-											xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-									<svg>
-                          <use
-											xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-									<svg>
-                          <use
-											xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-									<svg>
-                          <use
-											xlink:href="./images/sprite.svg#icon-star-empty"></use>
-                        </svg>
+						<c:forEach items="${listProduct}" var="product">
+							<div class="product category__products">
+								<div class="product__header">
+									<img src="${product.thumbnail}" alt="product">
 								</div>
-								<div class="product__price">
-									<h4>$760</h4>
-								</div>
-								<a href="#"><button type="submit" class="product__btn">Add
-										To Cart</button></a>
-							</div>
-							<ul>
-								<li><a data-tip="Quick View" data-place="left" href="#">
+								<div class="product__footer">
+									<h3>${product.productName}</h3>
+									<div class="rating">
+										<svg> <use
+												xlink:href="./images/sprite.svg#icon-star-full"></use></svg>
 										<svg>
+                          <use
+												xlink:href="./images/sprite.svg#icon-star-full"></use>
+                        </svg>
+										<svg>
+                          <use
+												xlink:href="./images/sprite.svg#icon-star-full"></use>
+                        </svg>
+										<svg>
+                          <use
+												xlink:href="./images/sprite.svg#icon-star-full"></use>
+                        </svg>
+										<svg>
+                          <use
+												xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                        </svg>
+									</div>
+									<div class="product__price">
+										<h4>${product.price}</h4>
+									</div>
+									<a href="#"><button type="submit" class="product__btn">Add
+											To Cart</button></a>
+								</div>
+
+								<ul>
+									<li><a data-tip="Quick View" data-place="left"
+										href="product_details?proId=${product.productId}"> <svg>
                             <use
-												xlink:href="./images/sprite.svg#icon-eye"></use>
+													xlink:href="./images/sprite.svg#icon-eye"></use>
                           </svg>
-								</a></li>
-								<li><a data-tip="Add To Wishlist" data-place="left"
-									href="#"> <svg>
+									</a></li>
+									<li><a data-tip="Add To Wishlist" data-place="left"
+										href="#"> <svg>
 														<use xlink:href="./images/sprite.svg#icon-heart-o"></use>
 													</svg>
-								</a></li>
-							</ul>
-						</div>
+									</a></li>
+								</ul>
+							</div>
+						</c:forEach>
+
 					</div>
 				</div>
 				<div class="center">
