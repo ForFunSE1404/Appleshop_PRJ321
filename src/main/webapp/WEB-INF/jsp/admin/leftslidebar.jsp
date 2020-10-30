@@ -90,7 +90,7 @@
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/general.html">Quản lý sản phẩm</a>
+                                            <a class="nav-link" href="products">Quản lý sản phẩm</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/carousel.html">Quản lý hóa đơn</a>

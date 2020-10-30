@@ -14,7 +14,7 @@ import fpt.edu.project.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl {
-	
+
 	@Autowired
 	private EntityManager entityManager;
 	@Autowired
@@ -31,18 +31,16 @@ public class ProductServiceImpl {
 	public Optional<Product> findById(String id) {
 		return productRepository.findById(id);
 	}
-	
 
 	public void deleteById(String id) {
 		productRepository.deleteById(id);
 	}
+
 	public List<Product> findProductByName(String name) {
 		String sql = "From Product P where P.productName like :name";
 		Query query = entityManager.createQuery(sql, Product.class);
 		query.setParameter("name", '%' + name + '%');
 		return query.getResultList();
 	}
-	
-	
-	
+
 }
