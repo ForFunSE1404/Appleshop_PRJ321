@@ -152,13 +152,27 @@
 				<div class="center">
 					<div class="pagination">
 						<a href="product?page=${param.page - 1}">&laquo;</a>
-						<c:forEach begin="1" end="${numpage}" var="i">
-								<c:if test="${i == param.page}">
+						<c:forEach begin="0" end="${numpage}" var="i">
+							<c:if test="${ param.page == null}">
+							<c:if test="${ i == 0}">
+								<a class="active" href="product?page=${i}">${i}</a>
+							</c:if>
+							<c:if test="${ i != 0}">
+								<a  href="product?page=${i}">${i}</a>
+							</c:if>
+							</c:if>
+							<c:if test="${ param.page != null}">
+							<c:if test="${i == param.page}">
 									<a class="active" href="product?page=${i}">${i}</a>
 								</c:if>
 								<c:if test="${i != param.page}">
 									<a href="product?page=${i}">${i}</a>
 								</c:if>
+							</c:if>
+								
+								
+
+
 						</c:forEach>
 						<a href="product?page=${param.page + 1}">&raquo;</a>
 					</div>
