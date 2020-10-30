@@ -57,8 +57,6 @@
 	              <li class="nav__item">
 	                <a href="/logout" class="nav__link scroll-link">Logout</a>
 	              </li>
-
-	              <p>${pageContext.request.userPrincipal.principal}</p>
               </c:if>
             </ul>
           </div>

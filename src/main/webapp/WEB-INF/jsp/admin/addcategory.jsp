@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!doctype html>
 <html lang="en">
 
@@ -42,7 +44,8 @@
                         <div class="card">
                             <h5 class="card-header">Input Category</h5>
                             <div class="card-body">
-                                <form id="validationform" data-parsley-validate="" novalidate="" method="POST">
+                                <form id="validationform" data-parsley-validate="" action="addcategory" novalidate="" method="POST">
+                                    <c:if test="${id == null}" >
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
@@ -52,6 +55,18 @@
                                                 class="form-control" name="txtCategoryIdAdd" >
                                         </div>
                                     </div>
+                                    </c:if>
+                                     <c:if test="${id != null}" >
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>
+                                        <div class="col-12 col-sm-8 col-lg-6">
+                                            <input readonly data-parsley-required-message="Please insert Category Code"
+                                                data-parsley-pattern-message="Product Code In Format [CXXXX] X isdigit"
+                                                type="text" required="" data-parsley-pattern="[C]\d{4}" placeholder=""
+                                                class="form-control" name="txtCategoryIdAdd" value="${id }">
+                                        </div>
+                                    </div>
+                                    </c:if>
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category Name</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
@@ -61,11 +76,21 @@
                                                 name="txtCategoryNameAdd" >
                                         </div>
                                     </div>
+                                    <c:if test="${id == null}">
                                     <div class="form-group row text-right">
                                         <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                             <button type="submit" value="AddCategory" class="btn btn-space btn-primary">Add Category</button>
                                         </div>
                                     </div>
+                                    </c:if>
+                                    <c:if test="${id != null}">
+                                    <div class="form-group row text-right">
+                                        <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                            <button type="submit" value="AddCategory" class="btn btn-space btn-primary">Update Category</button>
+                                        </div>
+                                    </div>
+                                    </c:if>
+                                    
                                 </form>
                             </div>
                         </div>
