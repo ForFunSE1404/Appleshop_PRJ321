@@ -68,5 +68,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Cấu hình cho Logout Page.
 				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
 	}
-
 }
