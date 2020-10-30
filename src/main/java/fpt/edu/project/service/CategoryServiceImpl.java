@@ -11,17 +11,16 @@ import fpt.edu.project.repository.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl {
-	
-	
+
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
 	public List<Category> findAll() {
 		return categoryRepository.findAll();
 	}
-	
+
 	public Category save(Category entity) {
-		return  categoryRepository.save(entity);
+		return categoryRepository.save(entity);
 	}
 
 	public Optional<Category> findById(String id) {
@@ -32,10 +31,6 @@ public class CategoryServiceImpl {
 		categoryRepository.deleteById(id);
 	}
 
-	//còn update chưa làm
-	
-	
-	
-	
-	
+	// còn update chưa làm
+
 }
