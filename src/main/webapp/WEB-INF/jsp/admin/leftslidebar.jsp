@@ -32,36 +32,7 @@
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-<<<<<<< HEAD
                                             <a class="nav-link" href="/products">Product Management</a>
-=======
-                                            <a class="nav-link" href="admin/products">Quản lý sản phẩm</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/carousel.html">Quản lý hóa đơn</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/listgroup.html">Quản lý loại</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                                    data-target="#submenu-4" aria-controls="submenu-4"><i
-                                        class="fab fa-fw fa-wpforms"></i>Forms</a>
-                                <div id="submenu-4" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-elements.html">Form Elements</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-validation.html">Parsely
-                                                Validations</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/multiselect.html">Multiselect</a>
->>>>>>> 94b4ac93e3306df8753c6c9061a92fe5605c3253
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/carousel.html">Bill Management</a>
