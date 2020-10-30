@@ -22,7 +22,7 @@
 	href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 <link rel="stylesheet"
 	href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-<title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+<title>Apple Shop</title>
 </head>
 <div class="dashboard-main-wrapper">
 
@@ -36,16 +36,18 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Category</h2>
+						<h2 class="pageheader-title">Data Product</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="/"
-										class="breadcrumb-link">Apple Shop</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data Category</li>
+									<li class="breadcrumb-item"><a href="#"
+										class="breadcrumb-link">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#"
+										class="breadcrumb-link">Tables</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Data Product</li>
 								</ol>
 							</nav>
 						</div>
@@ -61,38 +63,65 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Data Category Table</h5>
+						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-										<div class="col-sm-12 col-md-10">
-										</div>
-										<div class="col-sm-12 col-md-2">
-													<a href="http://localhost:8080/admin/addcategory" class="btn btn-success">Add New</a>
+										
+										<div class="col-sm-12 col-md-12">
+											<div id="DataTables_Table_0_filter" class="dataTables_filter">
+												<label>Search:<input type="search"
+													class="form-control form-control-sm" placeholder=""
+													aria-controls="DataTables_Table_0"></label>
 											</div>
 										</div>
 									</div>
 									<br>
 									<div class="row">
-										<div class="col-sm-12">
+										<div class="col-sm-12 col-md-12">
 											<table
 												class="table table-striped table-bordered first dataTable"
 												id="DataTables_Table_0" role="grid"
 												aria-describedby="DataTables_Table_0_info">
 												<thead>
 													<tr role="row">
+														<th class="sorting_asc" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1" aria-sort="ascending"
+															aria-label="Name: activate to sort column descending"
+															style="width: 100px;">User ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Position: activate to sort column ascending"
-															style="width: 90x;">Category ID</th>
+															aria-label="Office: activate to sort column ascending"
+															style="width: 250px;">Email</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Position: activate to sort column ascending"
-															style="width: 90x;">Category Name</th>
+															aria-label="Age: activate to sort column ascending"
+															style="width: 200px;">Fullname</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															aria-label="Start date: activate to sort column ascending"
+															style="width: 80px;">IsActive</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 150px;">Info User</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">Role ID</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 80px;">Avatar</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
@@ -106,13 +135,25 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listcategory}" var="category">
+													<c:forEach items="${listaccount}" var="account">
 														<tr role="row" class="odd">
-															<td>${category.categoryId }</td>
-															<td>${category.categoryName }</td>
-															<td><a href="editcategory?categoryId=${category.categoryId }" class="btn btn-primary">Edit</a></td>
+															<td>${account.userId }</td>
+															<td>${account.email }</td>
+															<td>${account.fullname }</td>
+															<td><c:if test="${account.isActived}">
+																	<input type="checkbox" class="disable" checked
+																		name="name1" />&nbsp;
+															</c:if> <c:if test="${account.isActived == false}">
+																	<input type="checkbox" class="disable" name="name1" />&nbsp;
+															</c:if></td>
+															<td>${account.infoUser.infoId }</td>
+															<td>${account.role.roleName }</td>
+															<td><img style="width: 100px;"
+																src="${account.avartar }" /></td>
+															
+															<td><a href="" class="btn btn-primary">Edit</a></td>
 															<td><a
-																href="delcategory?categoryId=${category.categoryId }"
+																href="/delete?productId=${account.userId }"
 																class="btn btn-danger">Delete</a></td>
 
 														</tr>
@@ -123,6 +164,8 @@
 											</table>
 										</div>
 									</div>
+									<br>
+									<div class="col-sm-12 col-md-12">
 									<div class="row">
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination">
@@ -133,6 +176,7 @@
                                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                 </ul>
                                             </nav>
+									</div>
 									</div>
 								</div>
 								</div>
