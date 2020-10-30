@@ -110,7 +110,7 @@
 														<tr role="row" class="odd">
 															<td>${category.categoryId }</td>
 															<td>${category.categoryName }</td>
-															<td><a href="" class="btn btn-primary">Edit</a></td>
+															<td><a href="editcategory?categoryId=${category.categoryId }" class="btn btn-primary">Edit</a></td>
 															<td><a
 																href="delcategory?categoryId=${category.categoryId }"
 																class="btn btn-danger">Delete</a></td>

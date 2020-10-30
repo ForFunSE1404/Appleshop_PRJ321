@@ -10,6 +10,8 @@ import javax.persistence.Query;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +53,7 @@ public class AccountServiceImpl {
 
 	
 
+	public boolean findByEmail(String email) {
+		return accountRepository.findByEmail(email).isEmpty();
+	}
 }

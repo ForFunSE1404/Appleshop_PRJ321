@@ -26,9 +26,9 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <p style="color:red;"> ${err} </p>
                         <form method="POST" class="register-form" id="register-form">
                             <div class="form-group">
+                            <p style="color:red;"> ${err} </p>
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input required="" data-parsley-minlength="6" data-parsley-maxlength="20" data-parsley-required-message="User ID is required" type="text" name="userId" id="name" placeholder="Username" />
                             </div>
