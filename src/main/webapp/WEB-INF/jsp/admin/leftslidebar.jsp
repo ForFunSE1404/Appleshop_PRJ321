@@ -28,7 +28,7 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/cards.html">Employee Management <span
+                                            <a class="nav-link" href="/account">Account Management <span
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">

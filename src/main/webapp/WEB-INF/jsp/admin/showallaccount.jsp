@@ -91,42 +91,37 @@
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" aria-sort="ascending"
 															aria-label="Name: activate to sort column descending"
-															style="width: 100px;">Product ID</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Position: activate to sort column ascending"
-															style="width: 90x;">Category ID</th>
+															style="width: 100px;">User ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Office: activate to sort column ascending"
-															style="width: 200px;">Product Name</th>
+															style="width: 250px;">Email</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Age: activate to sort column ascending"
-															style="width: 150px;">Update Date</th>
+															style="width: 200px;">Fullname</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Start date: activate to sort column ascending"
-															style="width: 120px;">Price</th>
+															style="width: 80px;">IsActive</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 120px;">Thumbnail</th>
+															style="width: 150px;">Info User</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 150px;">Description</th>
+															style="width: 80px;">Role ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Visibility</th>
+															style="width: 80px;">Avatar</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
@@ -140,25 +135,25 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listproduct}" var="product">
+													<c:forEach items="${listaccount}" var="account">
 														<tr role="row" class="odd">
-															<td class="sorting_1">${product.productId}</td>
-															<td>${product.category.categoryId }</td>
-															<td>${product.productName }</td>
-															<td>${product.updateDate }</td>
-															<td>${product.price }$</td>
-															<td><img style="width: 100px;"
-																src="${product.thumbnail }" /></td>
-															<td>${product.description }</td>
-															<td><c:if test="${product.visibility}">
+															<td>${account.userId }</td>
+															<td>${account.email }</td>
+															<td>${account.fullname }</td>
+															<td><c:if test="${account.isActived}">
 																	<input type="checkbox" class="disable" checked
 																		name="name1" />&nbsp;
-															</c:if> <c:if test="${product.visibility == false}">
+															</c:if> <c:if test="${account.isActived == false}">
 																	<input type="checkbox" class="disable" name="name1" />&nbsp;
 															</c:if></td>
+															<td>${account.infoUser.infoId }</td>
+															<td>${account.role.roleName }</td>
+															<td><img style="width: 100px;"
+																src="${account.avartar }" /></td>
+															
 															<td><a href="" class="btn btn-primary">Edit</a></td>
 															<td><a
-																href="/delete?productId=${product.productId }"
+																href="/delete?productId=${account.userId }"
 																class="btn btn-danger">Delete</a></td>
 
 														</tr>
