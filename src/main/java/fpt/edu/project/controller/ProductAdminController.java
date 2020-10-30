@@ -13,7 +13,7 @@ public class ProductAdminController {
 	@Autowired
 	public ProductServiceImpl productService;
 
-	@RequestMapping(value = "admin/products", method = RequestMethod.GET)
+	@RequestMapping(value = "products", method = RequestMethod.GET)
 	public String showProduct(Model model) {
 		model.addAttribute("listproduct", productService.findAll());
 		return "admin/showallproduct";
