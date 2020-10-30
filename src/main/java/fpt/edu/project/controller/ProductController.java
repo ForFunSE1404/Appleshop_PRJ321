@@ -31,8 +31,8 @@ public class ProductController {
 	public String productSearch(@RequestParam String proName, ModelMap model) {
 		List<Category> listCategories = categoryService.findAll();
 		model.addAttribute("listCategories", listCategories);
-		List<Product> product = productService.findProductByName(proName);
-		model.addAttribute("listProduct", product);
+//		List<Product> product = productService.findProductByName(proName);
+//		model.addAttribute("listProduct", product);
 		return "user/product";
 	}
 
