@@ -16,6 +16,7 @@ public class PageControl {
 	@RequestMapping(value = "/")
 	public String index(ModelMap model, Authentication authentication) {
 		if (authentication != null) {
+			System.out.print(authentication.getAuthorities());
 			model.addAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
 
 		}
@@ -25,11 +26,6 @@ public class PageControl {
 	@RequestMapping(value = "/cart")
 	public String cart() {
 		return "user/cart";
-	}
-
-	@RequestMapping(value = "/register")
-	public String register() {
-		return "user/register";
 	}
 
 	@RequestMapping(value = "/wishlist")

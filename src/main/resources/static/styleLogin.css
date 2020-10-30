@@ -588,5 +588,9 @@ label.valid {
   .social-label {
     margin-right: 0px;
     margin-bottom: 10px; } }
-
+.parsley-errors-list {
+	list-style-type: none;
+	color:red;
+	margin:0;
+}
 /*# sourceMappingURL=style.css.map */

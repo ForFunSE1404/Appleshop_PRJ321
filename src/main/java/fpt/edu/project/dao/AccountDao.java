@@ -66,5 +66,15 @@ public class AccountDao {
 			return null;
 		}
 	}
-
+	public Account checkExist(String userId,String email) {
+		try {
+			String sql = "Select A from " + Account.class.getName() + " A " + " Where A.userId = :userId And A.email = :email ";
+			Query aQuery = entityManager.createQuery(sql);
+			aQuery.setParameter("userId", userId);
+			aQuery.setParameter("email", email);
+			return (Account) aQuery.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 }
