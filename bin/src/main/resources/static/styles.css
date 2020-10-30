@@ -133,7 +133,7 @@ Navigation
   display: flex;
   align-items: center;
   height: 100%;
-  width: 50%;
+  width: 65%;
 }
 
 .nav__item:not(:last-child) {
@@ -673,6 +673,10 @@ Latest Products
   opacity: 1;
 }
 
+.primary__title a {
+	color: #000;
+}
+
 .section__title .primary__title {
   opacity: 0.6;
   padding-left: 0.5rem;
@@ -702,6 +706,11 @@ span.dot::before {
 }
 
 .section__title.active span.dot {
+	color: red;
+  opacity: 1;
+}
+
+.section__title.active a {
 	color: red;
   opacity: 1;
 }

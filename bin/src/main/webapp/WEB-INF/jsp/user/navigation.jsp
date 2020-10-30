@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +20,14 @@
 
           <div class="nav__logo">
             <a href="/" class="scroll-link">
-              PHONE
+              Apple Shop
             </a>
           </div>
 
           <div class="nav__menu">
             <div class="menu__top">
-              <span class="nav__category">PHONE</span>
-              <a href="#" class="close__toggle">
+              <span class="nav__category">Apple Shop</span>
+              <a href="/" class="close__toggle">
                 <svg>
                   <use xlink:href="./images/sprite.svg#icon-cross"></use>
                 </svg>
@@ -33,17 +35,30 @@
             </div>
             <ul class="nav__list">
               <li class="nav__item">
-                <a href="#header" class="nav__link scroll-link">Home</a>
+                <a href="/" class="nav__link scroll-link">Home</a>
               </li>
               <li class="nav__item">
-                <a href="#category" class="nav__link scroll-link">Product</a>
+                <a href="/product" class="nav__link scroll-link">Product</a>
               </li>
               <li class="nav__item">
                 <a href="#header" class="nav__link scroll-link">Wish List</a>
               </li>
-              <li class="nav__item">
-                <a href="#contact" class="nav__link scroll-link">Login</a>
+              <c:if test="${pageContext[\"request\"].userPrincipal.principal == null}">
+	              <li class="nav__item">
+                	<a href="/login" class="nav__link scroll-link">Login</a>
               </li>
+              </c:if>
+              <c:if test="${isAdmin}" >
+	              <li class="nav__item">
+	                <a href="/admin" class="nav__link scroll-link">Admin</a>
+	              </li>
+	              </c:if>
+              <c:if test="${pageContext[\"request\"].userPrincipal.principal != null}">
+	              <li class="nav__item">
+	                <a href="/logout" class="nav__link scroll-link">Logout</a>
+	              </li>
+	              
+              </c:if>
             </ul>
           </div>
 

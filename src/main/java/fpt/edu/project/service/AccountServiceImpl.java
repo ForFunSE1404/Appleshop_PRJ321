@@ -1,10 +1,16 @@
 package fpt.edu.project.service;
 
+
 import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +28,7 @@ public class AccountServiceImpl {
 	public Account save(Account entity) {
 		return accountRepository.save(entity);
 	}
+
 
 	public List<Account> findAll() {
 		return accountRepository.findAll();
@@ -41,4 +48,10 @@ public class AccountServiceImpl {
 		query.setParameter("name", '%' + name + '%');
 		return query.getResultList();
 	}
+
+	public Optional<Account> findById(String id) {
+		return accountRepository.findById(id);
+	}
+	
+
 }
