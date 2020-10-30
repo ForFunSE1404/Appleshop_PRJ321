@@ -27,13 +27,20 @@ public class RegisterController {
 		String password = request.getParameter("pass");
 		String newPass = new BCryptPasswordEncoder().encode(password);
 		if (!accountService.findById(userId).isPresent()) {
-			Account acc = new Account(userId, new Role(3, "ROLE_USER"), newPass, email, fullname, true);
-			accountService.save(acc);
-			return "user/login";
+			if (accountService.findByEmail(email)) {
+				Account acc = new Account(userId, new Role(3, "ROLE_USER"), newPass, email, fullname, true);
+				accountService.save(acc);
+				return "user/login";
+			} else {
+				model.addAttribute("err", "Email " + email + " is exist !");
+				return "user/register";
+			}
+			
 		} else {
 			model.addAttribute("err", "Username " + userId + " is exist !");
 			return "user/register";
 		}
+
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
