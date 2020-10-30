@@ -42,14 +42,14 @@
                         <div class="card">
                             <h5 class="card-header">Input Category</h5>
                             <div class="card-body">
-                                <form id="validationform" data-parsley-validate="" novalidate="">
+                                <form id="validationform" data-parsley-validate="" novalidate="" method="POST">
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
                                             <input data-parsley-required-message="Please insert Category Code"
                                                 data-parsley-pattern-message="Product Code In Format [CXXXX] X isdigit"
                                                 type="text" required="" data-parsley-pattern="[C]\d{4}" placeholder=""
-                                                class="form-control">
+                                                class="form-control" name="txtCategoryIdAdd" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -57,12 +57,13 @@
                                         <div class="col-12 col-sm-8 col-lg-6">
                                             <input type="text" required="" data-parsley-minlength="6"
                                                 class="form-control"
-                                                data-parsley-required-message="Please insert Category Name">
+                                                data-parsley-required-message="Please insert Category Name"
+                                                name="txtCategoryNameAdd" >
                                         </div>
                                     </div>
                                     <div class="form-group row text-right">
                                         <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                            <button type="submit" class="btn btn-space btn-primary">Add Category</button>
+                                            <button type="submit" value="AddCategory" class="btn btn-space btn-primary">Add Category</button>
                                         </div>
                                     </div>
                                 </form>

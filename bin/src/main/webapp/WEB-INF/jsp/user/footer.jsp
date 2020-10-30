@@ -43,7 +43,7 @@
                 <use xlink:href="./images/sprite.svg#icon-location"></use>
               </svg>
             </span>
-            42 Dream House, Dreammy street, 7131 Dreamville, USA
+            FPT City, Hoa Hai Ward, Ngu Hanh Son District, Da Nang City, Viet Nam
           </div>
           <div>
             <span>
@@ -51,7 +51,7 @@
                 <use xlink:href="./images/sprite.svg#icon-envelop"></use>
               </svg>
             </span>
-            company@gmail.com
+            appleshop@gmail.com
           </div>
           <div>
             <span>
@@ -59,7 +59,7 @@
                 <use xlink:href="./images/sprite.svg#icon-phone"></use>
               </svg>
             </span>
-            456-456-4512
+            +84 904364264
           </div>
           <div>
             <span>
@@ -67,7 +67,7 @@
                 <use xlink:href="./images/sprite.svg#icon-paperplane"></use>
               </svg>
             </span>
-            Dream City, USA
+            FPT City, VN
           </div>
         </div>
       </div>
