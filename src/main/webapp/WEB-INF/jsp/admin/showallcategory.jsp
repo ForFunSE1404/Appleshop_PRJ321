@@ -36,19 +36,16 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Tables</h2>
+						<h2 class="pageheader-title">Data Category</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Tables</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data
-										Tables</li>
+									<li class="breadcrumb-item"><a href="/"
+										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Data Category</li>
 								</ol>
 							</nav>
 						</div>
@@ -64,7 +61,7 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Basic Table</h5>
+						<h5 class="card-header">Data Category Table</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
@@ -77,6 +74,7 @@
 											</div>
 										</div>
 									</div>
+									<br>
 									<div class="row">
 										<div class="col-sm-12">
 											<table

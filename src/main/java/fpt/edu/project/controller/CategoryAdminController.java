@@ -21,7 +21,7 @@ public class CategoryAdminController {
 	public String addproduct() {
 		return "admin/addcategory";
 	}
-	@RequestMapping(value = "admin/category", method = RequestMethod.GET)
+	@RequestMapping(value = "/category", method = RequestMethod.GET)
 	public String showCategory(Model model) {
 		model.addAttribute("listcategory", categoryServiceImpl.findAll());
 		return "admin/showallcategory";

@@ -38,7 +38,7 @@
                                             <a class="nav-link" href="pages/carousel.html">Bill Management</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/listgroup.html">Category Management</a>
+                                            <a class="nav-link" href="/category">Category Management</a>
                                         </li>
                                     </ul>
                                 </div>

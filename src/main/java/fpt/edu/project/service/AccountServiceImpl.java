@@ -49,9 +49,6 @@ public class AccountServiceImpl {
 		return query.getResultList();
 	}
 
-	public Optional<Account> findById(String id) {
-		return accountRepository.findById(id);
-	}
 	
 
 }
