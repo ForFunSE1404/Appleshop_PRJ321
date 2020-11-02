@@ -72,9 +72,12 @@
 										
 										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<label>Search:<input type="search"
+												<form action="admin/searchproducts" method="GET">
+												<label>Search:<input type="text"
 													class="form-control form-control-sm" placeholder=""
-													aria-controls="DataTables_Table_0"></label>
+													aria-controls="DataTables_Table_0" name ="txtName"></label>
+													
+													</form>
 											</div>
 										</div>
 									</div>

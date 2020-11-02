@@ -1,5 +1,6 @@
 package fpt.edu.project.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -19,5 +20,8 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
 	@Query("SELECT count(P) FROM Product P")
 	long count();
+	
+	@Query(value ="SELECT P FROM Product P WHERE P.productName LIKE ?1", nativeQuery = true)
+	List<Product> findByName(String productName);
 
 }
