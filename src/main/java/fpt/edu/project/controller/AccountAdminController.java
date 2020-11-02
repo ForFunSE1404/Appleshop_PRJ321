@@ -13,7 +13,7 @@ public class AccountAdminController {
 	@Autowired
 	public AccountServiceImpl accountService;
 
-	@RequestMapping(value = "account", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/account", method = RequestMethod.GET)
 	public String showProduct(Model model) {
 		model.addAttribute("listaccount", accountService.findAll());
 		return "admin/showallaccount";

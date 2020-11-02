@@ -43,10 +43,10 @@
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Tables</a></li>
+									<li class="breadcrumb-item"><a href="/"
+										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item"><a href="/admin"
+										class="breadcrumb-link">Management</a></li>	
 									<li class="breadcrumb-item active" aria-current="page">Data Product</li>
 								</ol>
 							</nav>

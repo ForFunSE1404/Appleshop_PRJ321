@@ -193,4 +193,13 @@ public class Product implements java.io.Serializable {
 		this.wishLists = wishLists;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", category=" + category + ", productName=" + productName
+				+ ", updateDate=" + updateDate + ", quantity=" + quantity + ", price=" + price + ", thumbnail="
+				+ thumbnail + ", description=" + description + ", visibility=" + visibility + ", cartDetails="
+				+ cartDetails + ", images=" + images + ", ratings=" + ratings + ", wishLists=" + wishLists + "]";
+	}
+	
+
 }

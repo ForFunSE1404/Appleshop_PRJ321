@@ -1,5 +1,7 @@
 package fpt.edu.project.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +12,8 @@ import fpt.edu.project.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
+//	List<Product> findAllByNameLike(String name, Pageable pageable);
+	
 	@Query("SELECT P FROM Product P")
 	Page<Product> findProducts(Pageable pageable);
 

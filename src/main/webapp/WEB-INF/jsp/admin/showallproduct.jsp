@@ -43,11 +43,12 @@
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Tables</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data Product</li>
+									<li class="breadcrumb-item"><a href="/"
+										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item"><a href="/admin"
+										class="breadcrumb-link">Management</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Data
+										Product</li>
 								</ol>
 							</nav>
 						</div>
@@ -69,7 +70,7 @@
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-										
+
 										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
 												<label>Search:<input type="search"
@@ -170,8 +171,7 @@
 										</div>
 									</div>
 									<br>
-									<div class="col-sm-12 col-md-12">
-									<div class="row">
+									<!--		<div class="row">
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination">
                                                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -181,9 +181,36 @@
                                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                 </ul>
                                             </nav>
+                                    </div>
+                                     -->
+
+									<div class="center">
+										<div class="row">
+											<div class="col-sm-12 col-md-12">
+											<a href="products?page=${param.page - 1}">&laquo;</a>
+											<c:forEach begin="0" end="${numpage}" var="i">
+												<c:if test="${ param.page == null}">
+													<c:if test="${ i == 0}">
+														<a class="active" href="products?page=${i}">${i}</a>
+													</c:if>
+													<c:if test="${ i != 0}">
+														<a href="products?page=${i}">${i}</a>
+													</c:if>
+												</c:if>
+												<c:if test="${ param.page != null}">
+													<c:if test="${i == param.page}">
+														<a class="active" href="products?page=${i}">${i}</a>
+													</c:if>
+													<c:if test="${i != param.page}">
+														<a href="products?page=${i}">${i}</a>
+													</c:if>
+												</c:if>
+											</c:forEach>
+											<a href="products?page=${param.page + 1}">&raquo;</a>
+										</div>
 									</div>
-									</div>
-								</div>
+
+
 								</div>
 							</div>
 						</div>

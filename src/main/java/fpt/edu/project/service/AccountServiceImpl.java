@@ -51,8 +51,6 @@ public class AccountServiceImpl {
 		return query.getResultList();
 	}
 
-	
-
 	public boolean findByEmail(String email) {
 		return accountRepository.findByEmail(email).isEmpty();
 	}
