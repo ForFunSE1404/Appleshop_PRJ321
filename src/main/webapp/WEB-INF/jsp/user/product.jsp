@@ -149,6 +149,7 @@
 
 					</div>
 				</div>
+				
 				<div class="center">
 					<div class="pagination">
 						<a href="product?page=${param.page - 1}">&laquo;</a>
@@ -169,8 +170,8 @@
 									<a href="product?page=${i}">${i}</a>
 								</c:if>
 							</c:if>
-								
-								
+
+
 
 
 						</c:forEach>

@@ -22,7 +22,7 @@
 	href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 <link rel="stylesheet"
 	href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-<title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+<title>Apple Shop</title>
 </head>
 <div class="dashboard-main-wrapper">
 
@@ -45,6 +45,8 @@
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="/"
 										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item"><a href="/admin"
+										class="breadcrumb-link">Management</a></li>	
 									<li class="breadcrumb-item active" aria-current="page">Data Category</li>
 								</ol>
 							</nav>

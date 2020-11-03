@@ -28,17 +28,17 @@
                                 <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/account">Account Management <span
+                                            <a class="nav-link" href="admin/account">Account Management <span
                                                     class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/products">Product Management</a>
+                                            <a class="nav-link" href="admin/products">Product Management</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/carousel.html">Bill Management</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/category">Category Management</a>
+                                            <a class="nav-link" href="admin/category">Category Management</a>
                                         </li>
                                     </ul>
                                 </div>

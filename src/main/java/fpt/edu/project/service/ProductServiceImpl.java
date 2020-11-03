@@ -36,5 +36,7 @@ public class ProductServiceImpl {
 		productRepository.deleteById(id);
 	}
 
-
+	public List<Product> searchproduct(String name) {
+		return productRepository.findByName("%"+ name +"%");
+	}
 }
