@@ -36,11 +36,7 @@ public class ProductServiceImpl {
 		productRepository.deleteById(id);
 	}
 
-	public List<Product> findProductByName(String name) {
-		String sql = "From Product P where P.productName like :name";
-		Query query = entityManager.createQuery(sql, Product.class);
-		query.setParameter("name", '%' + name + '%');
-		return query.getResultList();
+	public List<Product> searchproduct(String name) {
+		return productRepository.findByName("%"+ name +"%");
 	}
-
 }

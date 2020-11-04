@@ -2496,6 +2496,7 @@ td:last-child {
 .pagination {
   display: inline-block;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
 .pagination a {
@@ -2507,9 +2508,9 @@ td:last-child {
 }
 
 .pagination a.active {
-  background-color: #4CAF50;
+  background-color: red;
   color: white;
-  border: 1px solid #4CAF50;
+  border: 1px solid red;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}

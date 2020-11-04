@@ -9,7 +9,7 @@
 <body>
  <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">Concept</a>
+                <a style="color:Black;" class="navbar-brand" href="/">Apple Shop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Search..">
+                                <input class="form-control" type="text" placeholder="Search...">
                             </div>
                         </li>
                         <li class="nav-item dropdown nav-user">

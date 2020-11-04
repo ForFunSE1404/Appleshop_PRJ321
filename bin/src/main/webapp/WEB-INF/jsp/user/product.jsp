@@ -53,12 +53,24 @@
 				<div class="tab__list">
 					<div class="title__container tabs">
 						<div class="section__titles category__titles ">
-							<div class="section__title filter-btn" data-id="All Products">
-								<span class="dot"></span>
-								<h1 class="primary__title">
-									<a href="product">All Products</a>
-								</h1>
-							</div>
+							<c:if test="${param.catId == null }">
+								<div class="section__title filter-btn active"
+									data-id="All Products">
+									<span class="dot"></span>
+									<h1 class="primary__title">
+										<a href="product">All Products</a>
+									</h1>
+								</div>
+							</c:if>
+							<c:if test="${param.catId != null }">
+								<div class="section__title filter-btn"
+									data-id="All Products">
+									<span class="dot"></span>
+									<h1 class="primary__title">
+										<a href="product">All Products</a>
+									</h1>
+								</div>
+							</c:if>
 							<c:forEach items="${listCategories}" var="category">
 								<!--Check active -->
 								<c:if test="${category.categoryId == param.catId}">
@@ -66,7 +78,7 @@
 										data-id="${category.categoryName}">
 										<span class="dot"></span>
 										<h1 class="primary__title">
-											<a href="/category?catId=${category.categoryId}">${category.categoryName}</a>
+											<a href="/product?catId=${category.categoryId}">${category.categoryName}</a>
 										</h1>
 									</div>
 								</c:if>
@@ -75,7 +87,7 @@
 										data-id="${category.categoryName}">
 										<span class="dot"></span>
 										<h1 class="primary__title">
-											<a href="/category?catId=${category.categoryId}">${category.categoryName}</a>
+											<a href="/product?catId=${category.categoryId}">${category.categoryName}</a>
 										</h1>
 									</div>
 								</c:if>
@@ -83,7 +95,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="category__container aos-init">
 					<div class="category__center">
 						<c:forEach items="${listProduct}" var="product">
@@ -140,9 +151,30 @@
 				</div>
 				<div class="center">
 					<div class="pagination">
-						<a href="#">&laquo;</a> <a href="#">1</a> <a class="active"
-							href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a>
-						<a href="#">6</a> <a href="#">&raquo;</a>
+						<a href="product?page=${param.page - 1}">&laquo;</a>
+						<c:forEach begin="0" end="${numpage}" var="i">
+							<c:if test="${ param.page == null}">
+							<c:if test="${ i == 0}">
+								<a class="active" href="product?page=${i}">${i}</a>
+							</c:if>
+							<c:if test="${ i != 0}">
+								<a  href="product?page=${i}">${i}</a>
+							</c:if>
+							</c:if>
+							<c:if test="${ param.page != null}">
+							<c:if test="${i == param.page}">
+									<a class="active" href="product?page=${i}">${i}</a>
+								</c:if>
+								<c:if test="${i != param.page}">
+									<a href="product?page=${i}">${i}</a>
+								</c:if>
+							</c:if>
+								
+								
+
+
+						</c:forEach>
+						<a href="product?page=${param.page + 1}">&raquo;</a>
 					</div>
 				</div>
 			</section>

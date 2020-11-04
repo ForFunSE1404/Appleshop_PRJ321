@@ -57,7 +57,6 @@
 	              <li class="nav__item">
 	                <a href="/logout" class="nav__link scroll-link">Logout</a>
 	              </li>
-	              
               </c:if>
             </ul>
           </div>

@@ -22,7 +22,7 @@
 	href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 <link rel="stylesheet"
 	href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-<title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+<title>Apple Shop</title>
 </head>
 <div class="dashboard-main-wrapper">
 
@@ -36,19 +36,19 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Tables</h2>
+						<h2 class="pageheader-title">Data Product</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Tables</a></li>
+									<li class="breadcrumb-item"><a href="/"
+										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item"><a href="/admin"
+										class="breadcrumb-link">Management</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Data
-										Tables</li>
+										Product</li>
 								</ol>
 							</nav>
 						</div>
@@ -64,34 +64,27 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Basic Table</h5>
+						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-										<div class="col-sm-12 col-md-6">
-											<div class="dataTables_length" id="DataTables_Table_0_length">
-												<label>Show <select name="DataTables_Table_0_length"
-													aria-controls="DataTables_Table_0"
-													class="custom-select custom-select-sm form-control form-control-sm"><option
-															value="10">10</option>
-														<option value="25">25</option>
-														<option value="50">50</option>
-														<option value="100">100</option></select> entries
-												</label>
-											</div>
-										</div>
-										<div class="col-sm-12 col-md-6">
+
+										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<label>Search:<input type="search"
+												<form action="searchproducts" method="GET">
+												<label>Search:<input type="text"
 													class="form-control form-control-sm" placeholder=""
-													aria-controls="DataTables_Table_0"></label>
+													aria-controls="DataTables_Table_0" name ="txtName"></label>
+													<button type="submit">Search</button>
+													</form>
 											</div>
 										</div>
 									</div>
+									<br>
 									<div class="row">
-										<div class="col-sm-12">
+										<div class="col-sm-12 col-md-12">
 											<table
 												class="table table-striped table-bordered first dataTable"
 												id="DataTables_Table_0" role="grid"
@@ -180,18 +173,61 @@
 											</table>
 										</div>
 									</div>
+									<br>
 									<div class="row">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination">
-                                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                                </ul>
-                                            </nav>
+										<nav aria-label="Page navigation example">
+											<ul class="pagination">
+												<c:if test="${param.page == 0 }">
+													<li class="page-item disabled"><a class="page-link"
+														href="products?page=${param.page - 1}">Previous</a></li>
+												</c:if>
+												<c:if test="${param.page != 0 }">
+													<li class="page-item"><a class="page-link"
+														href="products?page=${param.page - 1}">Previous</a></li>
+												</c:if>
+												<c:forEach begin="0" end="${numpage}" var="i">
+													<c:if test="${ param.page == null}">
+														<c:if test="${ i == 0}">
+
+															<li class="page-item active"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+														</c:if>
+														<c:if test="${ i != 0}">
+															<li class="page-item"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+													</c:if>
+													<c:if test="${ param.page != null}">
+														<c:if test="${i == param.page}">
+															<li class="page-item active"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+														<c:if test="${i != param.page}">
+															<li class="page-item"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+													</c:if>
+												</c:forEach>
+												<c:if test="${param.page == (numpage  )}">
+													<li class="page-item disabled"><a class="page-link"
+														href="products?page=${param.page + 1}">Next</a></li>
+												</c:if>
+												<c:if test="${param.page != (numpage ) }">
+													<li class="page-item"><a class="page-link"
+														href="products?page=${param.page + 1}">Next</a></li>
+												</c:if>
+
+											</ul>
+										</nav>
 									</div>
-								</div>
+
+
+
+
+
 								</div>
 							</div>
 						</div>
