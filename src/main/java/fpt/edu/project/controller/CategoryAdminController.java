@@ -29,13 +29,17 @@ public class CategoryAdminController {
 	}
 
 	@RequestMapping(value = "admin/addcategory", method = RequestMethod.POST)
-	public String addCategory(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+	public String addCategory(ModelMap model, HttpServletRequest request, HttpServletResponse response ) {
 		String id = request.getParameter("txtCategoryIdAdd");
 		String name = request.getParameter("txtCategoryNameAdd");
-		Category c = new Category(id, name);
-		categoryServiceImpl.save(c);
-		model.addAttribute("listcategory", categoryServiceImpl.findAll());
-		return "admin/showallcategory";
+		if (!categoryServiceImpl.findById(id).isPresent()) {
+			Category c = new Category(id,name);
+			categoryServiceImpl.save(c);
+      		return "admin/showallcategory";
+		}else {
+			model.addAttribute("err","Exist category ID!");
+            		return "admin/addcategory";
+		}
 	}
 
 	@RequestMapping(value = "admin/delcategory")
