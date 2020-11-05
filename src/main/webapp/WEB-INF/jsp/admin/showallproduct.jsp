@@ -74,11 +74,11 @@
 										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
 												<form action="searchproducts" method="GET">
-												<label>Search:<input type="text"
-													class="form-control form-control-sm" placeholder=""
-													aria-controls="DataTables_Table_0" name ="txtName"></label>
+													<label>Search:<input type="text"
+														class="form-control form-control-sm" placeholder=""
+														aria-controls="DataTables_Table_0" name="txtName"></label>
 													<button type="submit">Search</button>
-													</form>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -152,7 +152,7 @@
 															<td>${product.updateDate}</td>
 															<td>${product.price}$</td>
 															<td><img style="width: 100px;"
-																src="${product.thumbnail}" /></td>
+																src="${pageContext.request.contextPath}/${product.thumbnail}" /></td>
 															<td>${product.description}</td>
 															<td><c:if test="${product.visibility}">
 																	<input type="checkbox" class="disable" checked
@@ -160,7 +160,9 @@
 															</c:if> <c:if test="${product.visibility == false}">
 																	<input type="checkbox" class="disable" name="name1" />&nbsp;
 															</c:if></td>
-															<td><a type="submit" class="btn btn-primary">Edit</a></td>
+															<td><a
+																href="/editproduct?productId=${product.productId }"
+																class="btn btn-primary">Edit</a></td>
 															<td><a
 																href="/delete?productId=${product.productId }"
 																class="btn btn-danger">Delete</a></td>

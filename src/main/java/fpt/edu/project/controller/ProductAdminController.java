@@ -1,7 +1,5 @@
 package fpt.edu.project.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import fpt.edu.project.model.Category;
-import fpt.edu.project.model.FileUpload;
-import fpt.edu.project.model.Product;
 
 import fpt.edu.project.service.CategoryServiceImpl;
 import fpt.edu.project.service.ProductServiceImpl;
@@ -36,6 +31,7 @@ public class ProductAdminController {
 	public ProductServiceImpl productService;
 	@Autowired
 	public CategoryServiceImpl cateService;
+
 	@RequestMapping(value = "admin/products", method = RequestMethod.GET)
 	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model) {
@@ -44,20 +40,13 @@ public class ProductAdminController {
 		model.addAttribute("numpage", num);
 		model.addAttribute("listproduct", productService.findProducts(pageable).getContent());
 		return "admin/showallproduct";
-
 	}
 
-	@RequestMapping(value = "products/delete?productId=", method = RequestMethod.POST)
-	public String deleteProduct() {
-		
-		return "admin/showallproduct";
+	@RequestMapping(value = "admin/addproduct", method = RequestMethod.GET)
+	public String addviewProduct(ModelMap model) {
+		model.addAttribute("listCate", cateService.findAll());
+		return "admin/addproduct";
 	}
-	
-//	@RequestMapping(value = "products", method = RequestMethod.GET)
-//	public String editProduct(Model model, HttpServletRequest request, HttpServletResponse response){
-//		
-//		return "admin/showallproduct";
-//	}
 
 	@RequestMapping(value = "admin/addproduct", method = RequestMethod.POST)
 	public String addProduct(Model model, HttpServletRequest request, HttpServletResponse response,
@@ -79,7 +68,7 @@ public class ProductAdminController {
 			model.addAttribute("errID", "Product ID " + productId + " is exist !");
 		} else {
 			Path path = Paths.get("src/main/webapp/images_Product/" + productId + "/");
-			try{
+			try {
 				InputStream inputStream1 = image.getInputStream();
 				InputStream inputStream2 = imagesOther.getInputStream();
 				if (path != null) {
@@ -95,10 +84,10 @@ public class ProductAdminController {
 //			}
 					Files.copy(inputStream1, path.resolve(fileName1), StandardCopyOption.REPLACE_EXISTING);
 					Files.copy(inputStream2, path.resolve(fileName2), StandardCopyOption.REPLACE_EXISTING);
-//					productService.insertProduct(productId, categoryId, productName, date, Integer.parseInt(quantity),
-//							Double.parseDouble(price), "images_Product/" + productId + "/" + fileName1, description,
-//							visibility);
-//					productService.insertImage(productId, "images_Product/" + productId + "/" + fileName2);
+					productService.insertProduct(productId, categoryId, productName, date, Integer.parseInt(quantity),
+							Double.parseDouble(price), "images_Product/" + productId + "/" + fileName1, description,
+							visibility);
+					productService.insertImage(productId, "images_Product/" + productId + "/" + fileName2);
 					System.err.println("Successful !!!!");
 				}
 			} catch (Exception e) {
@@ -129,7 +118,7 @@ public class ProductAdminController {
 //		return nameFile;
 //	}
 
-@RequestMapping(value = "admin/searchproducts", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/searchproducts", method = RequestMethod.GET)
 	public String searchproduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model,
 			@RequestParam(name = "txtName") String name) {
