@@ -20,12 +20,6 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 	@Query("SELECT count(P) FROM Account P")
 	long count();
 
-
-
-
-
-@Repository
-public interface AccountRepository  extends JpaRepository<Account, String>{
 	@Query(value ="SELECT A.email FROM Account A WHERE email = ?1", nativeQuery = true)
 	List<String> findByEmail(String email);
 }

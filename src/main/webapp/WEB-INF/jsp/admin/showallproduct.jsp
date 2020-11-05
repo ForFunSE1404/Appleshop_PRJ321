@@ -143,24 +143,23 @@
 													<c:forEach items="${listproduct}" var="product">
 														<tr role="row" class="odd">
 															<td class="sorting_1">${product.productId}</td>
-															<td>${product.category.categoryId }</td>
-															<td>${product.productName }</td>
-															<td>${product.updateDate }</td>
-															<td>${product.price }$</td>
+															<td>${product.category.categoryId}</td>
+															<td>${product.productName}</td>
+															<td>${product.updateDate}</td>
+															<td>${product.price}$</td>
 															<td><img style="width: 100px;"
-																src="${product.thumbnail }" /></td>
-															<td>${product.description }</td>
+																src="${product.thumbnail}" /></td>
+															<td>${product.description}</td>
 															<td><c:if test="${product.visibility}">
 																	<input type="checkbox" class="disable" checked
 																		name="name1" />&nbsp;
 															</c:if> <c:if test="${product.visibility == false}">
 																	<input type="checkbox" class="disable" name="name1" />&nbsp;
 															</c:if></td>
-															<td><a href="" class="btn btn-primary">Edit</a></td>
+															<td><a type="submit" class="btn btn-primary">Edit</a></td>
 															<td><a
 																href="/delete?productId=${product.productId }"
 																class="btn btn-danger">Delete</a></td>
-
 														</tr>
 													</c:forEach>
 
