@@ -43,11 +43,12 @@
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Dashboard</a></li>
-									<li class="breadcrumb-item"><a href="#"
-										class="breadcrumb-link">Tables</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data Product</li>
+									<li class="breadcrumb-item"><a href="/"
+										class="breadcrumb-link">Apple Shop</a></li>
+									<li class="breadcrumb-item"><a href="/admin"
+										class="breadcrumb-link">Management</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Data
+										Product</li>
 								</ol>
 							</nav>
 						</div>
@@ -69,12 +70,15 @@
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-										
+
 										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<label>Search:<input type="search"
+												<form action="searchproducts" method="GET">
+												<label>Search:<input type="text"
 													class="form-control form-control-sm" placeholder=""
-													aria-controls="DataTables_Table_0"></label>
+													aria-controls="DataTables_Table_0" name ="txtName"></label>
+													<button type="submit">Search</button>
+													</form>
 											</div>
 										</div>
 									</div>
@@ -169,20 +173,60 @@
 										</div>
 									</div>
 									<br>
-									<div class="col-sm-12 col-md-12">
 									<div class="row">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination">
-                                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                                </ul>
-                                            </nav>
+										<nav aria-label="Page navigation example">
+											<ul class="pagination">
+												<c:if test="${param.page == 0 }">
+													<li class="page-item disabled"><a class="page-link"
+														href="products?page=${param.page - 1}">Previous</a></li>
+												</c:if>
+												<c:if test="${param.page != 0 }">
+													<li class="page-item"><a class="page-link"
+														href="products?page=${param.page - 1}">Previous</a></li>
+												</c:if>
+												<c:forEach begin="0" end="${numpage}" var="i">
+													<c:if test="${ param.page == null}">
+														<c:if test="${ i == 0}">
+
+															<li class="page-item active"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+														</c:if>
+														<c:if test="${ i != 0}">
+															<li class="page-item"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+													</c:if>
+													<c:if test="${ param.page != null}">
+														<c:if test="${i == param.page}">
+															<li class="page-item active"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+														<c:if test="${i != param.page}">
+															<li class="page-item"><a class="page-link"
+																href="products?page=${i}">${i}</a></li>
+
+														</c:if>
+													</c:if>
+												</c:forEach>
+												<c:if test="${param.page == (numpage  )}">
+													<li class="page-item disabled"><a class="page-link"
+														href="products?page=${param.page + 1}">Next</a></li>
+												</c:if>
+												<c:if test="${param.page != (numpage ) }">
+													<li class="page-item"><a class="page-link"
+														href="products?page=${param.page + 1}">Next</a></li>
+												</c:if>
+
+											</ul>
+										</nav>
 									</div>
-									</div>
-								</div>
+
+
+
+
+
 								</div>
 							</div>
 						</div>

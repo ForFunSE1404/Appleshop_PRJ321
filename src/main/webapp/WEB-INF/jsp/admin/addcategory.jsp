@@ -42,9 +42,11 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
+                       
                             <h5 class="card-header">Input Category</h5>
                             <div class="card-body">
-                                <form id="validationform" data-parsley-validate="" action="addcategory" novalidate="" method="POST">
+                                <form id="validationform" data-parsley-validate="" novalidate="" method="POST">
+                                <p style="color:red; text-align: center;">${err}</p>
                                     <c:if test="${id == null}" >
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>

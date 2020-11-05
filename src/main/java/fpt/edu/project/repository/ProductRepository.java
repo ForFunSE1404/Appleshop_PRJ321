@@ -12,6 +12,8 @@ import fpt.edu.project.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
+//	List<Product> findAllByNameLike(String name, Pageable pageable);
+
 	@Query("SELECT P FROM Product P")
 	Page<Product> findProducts(Pageable pageable);
 
@@ -40,4 +42,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 	@Modifying
 	@Query(value = "Delete from Product p where p.productId = :productId")
 	void deleteProduct(@Param("productId") String productId);
+	@Query(value = "SELECT p FROM Product p WHERE p.productName LIKE %?1%")
+	Page<Product> findByName(Pageable pageable, String productName);
+
 }

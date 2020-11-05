@@ -8,6 +8,8 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fpt.edu.project.model.Product;
@@ -17,8 +19,6 @@ import fpt.edu.project.repository.ProductRepository;
 @Transactional
 public class ProductServiceImpl {
 
-	@Autowired
-	private EntityManager entityManager;
 	@Autowired
 	private ProductRepository productRepository;
 
@@ -52,5 +52,16 @@ public class ProductServiceImpl {
 	
 	public void deleteProduct(String id) {
 		productRepository.deleteProduct(id);
+	public Page<Product> searchproduct(Pageable page, String name) {
+		System.out.print(name);
+		return productRepository.findByName(page, name);
+	}
+
+	public Page<Product> findProducts(Pageable pageable) {
+		return productRepository.findProducts(pageable);
+	}
+
+	public long count() {
+		return productRepository.count();
 	}
 }

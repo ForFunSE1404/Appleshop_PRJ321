@@ -33,8 +33,6 @@ public class MainController {
 		return "admin/index";
 	}
 
-	
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(Model model) {
 
