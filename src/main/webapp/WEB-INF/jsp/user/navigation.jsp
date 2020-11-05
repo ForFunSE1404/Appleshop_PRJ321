@@ -67,7 +67,7 @@
                 <use xlink:href="./images/sprite.svg#icon-user"></use>
               </svg>
             </a>
-            <a href="" class="icon__item">
+            <a href="cart" class="icon__item">
               <svg class="icon__cart">
                 <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
               </svg>

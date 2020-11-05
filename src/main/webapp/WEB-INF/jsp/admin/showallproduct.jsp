@@ -12,16 +12,16 @@
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet"
-	href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-<link href="../assets/vendor/fonts/circular-std/style.css"
+	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link href="${pageContext.request.contextPath}/assets/vendor/fonts/circular-std/style.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="../assets/libs/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/css/style.css">
 <link rel="stylesheet"
-	href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+	href="${pageContext.request.contextPath}/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 <link rel="stylesheet"
-	href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+	href="${pageContext.request.contextPath}/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
 <link rel="stylesheet"
-	href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+	href="${pageContext.request.contextPath}/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
 <title>Apple Shop</title>
 </head>
 <div class="dashboard-main-wrapper">
@@ -94,52 +94,46 @@
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" aria-sort="ascending"
-															aria-label="Name: activate to sort column descending"
-															style="width: 100px;">Product ID</th>
+															style="width: 50px;">ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Position: activate to sort column ascending"
-															style="width: 90x;">Category ID</th>
+															style="width: 50px;">Cate ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Office: activate to sort column ascending"
 															style="width: 200px;">Product Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Age: activate to sort column ascending"
 															style="width: 150px;">Update Date</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Start date: activate to sort column ascending"
-															style="width: 120px;">Price</th>
+															style="width: 60px;">Price</th>
+															<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															style="width: 120px;">Quantity</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 120px;">Thumbnail</th>
+															style="width: 80px;">Thumbnail</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
 															style="width: 150px;">Description</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Visibility</th>
+															style="width: 50px;">Visibility</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
 															style="width: 80px;">Edit</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
 															style="width: 80px;">Delete</th>
 													</tr>
 												</thead>
@@ -147,13 +141,14 @@
 													<c:forEach items="${listproduct}" var="product">
 														<tr role="row" class="odd">
 															<td class="sorting_1">${product.productId}</td>
-															<td>${product.category.categoryId}</td>
-															<td>${product.productName}</td>
-															<td>${product.updateDate}</td>
-															<td>${product.price}$</td>
-															<td><img style="width: 100px;"
-																src="${product.thumbnail}" /></td>
-															<td>${product.description}</td>
+															<td>${product.category.categoryId }</td>
+															<td>${product.productName }</td>
+															<td>${product.updateDate }</td>
+															<td>${product.price }$</td>
+															<td>${product.quantity }</td>
+															<td><img style="width: 50px;"
+																src="${product.thumbnail }" /></td>
+															<td>${product.description }</td>
 															<td><c:if test="${product.visibility}">
 																	<input type="checkbox" class="disable" checked
 																		name="name1" />&nbsp;
@@ -174,8 +169,8 @@
 									</div>
 									<br>
 									<div class="row">
-										<nav aria-label="Page navigation example">
-											<ul class="pagination">
+										<nav aria-label="Page navigation example" style="padding-left: 20px;">
+											<ul class="pagination" >
 												<c:if test="${param.page == 0 }">
 													<li class="page-item disabled"><a class="page-link"
 														href="products?page=${param.page - 1}">Previous</a></li>
@@ -237,6 +232,7 @@
 				</div>
 
 			</div>
+			</div>
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
@@ -262,12 +258,12 @@
 			<!-- ============================================================== -->
 		</div>
 	</div>
-	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}//assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 	<!-- bootstap bundle js -->
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+	<script src="${pageContext.request.contextPath}//assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 	<!-- slimscroll js -->
-	<script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+	<script src="${pageContext.request.contextPath}//assets/vendor/slimscroll/jquery.slimscroll.js"></script>
 	<!-- main js -->
-	<script src="assets/libs/js/main-js.js"></script>
+	<script src="${pageContext.request.contextPath}//assets/libs/js/main-js.js"></script>
 	</body>
 </html>

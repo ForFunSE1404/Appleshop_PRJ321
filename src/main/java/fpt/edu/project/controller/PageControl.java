@@ -1,5 +1,7 @@
 package fpt.edu.project.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,7 +16,7 @@ public class PageControl {
 	private CategoryServiceImpl categoryDao;
 
 	@RequestMapping(value = "/")
-	public String index(ModelMap model, Authentication authentication) {
+	public String index(ModelMap model, Authentication authentication, Principal principal) {
 		if (authentication != null) {
 			System.out.print(authentication.getAuthorities());
 			model.addAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));

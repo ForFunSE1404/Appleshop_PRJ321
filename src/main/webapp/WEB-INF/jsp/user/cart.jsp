@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +29,8 @@
 <link rel="stylesheet" href="styles.css" />
 
 <title>Apple Shop</title>
+
+<title>Apple Shop</title>
 </head>
 <body>
 	<!-- Header -->
@@ -34,84 +38,52 @@
 		<jsp:include page="navigation.jsp"></jsp:include>
 	</header>
 	<!-- End Header -->
-<main id="main">
-        <div class="small-container cart-page">
-        <table>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/images/products/iPhone/iphone6.jpeg">
-                        <div>
-                            <p>Red Printed Tshirt</p>
-                            <small>Price: $50.00</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/images/products/iPhone/iphone6.jpeg">
-                        <div>
-                            <p>Red Printed Tshirt</p>
-                            <small>Price: $75.00</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$75.00</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/images/products/iPhone/iphone6.jpeg">
-                        <div>
-                            <p>Red Printed Tshirt</p>
-                            <small>Price: $50.00</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$50.00</td>
-            </tr>
-        </table>
+	<main id="main">
+		<div class="small-container cart-page">
+			<table>
+				<tr>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Subtotal</th>
+				</tr>
+				<c:set var="total" scope="session" value="0"></c:set>
+				<c:forEach items="${sessionScope.cart }" var="product">
+					<tr>
+						<td>
+							<div class="cart-info">
+								<img src="${product.key.thumbnail }">
+								<div>
+									<p></p>
+									<small>Price: ${product.key.price }</small> <br> <a
+										href="">Remove</a>
+								</div>
+							</div>
+						</td>
+						<td><input type="number" value="${product.value }" min="1"
+							max="${product.key.quantity}"></td>
+						<td>${product.key.price *  product.value}</td>
+						<c:set var="total" scope="session"
+							value="${total + product.key.price *  product.value }"></c:set>
+					</tr>
+				</c:forEach>
 
-        <div class="total-price">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>175.000$</td>
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>25.00$</td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td>200.000$</td>
-                </tr>
-            </table>
+			</table>
 
-        </div>
-		<div class="checkout">
-			<a class="btn btn__checkout" href="#">Check Out</a>
+			<div class="total-price">
+				<table>
+					<tr>
+						<td>Total</td>
+						<td>${total}$</td>
+					</tr>
+				</table>
+
+			</div>
+			<div class="checkout">
+				<a class="btn btn__checkout" href="#">Check Out</a>
+			</div>
+
 		</div>
-		
-    </div>
-    </main>
+	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- Glide Carousel Script -->
 	<script
@@ -121,7 +93,6 @@
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 	<!-- Custom JavaScript -->
-	<script src="./js/products.js"></script>
 	<script src="./js/index.js"></script>
 	<script src="./js/slider.js"></script>
 	<!-- End Main -->
