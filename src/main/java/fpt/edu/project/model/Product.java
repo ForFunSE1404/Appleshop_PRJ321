@@ -44,13 +44,14 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
-	public Product(String productId, Category category, String productName, int quantity, double price,
+	public Product(String productId, Category category, String productName, int quantity, double price,String description,
 			String thumbnail) {
 		this.productId = productId;
 		this.category = category;
 		this.productName = productName;
 		this.quantity = quantity;
 		this.price = price;
+		this.description = description;
 		this.thumbnail = thumbnail;
 	}
 
