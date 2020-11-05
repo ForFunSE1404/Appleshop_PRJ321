@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!doctype html>
 <html lang="en">
 
@@ -64,9 +66,10 @@
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
                                             <select required="" class="form-control"
-                                                data-parsley-required-message="Please insert Category">
-                                                <option>1</option>
-                                                <option>2</option>
+                                                data-parsley-required-message="Please insert Category" >
+                                                <c:forEach items="${listCate}" var="cate">
+                                                   <option value="${cate.categoryId}">${cate.categoryName}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>

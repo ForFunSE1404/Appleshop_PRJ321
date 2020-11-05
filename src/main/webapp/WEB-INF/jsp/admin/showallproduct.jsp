@@ -155,11 +155,10 @@
 															</c:if> <c:if test="${product.visibility == false}">
 																	<input type="checkbox" class="disable" name="name1" />&nbsp;
 															</c:if></td>
-															<td><a href="" class="btn btn-primary">Edit</a></td>
+															<td><a type="submit" class="btn btn-primary">Edit</a></td>
 															<td><a
 																href="/delete?productId=${product.productId }"
 																class="btn btn-danger">Delete</a></td>
-
 														</tr>
 													</c:forEach>
 

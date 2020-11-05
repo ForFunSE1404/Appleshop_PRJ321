@@ -1,13 +1,21 @@
 package fpt.edu.project.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fpt.edu.project.utils.WebUtils;
 
@@ -63,6 +71,22 @@ public class MainController {
 
 		}
 		return "403Page";
+	}
+	
+	@RequestMapping(value = "/productimg/{productid}/{imageId}")
+	@ResponseBody
+	public byte[] getImage(@PathVariable String imageId,@PathVariable String productid, HttpServletRequest request)  {
+	    String rpath = request.getRealPath("/");
+	    rpath = rpath + "images_Product/"+ productid + "/"+ imageId; // whatever path you used for storing the file
+	    Path path = Paths.get(rpath);
+	    byte[] data = null;
+		try {
+			data = Files.readAllBytes(path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	    return data;
 	}
 
 }
