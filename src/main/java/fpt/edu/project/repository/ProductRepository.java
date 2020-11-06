@@ -27,21 +27,19 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 			@Param("productName") String productName, @Param("updateDate") String updateDate,
 			@Param("quantity") int quantity, @Param("price") double price, @Param("thumbnail") String thumbnail,
 			@Param("description") String description, @Param("visibility") boolean visibility);
-	
+
 	@Modifying
-	@Query(value = "Insert Into Image(productId, imgUrl) Values (:productId, :imgUrl)", nativeQuery = true)
-	void insertImage(@Param("productId") String productId, @Param("imgUrl") String imgUrl);
-	
-	@Modifying
-	@Query(value = "Update Product p set p.productName = :productName, p.quantity = :quantity, p.price = :price, p.description = :description, "
-			+ "p.visibility = :visibility where p.productId = :productId", nativeQuery = true)
-	void updateProduct(@Param("productName") String productName, @Param("quantity") int quantity,
-			@Param("price") double price, @Param("description") String description,
-			@Param("visibility") boolean visibility);
+	@Query(value = "UPDATE Product p SET p.categoryId = :categoryId, p.productName = :productName, p.date = :date, p.quantity = :quantity, p.price = :price, p.thumbnail = :thumbnail, p.description = :description, "
+			+ "p.visibility = :visibility WHERE p.productId = :productId", nativeQuery = true)
+	void updateProduct(@Param("productId") String productId, @Param("categoryId") String categoryId,
+			@Param("productName") String productName, @Param("date") String date, @Param("quantity") int quantity,
+			@Param("price") double price, @Param("thumbnail") String thumbnail,
+			@Param("description") String description, @Param("visibility") boolean visibility);
 
 	@Modifying
 	@Query(value = "Delete from Product p where p.productId = :productId")
 	void deleteProduct(@Param("productId") String productId);
+
 	@Query(value = "SELECT p FROM Product p WHERE p.productName LIKE %?1%")
 	Page<Product> findByName(Pageable pageable, String productName);
 
