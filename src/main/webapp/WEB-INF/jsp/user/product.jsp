@@ -48,6 +48,7 @@
 								value="Search" />
 						</form>
 					</div>
+					<p id="ajax-response"></p>
 				</div>
 
 				<div class="tab__list">
@@ -105,29 +106,12 @@
 								<div class="product__footer">
 									<h3>${product.productName}</h3>
 									<div class="rating">
-										<svg> <use
-												xlink:href="./images/sprite.svg#icon-star-full"></use></svg>
-										<svg>
-                          <use
-												xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-										<svg>
-                          <use
-												xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-										<svg>
-                          <use
-												xlink:href="./images/sprite.svg#icon-star-full"></use>
-                        </svg>
-										<svg>
-                          <use
-												xlink:href="./images/sprite.svg#icon-star-empty"></use>
-                        </svg>
+										
 									</div>
 									<div class="product__price">
-										<h4>${product.price}</h4>
+										<h4>${product.price}$</h4>
 									</div>
-									<a href="#"><button type="submit" class="product__btn">Add
+									<a href="" class="addtocart" onclick="return addtocart('${product.productId}', 1)"><button type="submit" class="product__btn">Add
 											To Cart</button></a>
 								</div>
 
@@ -170,10 +154,6 @@
 									<a href="product?page=${i}">${i}</a>
 								</c:if>
 							</c:if>
-
-
-
-
 						</c:forEach>
 						<a href="product?page=${param.page + 1}">&raquo;</a>
 					</div>
@@ -188,11 +168,43 @@
 
 	<!-- Animate On Scroll -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 	<!-- Custom JavaScript -->
 	<script src="./js/products.js"></script>
 	<script src="./js/index.js"></script>
 	<script src="./js/slider.js"></script>
+	<script>
+	function addtocart(id, quantity) {
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/addtocart",
+			data : {
+				id : id,
+				quantity: quantity
+			},
+			dataType : 'json',
+			timeout : 100000,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				var result = "<h3> You just add new Person </h3>"
+						+ "<strong>Name:</strong> " + data.productId + "<br>"
+				$("#cart__total").html(1);
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			}
+		});
+	}
+	</script>
+	<script>
+    $(document).ready(function() {                        
+        $('.addtocart').click(function(event) {
+                event.preventDefault();   
+            });
+        });
+
+	</script>
 	<!-- End Main -->
 </body>
 </html>

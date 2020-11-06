@@ -66,9 +66,8 @@
 							</div>
 							<div class="zoom" id="zoom"></div>
 						</div>
-
 						<div class="product-details__btn">
-							<a class="add" href="#"> <span> <svg>
+							<a class="add" href="addtocart?productId=${product.productId}"> <span> <svg>
                     <use xlink:href="./images/sprite.svg#icon-cart-plus"></use>
                   </svg>
 							</span> ADD TO CART
@@ -111,38 +110,10 @@
 							<p>${product.description}</p>
 							<div class="product__info-container">
 								<ul class="product__info">
-									<li class="select">
-										<div class="select__option">
-											<label for="colors">Color</label> <select name="colors"
-												id="colors" class="select-box">
-												<c:forEach items="${product.productColors}" var="pColor">
-													<option value="${pColor.color.colorName}">${pColor.color.colorName}</option>
-												</c:forEach>
-
-											</select>
-										</div>
-									</li>
-									<li>
-
-										<div class="input-counter">
-											<span>Quantity:</span>
-											<div>
-												<span class="minus-btn"> <svg> <use
-															xlink:href="./images/sprite.svg#icon-minus"></use> </svg>
-												</span> <input type="text" min="1" value="1" max="10"
-													class="counter-btn"> <span class="plus-btn">
-													<svg>
-                            <use
-															xlink:href="./images/sprite.svg#icon-plus"></use>
-                          </svg>
-												</span>
-											</div>
-										</div>
-									</li>
 									<li><span>Product Category:</span> <a
 										href="/category?catId=${product.category.categoryId}">${product.category.categoryName}</a></li>
 									<li><span>Availability:</span> <a href="#"
-										class="in-stock">In Stock (7 Items)</a></li>
+										class="in-stock">In Stock (${product.quantity} Items)</a></li>
 								</ul>
 								<div class="product-info__btn">
 									<a href="#"> <span> <svg>
