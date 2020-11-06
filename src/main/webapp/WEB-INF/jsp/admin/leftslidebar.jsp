@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div class="nav-left-sidebar sidebar-dark">
-                             <p></p>
- 
+ <div class="nav-left-sidebar sidebar-dark"> 
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -41,7 +39,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/category">Category Management</a>
                                         </li>
-                                    </ul>
+                                    </ul> 
                                 </div>
                             </li>
                             
