@@ -52,6 +52,7 @@ public class ProductServiceImpl {
 	
 	public void deleteProduct(String id) {
 		productRepository.deleteProduct(id);
+	}
 	public Page<Product> searchproduct(Pageable page, String name) {
 		System.out.print(name);
 		return productRepository.findByName(page, name);

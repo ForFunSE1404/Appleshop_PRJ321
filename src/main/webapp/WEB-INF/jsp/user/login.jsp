@@ -28,10 +28,11 @@
                     <div class="signin-image">
                         <figure><img src="images/signin-image.png" alt="sing up image"></figure>
                         <a href="/register" class="signup-image-link">Create an account</a>
+                        <a href="/forgot_password" class="signup-image-link">I forgot my password</a>
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">Sign in</h2>
                         <form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>

@@ -25,6 +25,12 @@ public class PageControl {
 		return "user/index";
 	}
 
+	@RequestMapping(value = "/forgot_password")
+	public String forgot() {
+		
+		return "user/forgotpassword";
+	}
+
 	@RequestMapping(value = "/cart")
 	public String cart() {
 		return "user/cart";
