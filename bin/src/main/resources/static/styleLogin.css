@@ -515,6 +515,9 @@ label.valid {
   margin-right: 20px;
   margin-top: 10px; }
 
+.forgot{
+	padding-top: 30px;
+}
 @media screen and (max-width: 1200px) {
   .container {
     width: calc( 100% - 30px);
@@ -541,6 +544,7 @@ label.valid {
     padding-left: 0px;
     /* box-sizing: border-box; */
     padding: 0 30px; }
+    
 
   .signin-image {
     margin-left: 0px;

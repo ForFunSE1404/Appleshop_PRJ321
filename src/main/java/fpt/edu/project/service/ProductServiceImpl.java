@@ -47,6 +47,7 @@ public class ProductServiceImpl {
 		productRepository.updateProduct(id, cateId, name, date, quantity, price, thumbnail, description, visibility);
 	}
 
+
 	public Page<Product> searchproduct(Pageable page, String name) {
 		System.out.print(name);
 		return productRepository.findByName(page, name);
