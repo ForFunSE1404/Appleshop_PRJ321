@@ -48,7 +48,7 @@
                 	<a href="/login" class="nav__link scroll-link">Login</a>
               </li>
               </c:if>
-              <c:if test="${isAdmin}" >
+              <c:if test="${sessionScope.isAdmin}" >
 	              <li class="nav__item">
 	                <a href="/admin" class="nav__link scroll-link">Admin</a>
 	              </li>
@@ -56,6 +56,9 @@
               <c:if test="${pageContext[\"request\"].userPrincipal.principal != null}">
 	              <li class="nav__item">
 	                <a href="/logout" class="nav__link scroll-link">Logout</a>
+	              </li>
+	              <li class="nav__item">
+	                <a href="/logout" class="nav__link scroll-link">${sessionScope.account.fullname }</a>
 	              </li>
               </c:if>
             </ul>

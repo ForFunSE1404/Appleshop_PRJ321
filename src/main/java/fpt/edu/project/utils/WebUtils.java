@@ -25,7 +25,6 @@ public class WebUtils {
 			}
 			sb.append(")");
 		}
-		System.out.print(sb.toString());
 		return sb.toString();
 	}
 
