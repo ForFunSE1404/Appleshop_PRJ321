@@ -36,6 +36,12 @@ public class PageControl {
 		
 		return "user/changepassword";
 	}
+	
+	@RequestMapping(value = "/information")
+	public String inputaddress() {
+		
+		return "user/information";
+	}
 
 	@RequestMapping(value = "/cart")
 	public String cart() {
