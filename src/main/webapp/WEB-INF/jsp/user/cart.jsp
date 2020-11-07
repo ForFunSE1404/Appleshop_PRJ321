@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <!-- Custom StyleSheet -->
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css" />
 
 <title>Apple Shop</title>
 
@@ -47,23 +47,23 @@
 					<th>Subtotal</th>
 				</tr>
 				<c:set var="total" scope="session" value="0"></c:set>
-				<c:forEach items="${sessionScope.cart }" var="product">
+				<c:forEach items="${sessionScope.cart }" var="item">
 					<tr>
 						<td>
 							<div class="cart-info">
-								<img src="${product.key.thumbnail }">
+								<img src="${item.key.thumbnail }">
 								<div>
 									<p></p>
-									<small>Price: ${product.key.price }</small> <br> <a
-										href="">Remove</a>
+									<small>Price: ${item.key.price }</small> <br> <a class="deletecart"
+										href="deletecart?productId=${item.key.productId}">Remove</a>
 								</div>
 							</div>
 						</td>
-						<td><input type="number" value="${product.value }" min="1"
-							max="${product.key.quantity}"></td>
-						<td>${product.key.price *  product.value}</td>
+						<td><input onchange="return updatecar('${item.key.productId}', 1)" type="number" value="${item.value }" min="1"
+							max="${item.key.quantity}" ></td>
+						<td>${item.key.price *  product.value}</td>
 						<c:set var="total" scope="session"
-							value="${total + product.key.price *  product.value }"></c:set>
+							value="${total + item.key.price *  item.value }"></c:set>
 					</tr>
 				</c:forEach>
 
@@ -93,8 +93,32 @@
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 	<!-- Custom JavaScript -->
-	<script src="./js/index.js"></script>
-	<script src="./js/slider.js"></script>
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
+	    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script>
+	function updatequantity(id, quantity) {
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/updatepcart",
+			data : {
+				id : id,
+				quantity : quantity
+			},
+			dataType : 'json',
+			timeout : 100000,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			}
+		});
+	}
+	</script>
+	<script>
+	</script>
 	<!-- End Main -->
 </body>
 </html>
