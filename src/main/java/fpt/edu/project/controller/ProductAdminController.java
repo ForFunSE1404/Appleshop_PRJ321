@@ -1,7 +1,5 @@
 package fpt.edu.project.controller;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -99,7 +97,7 @@ public class ProductAdminController {
 
 					for (int i = 0; i < imagesOther.length; i++) {
 						Files.copy(inputStream2[i], path2.resolve(fileName2[i]));
-						productService.insertImage(productId, "images_Product/" + productId + "/" + fileName2[i]);
+//						productService.insertImage(productId, "images_Product/" + productId + "/" + fileName2[i]);
 					}
 					System.err.println("Successful !!!!");
 				}
@@ -166,12 +164,12 @@ public class ProductAdminController {
 						fileName2[i] = productId + "(" + (i + 1) + ").png";
 					}
 					Files.copy(inputStream1, path1.resolve(fileName1), StandardCopyOption.REPLACE_EXISTING);
-					productService.save(new Product(productId, new Category(categoryId), productName,
-							dateTime, Integer.parseInt(quantity), Double.parseDouble(price), description,
+					productService.save(new Product(productId, new Category(categoryId), productName, dateTime,
+							Integer.parseInt(quantity), Double.parseDouble(price), description,
 							"images_Product/" + productId + "/" + fileName1, visibility));
 					for (int i = 0; i < imagesOther.length; i++) {
 						Files.copy(inputStream2[i], path2.resolve(fileName2[i]), StandardCopyOption.REPLACE_EXISTING);
-						productService.updateImage(productId, "images_Product/" + productId + "/" + fileName2[i]);
+//						productService.updateImage(productId, "images_Product/" + productId + "/" + fileName2[i]);
 					}
 					System.err.println("Successful !!!!");
 				}
