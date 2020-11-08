@@ -74,6 +74,12 @@ Header
   padding: 0 1.6rem;
 }
 
+.containerx {
+	max-width: 117rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+
 /*
 ======================
 Navigation
@@ -133,7 +139,7 @@ Navigation
   display: flex;
   align-items: center;
   height: 100%;
-  width: 65%;
+  width: 100%;
 }
 
 .nav__item:not(:last-child) {
