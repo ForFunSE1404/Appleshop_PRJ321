@@ -26,7 +26,8 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <!-- Custom StyleSheet -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/styles.css" />
 
 <title>Apple Shop</title>
 
@@ -54,33 +55,36 @@
 								<img src="${item.key.thumbnail }">
 								<div>
 									<p></p>
-									<small>Price: ${item.key.price }</small> <br> <a class="deletecart"
+									<small>Price: ${item.key.price }</small> <br> <a
+										class="deletecart"
 										href="deletecart?productId=${item.key.productId}">Remove</a>
 								</div>
 							</div>
 						</td>
-						<td><input onchange="return updatecar('${item.key.productId}', 1)" type="number" value="${item.value }" min="1"
-							max="${item.key.quantity}" ></td>
-						<td>${item.key.price *  product.value}</td>
+						<td><input id="${item.key.productId}" class="updatequantity" type="number"
+							value="${item.value }" min="1" max="${item.key.quantity}"></td>
+						<td>${item.key.price *  item.value}$</td>
 						<c:set var="total" scope="session"
 							value="${total + item.key.price *  item.value }"></c:set>
 					</tr>
 				</c:forEach>
 
 			</table>
+			<c:if test="${total != 0}">
 
-			<div class="total-price">
-				<table>
-					<tr>
-						<td>Total</td>
-						<td>${total}$</td>
-					</tr>
-				</table>
+				<div class="total-price">
+					<table>
+						<tr>
+							<td>Total</td>
+							<td>${total}$</td>
+						</tr>
+					</table>
 
-			</div>
-			<div class="checkout">
-				<a class="btn btn__checkout" href="#">Check Out</a>
-			</div>
+				</div>
+				<div class="checkout">
+					<a class="btn btn__checkout" href="checkout">Check Out</a>
+				</div>
+			</c:if>
 
 		</div>
 	</main>
@@ -95,29 +99,37 @@
 	<!-- Custom JavaScript -->
 	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
-	    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 	<script>
-	function updatequantity(id, quantity) {
-		$.ajax({
-			type : "GET",
-			contentType : "application/json",
-			url : "/updatepcart",
-			data : {
-				id : id,
-				quantity : quantity
-			},
-			dataType : 'json',
-			timeout : 100000,
-			success : function(data) {
-				console.log("SUCCESS: ", data);
-			},
-			error : function(e) {
-				console.log("ERROR: ", e);
-			}
-		});
-	}
+	$(".updatequantity").bind('focusout', function () {
+	    updatequantity($(this).attr("id"), $(this).val())  
+  	    window.setTimeout(function(){location.reload()},500)    
+	});
+	
 	</script>
 	<script>
+		function updatequantity(id, quantity) {
+			$.ajax({
+				type : "GET",
+				contentType : "application/json",
+				url : "/updatecart",
+				data : {
+					id : id,
+					quantity : quantity
+				},
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+				}
+			});
+		}
+	</script>
+	<script>
+		
 	</script>
 	<!-- End Main -->
 </body>

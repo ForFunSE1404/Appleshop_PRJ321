@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fpt.edu.project.model.Product;
+import fpt.edu.project.model.QuantityCart;
 import fpt.edu.project.service.ProductServiceImpl;
 
 @RestController
@@ -25,28 +26,34 @@ public class CartRestController {
 	public String buy(HttpServletRequest request, HttpSession session) {
 		String productId = request.getParameter("id");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		System.out.print(productId);
 		Product product = productService.findById(productId).get();
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxResponse = "";
-
+		int totalquantity = 0;
 		if (product != null) {
 			if (session.getAttribute("cart") == null) {
 				HashMap<Product, Integer> cart = new HashMap<>();
 				cart.put(product, 1);
+				totalquantity += 1;
 				session.setAttribute("cart", cart);
 			} else {
 				HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
 				if (!cart.containsKey(product)) {
 					cart.put(product, 1);
 				} else {
-					cart.replace(product, cart.get(product) + quantity);
+					if (cart.get(product) < product.getQuantity()) {
+						cart.replace(product, cart.get(product) + quantity);
+					}
 				}
+				for (Product product2 : cart.keySet()) {
+					totalquantity += cart.get(product2);
+				}
+				session.setAttribute("totalquantity", totalquantity);
 				session.setAttribute("cart", cart);
 			}
 		}
 		try {
-			ajaxResponse = mapper.writeValueAsString(product);
+			ajaxResponse = mapper.writeValueAsString(new QuantityCart(totalquantity));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -57,21 +64,29 @@ public class CartRestController {
 	public String update(HttpServletRequest request, HttpSession session) {
 		String productId = request.getParameter("id");
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		System.out.print(productId);
 		Product product = productService.findById(productId).get();
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxResponse = "";
+		int totalquantity = 0;
 		if (product != null) {
 			HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
-			cart.replace(product, cart.get(product) + quantity);
-			session.setAttribute("cart", cart);
-
+			if (product.getQuantity() >= quantity) {
+				cart.replace(product, quantity);
+				session.setAttribute("cart", cart);
+			} else {
+				return ajaxResponse;
+			}
+			for (Product product2 : cart.keySet()) {
+				totalquantity += cart.get(product2);
+			}
 		}
+		session.setAttribute("totalquantity", totalquantity);
 		try {
-			ajaxResponse = mapper.writeValueAsString(product);
+			ajaxResponse = mapper.writeValueAsString(new QuantityCart(totalquantity));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		System.out.print(ajaxResponse);
 		return ajaxResponse;
 	}
 

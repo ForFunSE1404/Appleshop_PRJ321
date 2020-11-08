@@ -185,8 +185,8 @@
 			timeout : 100000,
 			success : function(data) {
 				console.log("SUCCESS: ", data);
-				var result = " " + data.productId + "<br>"
-				$("#cart__total").html(1);
+				var result = " " + data+ "<br>"
+				$("#cart__total").html(data.quantitycart);
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);
