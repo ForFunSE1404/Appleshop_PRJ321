@@ -48,6 +48,12 @@ public class PageControl {
 		
 		return "user/information";
 	}
+	
+	@RequestMapping(value = "/inforuser")
+	public String inforuser() {
+		
+		return "user/inforuser";
+	}
 
 	@RequestMapping(value = "/cart")
 	public String cart() {
