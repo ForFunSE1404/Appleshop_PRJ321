@@ -40,11 +40,11 @@
                             
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="your_pass" placeholder="New Password"/>
+                                <input type="password"  required="" data-parsley-minlength="6" data-parsley-maxlength="20" data-parsley-required-message="Password is required"type="password" name="pass" id="pass" placeholder="New Password"/>
                             </div>	
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="newpass" id="your_pass" placeholder="Confirm New Password"/>
+                                <input type="password" required="" data-parsley-equalto='#pass' data-parsley-required-message="Repeat password is required" type="password" name="newpass" id="re_pass" placeholder="Repeat password"/>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Change"/>
