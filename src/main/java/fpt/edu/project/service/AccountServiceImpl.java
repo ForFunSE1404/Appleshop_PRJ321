@@ -7,11 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import java.util.Optional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +25,10 @@ public class AccountServiceImpl {
 
 	public Account save(Account entity) {
 		return accountRepository.save(entity);
+	}
+
+	public Account findAccountEmail(String email) {
+		return accountRepository.findAccountEmail(email);
 	}
 
 	public List<Account> findAll() {

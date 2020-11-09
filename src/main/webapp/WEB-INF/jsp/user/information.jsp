@@ -42,26 +42,26 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Input Information</h2>
-                        <form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
+                        <h2 class="form-title">Checkout Information</h2>
+                        <form action="/updateinfo" method="POST" class="register-form" id="checkout-form">
                        		<div class="form-group">
                                 <label for="city"><i class="zmdi zmdi-account"></i></label>
-                                <input type="text" name="fullname" id="fullname" value="${sessionScope.account.fullname }" placeholder="Full Name"/>
+                                <input type="text" required="" name="fullname" id="fullname" value="${sessionScope.account.fullname }" placeholder="Full Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="city"><i class="zmdi zmdi-city"></i></label>
-                                <input type="text" name="city" id="city" placeholder="City"/>
+                                <input type="text" required="" name="city" value="${sessionScope.account.infoUser.city }" id="city" placeholder="City"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Specific Address"/>
+                                <input type="text" required="" name="address" value="${sessionScope.account.infoUser.address }" id="address" placeholder="Specific Address"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-phone-in-talk"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Phone Number"/>
+                                <input type="text" required="" data-parsley-pattern-message="Phone must be 10 number" data-parsley-pattern="\d{10}" name="phone" value="${sessionScope.account.infoUser.phone }" id="phone" placeholder="Phone Number"/>
                             </div>                       
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Check Out"/>
+                                <input type="submit" required="" name="signin" id="signin" class="form-submit" value="Check Out"/>
                             </div>
                         </form>
          
@@ -74,7 +74,32 @@
 
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="assets/vendor/parsley/parsley.js"></script>
+    
     <script src="js/main.js"></script>
+          <script>
+        $('#checkout-form').parsley();
+    </script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body>
 
 </html>

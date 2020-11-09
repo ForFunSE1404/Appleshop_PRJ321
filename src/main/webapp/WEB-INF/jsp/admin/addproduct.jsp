@@ -55,6 +55,7 @@
 								enctype="multipart/form-data" action="addproduct" method="post">
 								<h5 class="card-header">Add Product</h5>
 								<div class="card-body">
+									<p style="color: red; text-align: center;">${errID}</p>
 									<div class="form-group row">
 										<label class="col-12 col-sm-3 col-form-label text-sm-right">Product
 											ID</label>
@@ -63,7 +64,7 @@
 												data-parsley-required-message="Please insert Product Code"
 												data-parsley-pattern-message="Product Code In Format [PXXXX] X isdigit"
 												type="text" required="" data-parsley-pattern="[P]\d{4}"
-												placeholder="" class="form-control" name="productId">
+												class="form-control" name="productId">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -110,14 +111,18 @@
 										<label class="col-12 col-sm-3 col-form-label text-sm-right">Thumbnail</label>
 										<div class="col-12 col-sm-8 col-lg-6">
 											<input type="file" required="" class="form-control-file"
+												data-parsley-required-message="Please choose 1 picture"
 												name="thumbnail">
 										</div>
 									</div>
+									<p style="color: red; text-align: center;">${errImages}</p>
 									<div class="form-group row">
-										<label class="col-12 col-sm-3 col-form-label text-sm-right">Other
+										<br> <label
+											class="col-12 col-sm-3 col-form-label text-sm-right">Other
 											Image</label>
 										<div class="col-12 col-sm-8 col-lg-6">
-											<input type="file" required="" class="form-control-file"
+											<input type="file" class="form-control-file" required=""
+												data-parsley-required-message="Please choose pictures"
 												multiple="multiple" name="imagesOther">
 										</div>
 									</div>
@@ -217,15 +222,15 @@
 									<div class="form-group row">
 										<label class="col-12 col-sm-3 col-form-label text-sm-right">Thumbnail</label>
 										<div class="col-12 col-sm-8 col-lg-6">
-											<input type="file" required="" class="form-control-file"
-												name="thumbnail">
+											<input type="file" class="form-control-file" name="thumbnail">
 										</div>
 									</div>
 									<div class="form-group row">
+										<p style="color: red;">${errImages}</p>
 										<label class="col-12 col-sm-3 col-form-label text-sm-right">Other
 											Image</label>
 										<div class="col-12 col-sm-8 col-lg-6">
-											<input type="file" required="" class="form-control-file"
+											<input type="file" class="form-control-file"
 												multiple="multiple" name="imagesOther">
 										</div>
 									</div>

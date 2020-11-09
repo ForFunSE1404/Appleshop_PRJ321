@@ -30,7 +30,8 @@
                             <div class="form-group">
                             <p style="color:red;"> ${err} </p>
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input required="" data-parsley-minlength="6" data-parsley-maxlength="20" data-parsley-required-message="User ID is required" type="text" name="userId" id="name" placeholder="Username" />
+                                <input required="" data-parsley-minlength="6" data-parsley-pattern="^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                                 data-parsley-maxlength="20" data-parsley-required-message="User ID is required" type="text" name="userId" id="name" placeholder="Username" />
                             </div>
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
