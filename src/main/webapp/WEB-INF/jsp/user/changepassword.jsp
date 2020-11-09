@@ -21,9 +21,6 @@
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
-            <c:if test="${param.error == 'true'}">
-                          <p style="color:red; text-align:center;">Login Failed ${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
-            </c:if>
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.png" alt="sing up image"></figure>
@@ -34,14 +31,20 @@
 
                     <div class="signin-form">
                         <h3 class="form-title">Change Password</h3>
-                        <form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
+                        <form action="resetpass" method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username" value="${username}" readonly/>
+                            </div>
+                                                            <input type="hidden" name="token" value="${token}" />
+                            
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="New Password"/>
+                                <input type="password"  required="" data-parsley-minlength="6" data-parsley-maxlength="20" data-parsley-required-message="Password is required"type="password" name="pass" id="pass" placeholder="New Password"/>
                             </div>	
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Confirm New Password"/>
+                                <input type="password" required="" data-parsley-equalto='#pass' data-parsley-required-message="Repeat password is required" type="password" name="newpass" id="re_pass" placeholder="Repeat password"/>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Change"/>

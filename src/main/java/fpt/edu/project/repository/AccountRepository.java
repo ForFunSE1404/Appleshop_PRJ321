@@ -1,11 +1,9 @@
 package fpt.edu.project.repository;
 
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,6 +18,9 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 	@Query("SELECT count(P) FROM Account P")
 	long count();
 
-	@Query(value ="SELECT A.email FROM Account A WHERE email = ?1", nativeQuery = true)
+	@Query(value = "SELECT A.email FROM Account A WHERE email = ?1", nativeQuery = true)
 	List<String> findByEmail(String email);
+
+	@Query("SELECT a FROM Account a WHERE a.email = ?1")
+	Account findAccountEmail(String email);
 }
