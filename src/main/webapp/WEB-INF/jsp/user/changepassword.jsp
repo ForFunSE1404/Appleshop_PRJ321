@@ -31,7 +31,7 @@
 
                     <div class="signin-form">
                         <h3 class="form-title">Change Password</h3>
-                        <form action="resetpass" method="POST" class="register-form" id="login-form">
+                        <form action="resetpass" method="POST" class="register-form" id="changepass-form">
                             <div class="form-group">
                                 <label for="username"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="text" name="username" id="username" placeholder="Username" value="${username}" readonly/>
@@ -60,5 +60,30 @@
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/vendor/parsley/parsley.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
+    <script>
+        $('#changepass-form').parsley();
+    </script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
