@@ -6,6 +6,10 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +52,9 @@ public class AccountServiceImpl {
 
 	public boolean findByEmail(String email) {
 		return accountRepository.findByEmail(email).isEmpty();
+	}
+
+	public void update(int roleID, String userId) {
+		accountRepository.updateAccount(roleID, userId);
 	}
 }

@@ -154,9 +154,9 @@
 															<td><img style="width: 100px;"
 																src="${account.avartar }" /></td>
 															
-															<td><a href="" class="btn btn-primary">Edit</a></td>
+															<td><a href="editaccount?accountid=${account.userId}" class="btn btn-primary">Edit</a></td>
 															<td><a
-																href="/delete?productId=${account.userId }"
+																href="deleteaccount?accountid=${account.userId }"
 																class="btn btn-danger">Delete</a></td>
 
 														</tr>
