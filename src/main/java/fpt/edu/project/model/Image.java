@@ -1,7 +1,6 @@
 package fpt.edu.project.model;
 // Generated Oct 26, 2020 1:06:17 PM by Hibernate Tools 4.3.1
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,6 +25,11 @@ public class Image implements java.io.Serializable {
 
 	public Image() {
 	}
+	
+	public Image(Product product, String imgUrl) {
+		this.product = product;
+		this.imgUrl = imgUrl;
+	}
 
 	public Image(int imgId, Product product, String imgUrl) {
 		this.imgId = imgId;
@@ -34,7 +38,6 @@ public class Image implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "imgId", unique = true, nullable = false)
 	public int getImgId() {
 		return this.imgId;
