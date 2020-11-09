@@ -36,10 +36,11 @@
 
                     <div class="signin-form forgot" style="padding-top:  30px;">
                         <h3 class="form-title">Forgot Password</h3>
-                        <form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
+                        <p style="color:red;">${message}</p>
+                        <form action="forgotpassword" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="Email"/>
+                                <input type="text" name="email" id="your_name" placeholder="Email"/>
                             </div>
                             
                             <div class="form-group form-button">
