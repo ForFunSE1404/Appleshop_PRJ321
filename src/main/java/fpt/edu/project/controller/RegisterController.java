@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import fpt.edu.project.model.Account;
 import fpt.edu.project.model.Role;
 import fpt.edu.project.service.AccountServiceImpl;
+import fpt.edu.project.service.InfoUserServiceImpl;
 
 @Controller
 public class RegisterController {
 	@Autowired
 	private AccountServiceImpl accountService;
+	@Autowired
+	private InfoUserServiceImpl infoUserService;
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String resgister(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
@@ -35,7 +38,7 @@ public class RegisterController {
 				model.addAttribute("err", "Email " + email + " is exist !");
 				return "user/register";
 			}
-			
+
 		} else {
 			model.addAttribute("err", "Username " + userId + " is exist !");
 			return "user/register";

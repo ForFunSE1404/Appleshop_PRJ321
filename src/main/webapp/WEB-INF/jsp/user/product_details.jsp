@@ -48,10 +48,15 @@
 						<div class="details__container--left">
 							<div class="product__pictures">
 								<c:set var="i" value="1" />
+								<div class="pictures__container">
+									<img class="picture" src="${product.thumbnail}"
+										id="pic${i }" />
+								</div>
+								<c:set var="i" value="${i+1}" />
 								<c:forEach items="${product.images}" var="images">
 									<div class="pictures__container">
 										<img class="picture" src="${images.imgUrl}"
-											id="pic<c:out value="${i }"/>" />
+											id="pic${i }" />
 									</div>
 									<c:set var="i" value="${i+1}" />
 
@@ -65,17 +70,6 @@
 								</div>
 							</div>
 							<div class="zoom" id="zoom"></div>
-						</div>
-						<div class="product-details__btn">
-							<a class="add" href="addtocart?productId=${product.productId}"> <span> <svg>
-                    <use xlink:href="./images/sprite.svg#icon-cart-plus"></use>
-                  </svg>
-							</span> ADD TO CART
-							</a> <a class="buy" href="#"> <span> <svg>
-                    <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
-                  </svg>
-							</span> ADD TO WISH LIST
-							</a>
 						</div>
 					</div>
 
@@ -129,6 +123,18 @@
 													xlink:href="./images/sprite.svg#icon-envelope-o"></use>
                       </svg>&nbsp;
 									</span> ASK ABOUT THIS PRODUCT
+									</a>
+								</div>
+								<div class="product-details__btn">
+									<a class="buy addtocart" onclick="return addtocart('${product.productId}', 1)" href="">
+										<span> <svg>
+                    <use xlink:href="./images/sprite.svg#icon-cart-plus"></use>
+                  </svg>
+									</span> ADD TO CART
+									</a> <a href=""> <span> <svg>
+                    <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
+                  </svg>
+									</span> ADD TO WISH LIST
 									</a>
 								</div>
 							</div>
@@ -261,12 +267,42 @@
 
 	<!-- Animate On Scroll -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<!-- Custom JavaScript -->
+	<script src="${pageContext.request.contextPath}/js/products.js"></script>
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
+	<script>
+	function addtocart(id, quantity) {
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/addtocart",
+			data : {
+				id : id,
+				quantity: quantity
+			},
+			dataType : 'json',
+			timeout : 100000,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				var result = " " + data+ "<br>"
+				$("#cart__total").html(data.quantitycart);
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			}
+		});
+	}
+	</script>
+	<script>
+    $(document).ready(function() {                        
+        $('.addtocart').click(function(event) {
+                event.preventDefault();   
+            });
+        });
 
-	<!-- Custom JavaScript -->
-	<!-- Custom JavaScript -->
-	<script src="./js/products.js"></script>
-	<script src="./js/index.js"></script>
-	<script src="./js/slider.js"></script>
+	</script>
 	<!-- End Main -->
 </body>
 

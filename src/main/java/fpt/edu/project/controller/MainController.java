@@ -70,23 +70,23 @@ public class MainController {
 			model.addAttribute("message", message);
 
 		}
-		return "403Page";
+		return "user/403";
 	}
-	
+
 	@RequestMapping(value = "/productimg/{productid}/{imageId}")
 	@ResponseBody
-	public byte[] getImage(@PathVariable String imageId,@PathVariable String productid, HttpServletRequest request)  {
-	    String rpath = request.getRealPath("/");
-	    rpath = rpath + "images_Product/"+ productid + "/"+ imageId; // whatever path you used for storing the file
-	    Path path = Paths.get(rpath);
-	    byte[] data = null;
+	public byte[] getImage(@PathVariable String imageId, @PathVariable String productid, HttpServletRequest request) {
+		String rpath = request.getRealPath("/");
+		rpath = rpath + "images_Product/" + productid + "/" + imageId; // whatever path you used for storing the file
+		Path path = Paths.get(rpath);
+		byte[] data = null;
 		try {
 			data = Files.readAllBytes(path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-	    return data;
+		}
+		return data;
 	}
 
 }
