@@ -55,27 +55,27 @@
 						<form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
                        		<div class="form-group">
                                 <label for="city"><i class="zmdi zmdi-account"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Username"/>
+                                <input type="text" name="username" id="username" value="${sessionScope.account.userId }" placeholder="Username"/>
                             </div>
                             <div class="form-group">
                                 <label for="city"><i class="zmdi zmdi-face"></i></label>
-                                <input type="text" name="fullname" id="fullname" placeholder="Fullname"/>
+                                <input type="text" name="fullname" id="fullname" value="${sessionScope.account.fullname }" placeholder="Fullname"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-email"></i></label>
-                                <input type="text" name="email" id="email" placeholder="Email"/>
+                                <input type="text" name="email" id="email" value="${sessionScope.account.email }" placeholder="Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-phone-in-talk"></i></label>
-                                <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number"/>
-                            </div>     
+                                <input type="text" required="" data-parsley-pattern-message="Phone must be 10 number" data-parsley-pattern="\d{10}" name="phone" value="${sessionScope.account.infoUser.phone }" id="phone" placeholder="Phone Number"/>
+                            </div>    
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-male-female"></i></label>
-                                <input type="text" name="sex" id="sex" placeholder="Sex"/>
-                            </div>  
+                                <label for="city"><i class="zmdi zmdi-city"></i></label>
+                                <input type="text" required="" name="city" value="${sessionScope.account.infoUser.city }" id="city" placeholder="City"/>
+                            </div>      
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="address" id="address" placeholder="Address"/>
+                                <input type="text" name="address" id="address" value="${sessionScope.account.infoUser.address }" placeholder="Address"/>
                             </div>                     
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Edit"/>

@@ -14,10 +14,20 @@
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="styleLogin.css">
-</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="styleLogin.css">
+ </head>
 <body>
-    <div class="main">
+<header id="header" class="header">
+		<jsp:include page="navigation.jsp"></jsp:include>
+	</header>
+    <div class="main" style=" padding-top: 30px;">
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
@@ -35,7 +45,7 @@
                     </div>
 
                     <div class="signin-form forgot" style="padding-top:  30px;">
-                        <h3 class="form-title">Forgot Password</h3>
+                        <h2 class="form-title">Forgot Password</h2>
                         <p style="color:red;">${message}</p>
                         <form action="forgotpassword" method="POST" class="register-form" id="forgot-form">
                             <div class="form-group">
