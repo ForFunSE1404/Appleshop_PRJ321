@@ -38,8 +38,20 @@ public class PageControl {
 
 	@RequestMapping(value = "/changepassword")
 	public String changepassword() {
-
+		
 		return "user/changepassword";
+	}
+	
+	@RequestMapping(value = "/information")
+	public String inputaddress() {
+		
+		return "user/information";
+	}
+	
+	@RequestMapping(value = "/inforuser")
+	public String inforuser() {
+		
+		return "user/inforuser";
 	}
 
 	@RequestMapping(value = "/wishlist")
