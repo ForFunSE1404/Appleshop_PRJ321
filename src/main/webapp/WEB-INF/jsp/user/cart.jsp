@@ -70,6 +70,7 @@
 				</c:forEach>
 
 			</table>
+				
 			<c:if test="${total != 0}">
 
 				<div class="total-price">
@@ -85,6 +86,7 @@
 					<a class="btn btn__checkout" href="checkout">Check Out</a>
 				</div>
 			</c:if>
+			
 
 		</div>
 	</main>

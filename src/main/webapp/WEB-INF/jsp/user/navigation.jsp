@@ -57,7 +57,7 @@
 	              </c:if>
               <c:if test="${pageContext[\"request\"].userPrincipal.principal != null}">
 	              <li class="nav__item">
-	                <a href="/user" class="nav__link scroll-link">${sessionScope.account.fullname }</a>
+	                <a href="/inforuser" class="nav__link scroll-link">${sessionScope.account.fullname }</a>
 	              </li>
 	              <li class="nav__item">
 	                <a href="/logout" class="nav__link scroll-link">Logout</a>
@@ -67,7 +67,7 @@
           </div>
 
           <div class="nav__icons">
-            <a href="#" class="icon__item">
+            <a href="/inforuser" class="icon__item">
               <svg class="icon__user">
                 <use xlink:href="./images/sprite.svg#icon-user"></use>
               </svg>
