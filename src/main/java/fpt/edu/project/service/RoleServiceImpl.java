@@ -1,6 +1,7 @@
 package fpt.edu.project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,12 @@ public class RoleServiceImpl {
 	public List<Role> findAll() {
 		return roleRepository.findAll();
 	}
+
 	public Role save(Role entity) {
-	return roleRepository.save(entity);	
+		return roleRepository.save(entity);
+	}
+
+	public Optional<Role> findById(int roleId) {
+		return roleRepository.findById(roleId);
 	}
 }

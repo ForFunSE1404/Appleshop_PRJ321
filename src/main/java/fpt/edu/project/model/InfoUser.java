@@ -27,6 +27,7 @@ public class InfoUser implements java.io.Serializable {
 	private String city;
 	private String address;
 	private String phone;
+	private Set<Cart> carts = new HashSet<Cart>(0);
 	private Set<Account> accounts = new HashSet<Account>(0);
 
 	public InfoUser() {
@@ -36,11 +37,12 @@ public class InfoUser implements java.io.Serializable {
 		this.infoId = infoId;
 	}
 
-	public InfoUser(int infoId, String city, String address, String phone, Set<Account> accounts) {
+	public InfoUser(int infoId, String city, String address, String phone, Set<Cart> carts, Set<Account> accounts) {
 		this.infoId = infoId;
 		this.city = city;
 		this.address = address;
 		this.phone = phone;
+		this.carts = carts;
 		this.accounts = accounts;
 	}
 
@@ -80,6 +82,15 @@ public class InfoUser implements java.io.Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "infoUser")
+	public Set<Cart> getCarts() {
+		return this.carts;
+	}
+
+	public void setCarts(Set<Cart> carts) {
+		this.carts = carts;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "infoUser")

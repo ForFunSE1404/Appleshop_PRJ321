@@ -88,10 +88,16 @@ public class CartController {
 			account = accountService.save(account);
 			session.setAttribute("account", account);
 		} else {
-			infoUser.setInfoId(account.getInfoUser().getInfoId());
-			infoUser = infoUserService.save(infoUser);
-			account.setInfoUser(infoUser);
-			session.setAttribute("account", account);
+			if (account.getInfoUser().getCity().equalsIgnoreCase(city)
+					&& account.getInfoUser().getAddress().equalsIgnoreCase(address)
+					&& account.getInfoUser().getPhone().equalsIgnoreCase(phone)) {
+			} else {
+				infoUser = infoUserService.save(infoUser);
+				account.setInfoUser(infoUser);
+				account = accountService.save(account);
+				session.setAttribute("account", account);
+			}
+
 		}
 		HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
 		session.setAttribute("cart", cart);
@@ -111,6 +117,7 @@ public class CartController {
 		cart.setNote("");
 		Set<CartDetail> cartDetails = new HashSet<>();
 		cart.setCartDetails(cartDetails);
+		cart.setInfoUser(account.getInfoUser());
 		cart = cartService.save(cart);
 		double totalPrice = 0;
 		for (Product product : cartCheckout.keySet()) {
@@ -128,6 +135,9 @@ public class CartController {
 		cart.setTotalprice(totalPrice);
 		cartService.save(cart);
 		session.setAttribute("cart", new HashMap<Product, Integer>());
+		int totalquantity = 0;
+		session.setAttribute("totalquantity", totalquantity);
+
 		return "redirect:cart";
 	}
 }
