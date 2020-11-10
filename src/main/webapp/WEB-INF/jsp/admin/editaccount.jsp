@@ -50,41 +50,46 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-							<form id="validationform" data-parsley-validate="" novalidate=""
-								enctype="multipart/form-data" action="editaccount" method="post">
-								<h5 class="card-header">Add Account</h5>
-								<div class="card-body">
-									<div class="form-group row">
-										<label class="col-12 col-sm-3 col-form-label text-sm-right">Account
-											ID</label>
-										<div class="col-12 col-sm-8 col-lg-6">
-											<input type="text" required="" data-parsley-minlength="6"
-												class="form-control"
-												data-parsley-required-message="Please insert Product Name"
-												name="UserName" value= "${id}" disabled>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-12 col-sm-3 col-form-label text-sm-right">Role</label>
-										<div class="col-12 col-sm-8 col-lg-6">
-											<select required="" class="form-control"
-												data-parsley-required-message="Please insert Category"
-												name="RoleId">
-												<c:forEach items="${listRole}" var="role">
-													<option value="${role.roleId}">${role.roleName}</option>
-												</c:forEach>
-											</select>
-										</div>
-									</div>
-									<div class="form-group row text-right">
-										<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-											<button type="submit" class="btn btn-space btn-primary">Add
-												Account</button>
-										</div>
+						<form id="validationform" data-parsley-validate="" novalidate=""
+							enctype="multipart/form-data" action="editaccount" method="post">
+							<h5 class="card-header">Add Account</h5>
+							<div class="card-body">
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Account
+										ID</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<input type="text" required="" data-parsley-minlength="6"
+											class="form-control"
+											data-parsley-required-message="Please insert Product Name"
+											name="username" readonly  value="${account.userId}">
 									</div>
 								</div>
-								
-							</form>
+								<div class="form-group row">
+									<label class="col-12 col-sm-3 col-form-label text-sm-right">Role</label>
+									<div class="col-12 col-sm-8 col-lg-6">
+										<select required="" class="form-control"
+											data-parsley-required-message="Please insert Category"
+											name="RoleId">
+											<c:forEach items="${listRole}" var="role">
+												<c:if test="${account.role.roleId == role.roleId}"><
+													<option selected value="${role.roleId}">${role.roleName}</option>
+												</c:if>
+												<c:if test="${account.role.roleId != role.roleId}"><
+													<option value="${role.roleId}">${role.roleName}</option>
+												</c:if>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<div class="form-group row text-right">
+									<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+										<button type="submit" class="btn btn-space btn-primary">Add
+											Account</button>
+									</div>
+								</div>
+							</div>
+
+						</form>
 					</div>
 				</div>
 			</div>

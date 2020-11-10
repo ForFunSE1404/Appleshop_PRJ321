@@ -30,6 +30,7 @@ public class Cart implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private int cartId;
 	private Account account;
+	private InfoUser infoUser;
 	private Date createDate;
 	private double totalprice;
 	private boolean status;
@@ -39,19 +40,22 @@ public class Cart implements java.io.Serializable {
 	public Cart() {
 	}
 
-	public Cart(int cartId, Account account, Date createDate, double totalprice, boolean status, String note) {
+	public Cart(int cartId, Account account, InfoUser infoUser, Date createDate, double totalprice, boolean status,
+			String note) {
 		this.cartId = cartId;
 		this.account = account;
+		this.infoUser = infoUser;
 		this.createDate = createDate;
 		this.totalprice = totalprice;
 		this.status = status;
 		this.note = note;
 	}
 
-	public Cart(int cartId, Account account, Date createDate, double totalprice, boolean status, String note,
-			Set<CartDetail> cartDetails) {
+	public Cart(int cartId, Account account, InfoUser infoUser, Date createDate, double totalprice, boolean status,
+			String note, Set<CartDetail> cartDetails) {
 		this.cartId = cartId;
 		this.account = account;
+		this.infoUser = infoUser;
 		this.createDate = createDate;
 		this.totalprice = totalprice;
 		this.status = status;
@@ -78,6 +82,16 @@ public class Cart implements java.io.Serializable {
 
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "addressId", nullable = false)
+	public InfoUser getInfoUser() {
+		return this.infoUser;
+	}
+
+	public void setInfoUser(InfoUser infoUser) {
+		this.infoUser = infoUser;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

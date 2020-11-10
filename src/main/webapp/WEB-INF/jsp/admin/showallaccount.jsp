@@ -110,11 +110,7 @@
 															colspan="1"
 															aria-label="Start date: activate to sort column ascending"
 															style="width: 80px;">IsActive</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 150px;">Info User</th>
+														
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
@@ -124,7 +120,7 @@
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Avatar</th>
+															style="width: 80px;">Info</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
@@ -144,12 +140,11 @@
 															<td>${account.email }</td>
 															<td>${account.fullname }</td>
 															<td><c:if test="${account.isActived}">
-																	<input type="checkbox" class="disable" checked
+																	<input type="checkbox" disabled  checked
 																		name="name1" />&nbsp;
 															</c:if> <c:if test="${account.isActived == false}">
-																	<input type="checkbox" class="disable" name="name1" />&nbsp;
+																	<input type="checkbox" disabled  name="name1" />&nbsp;
 															</c:if></td>
-															<td>${account.infoUser.infoId }</td>
 															<td>${account.role.roleName }</td>
 															<td><img style="width: 100px;"
 																src="${account.avartar }" /></td>
