@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,6 +47,10 @@ public class Product implements java.io.Serializable {
 	public Product() {
 	}
 
+	public Product(String productId) {
+		this.productId = productId;
+	}
+
 	public Product(String productId, Category category, String productName, Date date, int quantity, double price,
 			String description, String thumbnail, boolean visibility) {
 		this.productId = productId;
@@ -78,7 +83,6 @@ public class Product implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "productId", unique = true, nullable = false)
 	public String getProductId() {
 		return this.productId;
@@ -172,7 +176,7 @@ public class Product implements java.io.Serializable {
 		this.cartDetails = cartDetails;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
 	public Set<Image> getImages() {
 		return this.images;
 	}

@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <form id="validationform" data-parsley-validate="" novalidate="" method="POST">
                                 <p style="color:red; text-align: center;">${err}</p>
-                                    <c:if test="${id == null}" >
+                                    <c:if test="${category == null}" >
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
@@ -58,34 +58,34 @@
                                         </div>
                                     </div>
                                     </c:if>
-                                     <c:if test="${id != null}" >
+                                     <c:if test="${category != null}" >
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category ID</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
                                             <input readonly data-parsley-required-message="Please insert Category Code"
                                                 data-parsley-pattern-message="Product Code In Format [CXXXX] X isdigit"
                                                 type="text" required="" data-parsley-pattern="[C]\d{4}" placeholder=""
-                                                class="form-control" name="txtCategoryIdAdd" value="${id }">
+                                                class="form-control" name="txtCategoryIdAdd" value="${category.categoryId }">
                                         </div>
                                     </div>
                                     </c:if>
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right">Category Name</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
-                                            <input type="text" required="" data-parsley-minlength="6"
-                                                class="form-control"
+                                            <input type="text" required="" 
+                                                class="form-control" value="${category.categoryName }"
                                                 data-parsley-required-message="Please insert Category Name"
                                                 name="txtCategoryNameAdd" >
                                         </div>
                                     </div>
-                                    <c:if test="${id == null}">
+                                    <c:if test="${category == null}">
                                     <div class="form-group row text-right">
                                         <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                             <button type="submit" value="AddCategory" class="btn btn-space btn-primary">Add Category</button>
                                         </div>
                                     </div>
                                     </c:if>
-                                    <c:if test="${id != null}">
+                                    <c:if test="${category != null}">
                                     <div class="form-group row text-right">
                                         <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                             <button type="submit" value="AddCategory" class="btn btn-space btn-primary">Update Category</button>
@@ -128,11 +128,11 @@
             <!-- ============================================================== -->
         </div>
     </div>
-    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src="../assets/vendor/parsley/parsley.js"></script>
-    <script src="../assets/libs/js/main-js.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/parsley/parsley.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
     <script>
         $('#form').parsley();
     </script>

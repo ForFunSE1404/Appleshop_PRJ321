@@ -7,10 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+		<link rel="stylesheet" href="styles.css" />
+
 </head>
 <body>
 	 <div class="navigation">
-      <div class="container">
+      <div class="containerx">
         <nav class="nav">
           <div class="nav__hamburger">
             <svg>
@@ -55,10 +57,10 @@
 	              </c:if>
               <c:if test="${pageContext[\"request\"].userPrincipal.principal != null}">
 	              <li class="nav__item">
-	                <a href="/logout" class="nav__link scroll-link">Logout</a>
+	                <a href="/user" class="nav__link scroll-link">${sessionScope.account.fullname }</a>
 	              </li>
 	              <li class="nav__item">
-	                <a href="/logout" class="nav__link scroll-link">${sessionScope.account.fullname }</a>
+	                <a href="/logout" class="nav__link scroll-link">Logout</a>
 	              </li>
               </c:if>
             </ul>
@@ -74,7 +76,7 @@
               <svg class="icon__cart">
                 <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
               </svg>
-              <span id="cart__total">0</span>
+              <span id="cart__total">${sessionScope.totalquantity}</span>
             </a>
           </div>
         </nav>

@@ -22,6 +22,7 @@ public class CategoryAdminController {
 	public String addproduct() {
 		return "admin/addcategory";
 	}
+
 	@RequestMapping(value = "admin/category", method = RequestMethod.GET)
 	public String showCategory(Model model) {
 		model.addAttribute("listcategory", categoryServiceImpl.findAll());
@@ -29,16 +30,16 @@ public class CategoryAdminController {
 	}
 
 	@RequestMapping(value = "admin/addcategory", method = RequestMethod.POST)
-	public String addCategory(ModelMap model, HttpServletRequest request, HttpServletResponse response ) {
+	public String addCategory(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("txtCategoryIdAdd");
 		String name = request.getParameter("txtCategoryNameAdd");
 		if (!categoryServiceImpl.findById(id).isPresent()) {
-			Category c = new Category(id,name);
+			Category c = new Category(id, name);
 			categoryServiceImpl.save(c);
-      		return "admin/showallcategory";
-		}else {
-			model.addAttribute("err","Exist category ID!");
-            		return "admin/addcategory";
+			return "admin/showallcategory";
+		} else {
+			model.addAttribute("err", "Exist category ID!");
+			return "admin/addcategory";
 		}
 	}
 
@@ -53,7 +54,8 @@ public class CategoryAdminController {
 	@RequestMapping(value = "admin/editcategory", method = RequestMethod.GET)
 	public String editcategory(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("categoryId");
-		model.addAttribute("id", id);
+		Category category = categoryServiceImpl.findById(id).get();
+		model.addAttribute("category", category);
 		return "admin/addcategory";
 	}
 }

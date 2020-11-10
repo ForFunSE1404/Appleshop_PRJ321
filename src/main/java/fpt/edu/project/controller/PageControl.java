@@ -26,17 +26,16 @@ public class PageControl {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", account);
 			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
-
 		}
 		return "user/index";
 	}
 
 	@RequestMapping(value = "/forgot_password")
 	public String forgotp() {
-		
+
 		return "user/forgotpassword";
 	}
-	
+
 	@RequestMapping(value = "/changepassword")
 	public String changepassword() {
 		
@@ -53,11 +52,6 @@ public class PageControl {
 	public String inforuser() {
 		
 		return "user/inforuser";
-	}
-
-	@RequestMapping(value = "/cart")
-	public String cart() {
-		return "user/cart";
 	}
 
 	@RequestMapping(value = "/wishlist")

@@ -163,16 +163,14 @@
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- Glide Carousel Script -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
 	<!-- Animate On Scroll -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 	<!-- Custom JavaScript -->
-	<script src="./js/products.js"></script>
-	<script src="./js/index.js"></script>
-	<script src="./js/slider.js"></script>
+	<script src="${pageContext.request.contextPath}/js/products.js"></script>
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
 	<script>
 	function addtocart(id, quantity) {
 		$.ajax({
@@ -187,9 +185,8 @@
 			timeout : 100000,
 			success : function(data) {
 				console.log("SUCCESS: ", data);
-				var result = "<h3> You just add new Person </h3>"
-						+ "<strong>Name:</strong> " + data.productId + "<br>"
-				$("#cart__total").html(1);
+				var result = " " + data+ "<br>"
+				$("#cart__total").html(data.quantitycart);
 			},
 			error : function(e) {
 				console.log("ERROR: ", e);

@@ -39,8 +39,7 @@ public class Account implements java.io.Serializable {
 	public Account() {
 	}
 
-	public Account(String userId, Role role, String password, String email, String fullname,
-			boolean isActived) {
+	public Account(String userId, Role role, String password, String email, String fullname, boolean isActived) {
 		this.userId = userId;
 		this.role = role;
 		this.password = password;
@@ -49,9 +48,9 @@ public class Account implements java.io.Serializable {
 		this.isActived = isActived;
 	}
 
-	public Account(String userId, InfoUser infoUser, Role role, String password, String email,
-			String fullname, boolean isActived, String token, String avartar, Set<Cart> carts,
-			Set<WishList> wishLists, Set<Rating> ratings) {
+	public Account(String userId, InfoUser infoUser, Role role, String password, String email, String fullname,
+			boolean isActived, String token, String avartar, Set<Cart> carts, Set<WishList> wishLists,
+			Set<Rating> ratings) {
 		this.userId = userId;
 		this.infoUser = infoUser;
 		this.role = role;
@@ -77,7 +76,7 @@ public class Account implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "infoId")
 	public InfoUser getInfoUser() {
 		return this.infoUser;
