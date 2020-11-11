@@ -58,4 +58,10 @@ public class PageControl {
 	public String wishlist() {
 		return "user/wishlist";
 	}
+	
+	@RequestMapping(value = "/404page")
+	public String errorpage() {
+
+		return "user/404";
+	}
 }

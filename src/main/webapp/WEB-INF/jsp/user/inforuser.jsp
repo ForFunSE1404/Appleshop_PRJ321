@@ -52,7 +52,7 @@
 					<div class="signin-form">
 						<h2 class="form-title">User Information</h2>
 						
-						<form action="/j_spring_security_check" method="POST" class="register-form" id="login-form">
+						<form action="updateuser" method="POST" class="register-form" id="login-form">
                        		<div class="form-group">
                                 <label for="city"><i class="zmdi zmdi-account"></i></label>
                                 <input type="text" name="username" id="username" value="${sessionScope.account.userId }" placeholder="Username"/>

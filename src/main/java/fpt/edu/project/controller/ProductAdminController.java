@@ -155,7 +155,6 @@ public class ProductAdminController {
 		return "admin/addproduct";
 	}
 
-/////////////////////////
 	@RequestMapping(value = "admin/editproduct", method = RequestMethod.POST)
 	public String editProduct(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("thumbnail") MultipartFile image, @RequestParam("imagesOther") MultipartFile[] imagesOther) {

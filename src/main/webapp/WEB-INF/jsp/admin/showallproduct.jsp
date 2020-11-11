@@ -67,19 +67,29 @@
 						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
 							<div class="table-responsive">
+							
+	
+							
+							
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
 
-										<div class="col-sm-12 col-md-12">
+										<div class="col-sm-10 col-md-10">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
 												<form action="searchproducts" method="GET">
-													<label>Search:<input type="text"
+													<label><input type="text"
 														class="form-control form-control-sm" placeholder=""
 														aria-controls="DataTables_Table_0" name="txtName"></label>
-													<button type="submit">Search</button>
+													<button type="submit" class="btn btn-brand">Search</button>
 												</form>
+												
 											</div>
+											
+										</div>
+										<div class="col-sm-2 col-md-2">
+											<a href="addproduct" class="btn btn-success">Add New</a>
+										
 										</div>
 									</div>
 									<br>
@@ -131,10 +141,7 @@
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															style="width: 80px;">Edit</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															style="width: 80px;">Delete</th>
+													
 													</tr>
 												</thead>
 												<tbody>
@@ -158,9 +165,7 @@
 															<td><a
 																href="${pageContext.request.contextPath}/admin/editproduct?productId=${product.productId }"
 																class="btn btn-primary">Edit</a></td>
-															<td><a
-																href="${pageContext.request.contextPath}/admin/deleteproduct?productId=${product.productId }"
-																class="btn btn-danger">Delete</a></td>
+															
 														</tr>
 													</c:forEach>
 
