@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -117,7 +118,7 @@ public class Cart implements java.io.Serializable {
 		this.note = note;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cart")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
 	public Set<CartDetail> getCartDetails() {
 		return this.cartDetails;
 	}
