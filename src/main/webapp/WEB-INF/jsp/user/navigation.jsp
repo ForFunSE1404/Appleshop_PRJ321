@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/styles.css" />
 
 </head>
 <body>
@@ -43,7 +43,7 @@
                 <a href="/product" class="nav__link scroll-link">Product</a>
               </li>
               <li class="nav__item">
-                <a href="#header" class="nav__link scroll-link">Wish List</a>
+                <a href="/wishlist" class="nav__link scroll-link">Wish List</a>
               </li>
               <c:if test="${pageContext[\"request\"].userPrincipal.principal == null}">
 	              <li class="nav__item">
@@ -76,7 +76,7 @@
               <svg class="icon__cart">
                 <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
               </svg>
-              <span id="cart__total">${sessionScope.totalquantity}</span>
+              <span id="cart__total">${sessionScope.totalquantity == 0 ? 0 : sessionScope.totalquantity}</span>
             </a>
           </div>
         </nav>
