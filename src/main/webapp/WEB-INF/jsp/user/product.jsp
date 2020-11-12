@@ -187,7 +187,7 @@
 				console.log("SUCCESS: ", data);
 				var result = " " + data+ "<br>"
 				$("#cart__total").html(data.quantitycart);
-			},
+			},ca
 			error : function(e) {
 				console.log("ERROR: ", e);
 			}

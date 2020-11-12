@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fpt.edu.project.model.Cart;
+import fpt.edu.project.model.CartDetail;
 import fpt.edu.project.repository.CartRepository;
 
 @Service
@@ -18,5 +19,8 @@ public class CartServiceImpl {
 	}
 	public List<Cart> getById(String userId) {
 		return cartRepository.getCartById(userId);
+	}
+	public List<String> getLastestProduct(){
+		return cartRepository.getLastestProduct();
 	}
 }
