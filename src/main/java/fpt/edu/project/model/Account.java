@@ -4,6 +4,7 @@ package fpt.edu.project.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -159,7 +160,7 @@ public class Account implements java.io.Serializable {
 		this.carts = carts;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
 	public Set<WishList> getWishLists() {
 		return this.wishLists;
 	}

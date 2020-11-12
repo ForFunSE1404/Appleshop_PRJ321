@@ -42,8 +42,5 @@ public class PageControl {
 		return "user/changepassword";
 	}
 
-	@RequestMapping(value = "/wishlist")
-	public String wishlist() {
-		return "user/wishlist";
-	}
+	
 }
