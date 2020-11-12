@@ -39,55 +39,51 @@
 		<jsp:include page="navigation.jsp"></jsp:include>
 	</header>
 	<!-- End Header -->
+	<br>
+	<h2 style="text-align: center; font-size: 40px;">HISTORY BILLING</h2>
 	<main id="main">
 		<div class="small-container cart-page">
-			<table>
-				<tr>
-					<th>Product</th>
-					<th>Quantity</th>
-					<th>Subtotal</th>
-				</tr>
-				<c:set var="total" scope="session" value="0"></c:set>
-				<c:forEach items="${sessionScope.cart }" var="item">
+			<c:if test="${listLength != 0}">
+				<table>
 					<tr>
-						<td>
-							<div class="cart-info">
-								<img src="${item.key.thumbnail }">
-								<div>
-									<p></p>
-									<small>Price: ${item.key.price }</small> <br> <a
-										class="deletecart"
-										href="deletecart?productId=${item.key.productId}">Remove</a>
-								</div>
-							</div>
-						</td>
-						<td><input id="${item.key.productId}" class="updatequantity" type="number"
-							value="${item.value }" min="1" max="${item.key.quantity}"></td>
-						<td>${item.key.price *  item.value}$</td>
-						<c:set var="total" scope="session"
-							value="${total + item.key.price *  item.value }"></c:set>
+						<th>#ID</th>
+						<th>Date buy</th>
+						<th>Total Price</th>
+						<th>Status</th>
+						<th></th>
 					</tr>
-				</c:forEach>
-
-			</table>
-				
-			<c:if test="${total != 0}">
-
-				<div class="total-price">
-					<table>
+					<c:set var="total" scope="session" value="0"></c:set>
+					<c:forEach items="${listCart}" var="item">
 						<tr>
-							<td>Total</td>
-							<td>${total}$</td>
+							<td>
+								<p style="text-align: center;">${item.cartId}</p>
+							</td>
+							<td>
+								<p style="text-align: center;">${item.createDate}</p>
+							</td>
+							<td>
+								<p style="text-align: center;">${item.totalprice}$</p>
+							</td>
+							<c:if test="${item.status == false}">
+								<td>
+									<p style="color: navy; text-align: center;">Unconfirmed</p>
+								</td>
+							</c:if>
+							<c:if test="${item.status == true}">
+								<td>
+									<p style="color: green; text-align: center;">Confirmed</p>
+								</td>
+							</c:if>
+							<td><a href="cartdetails?cartID=${item.cartId}"
+								style="font-size: 15px;">View details</a></td>
 						</tr>
-					</table>
-
-				</div>
-				<div class="checkout">
-					<a class="btn btn__checkout" href="checkout">Check Out</a>
-				</div>
-			</c:if>
-			
-
+					</c:forEach>
+					</c:if>
+					<c:if test="${listLength == 0}">
+						<p style="text-align: center; font-size: 30px; color: red;">${userName}
+							has not bought anything</p>
+					</c:if>
+				</table>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -102,34 +98,6 @@
 	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
 	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-	<script>
-	$(".updatequantity").bind('focusout', function () {
-	    updatequantity($(this).attr("id"), $(this).val())  
-  	    window.setTimeout(function(){location.reload()},500)    
-	});
-	
-	</script>
-	<script>
-		function updatequantity(id, quantity) {
-			$.ajax({
-				type : "GET",
-				contentType : "application/json",
-				url : "/updatecart",
-				data : {
-					id : id,
-					quantity : quantity
-				},
-				dataType : 'json',
-				timeout : 100000,
-				success : function(data) {
-					console.log("SUCCESS: ", data);
-				},
-				error : function(e) {
-					console.log("ERROR: ", e);
-				}
-			});
-		}
-	</script>
 	<script>
 		
 	</script>

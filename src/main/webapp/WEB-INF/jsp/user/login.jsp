@@ -8,16 +8,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Sign In</title>
 
     <!-- Font Icon -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="styleLogin.css">
+<link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="styleLogin.css">
 </head>
 <body>
-    <div class="main">
+<header id="header" class="header">
+		<jsp:include page="navigation.jsp"></jsp:include>
+	</header>
+    <div class="main" style=" padding-top: 30px;">
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">

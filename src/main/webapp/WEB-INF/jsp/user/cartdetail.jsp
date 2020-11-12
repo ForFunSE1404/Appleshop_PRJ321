@@ -39,55 +39,48 @@
 		<jsp:include page="navigation.jsp"></jsp:include>
 	</header>
 	<!-- End Header -->
+	<br>
+	<h2
+		style="text-align: center; font-size: 40px;">HISTORY BILLING</h2>
 	<main id="main">
 		<div class="small-container cart-page">
 			<table>
 				<tr>
-					<th>Product</th>
+					<th>Cart ID</th>
+					<th>Image</th>
+					<th>Product Name</th>
 					<th>Quantity</th>
-					<th>Subtotal</th>
+					<th>Price</th>
+					<th></th>
 				</tr>
 				<c:set var="total" scope="session" value="0"></c:set>
-				<c:forEach items="${sessionScope.cart }" var="item">
+				<c:forEach items="${listCartDetail}" var="item">
 					<tr>
 						<td>
-							<div class="cart-info">
-								<img src="${item.key.thumbnail }">
-								<div>
-									<p></p>
-									<small>Price: ${item.key.price }</small> <br> <a
-										class="deletecart"
-										href="deletecart?productId=${item.key.productId}">Remove</a>
-								</div>
-							</div>
+							<p style="text-align: center;">${item.cart.cartId}</p>
 						</td>
-						<td><input id="${item.key.productId}" class="updatequantity" type="number"
-							value="${item.value }" min="1" max="${item.key.quantity}"></td>
-						<td>${item.key.price *  item.value}$</td>
-						<c:set var="total" scope="session"
-							value="${total + item.key.price *  item.value }"></c:set>
+						<td>
+							<img style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;" src="${item.product.thumbnail}"/>
+						</td>
+						<td>
+							<p style="text-align: center;">${item.product.productName}</p>
+						</td>
+						<td>
+							<p style="text-align: center;">${item.quantity}</p>
+						</td>
+						<td>
+							<p style="text-align: center;">${item.price}$</p>
+						</td>
+						<td><a href="product_details?proId=${item.product.productId}"
+							style="text-align: center; font-size: 15px;">Buy again</a></td>
 					</tr>
 				</c:forEach>
-
 			</table>
-				
-			<c:if test="${total != 0}">
-
-				<div class="total-price">
-					<table>
-						<tr>
-							<td>Total</td>
-							<td>${total}$</td>
-						</tr>
-					</table>
-
-				</div>
-				<div class="checkout">
-					<a class="btn btn__checkout" href="checkout">Check Out</a>
-				</div>
-			</c:if>
-			
-
+			<br>
+			<hr>
+			<br>
+			<p style="text-align: right; font-size: 20px;">Total price :
+				${total} $</p>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -102,34 +95,6 @@
 	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
 	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-	<script>
-	$(".updatequantity").bind('focusout', function () {
-	    updatequantity($(this).attr("id"), $(this).val())  
-  	    window.setTimeout(function(){location.reload()},500)    
-	});
-	
-	</script>
-	<script>
-		function updatequantity(id, quantity) {
-			$.ajax({
-				type : "GET",
-				contentType : "application/json",
-				url : "/updatecart",
-				data : {
-					id : id,
-					quantity : quantity
-				},
-				dataType : 'json',
-				timeout : 100000,
-				success : function(data) {
-					console.log("SUCCESS: ", data);
-				},
-				error : function(e) {
-					console.log("ERROR: ", e);
-				}
-			});
-		}
-	</script>
 	<script>
 		
 	</script>

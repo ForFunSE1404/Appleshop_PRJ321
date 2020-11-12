@@ -31,21 +31,16 @@ svg{
 .st9{fill:#FFFFFF;}
 .st10{fill:#BF3E73;}
 .st11{fill:#8F3157;}
-
-
-
 @keyframes TongueAnim {
   0% {transform:skewY(0deg);}
   50% {transform:skewY(10deg);}
   100% {transform: skewY(-10deg);}
 }
-
 .tongue {
   animation: TongueAnim .2s ease infinite;
   transform-origin: top right;
   transform-box: fill-box;
 }
-
 .st12{fill-rule:evenodd;clip-rule:evenodd;fill:#7EBE9B;}
 .st13{opacity:0.3;fill-rule:evenodd;clip-rule:evenodd;fill:#5F8D75;}
 .st14{opacity:0.6;}

@@ -72,7 +72,7 @@
 										<div class="col-sm-12 col-md-10">
 										</div>
 										<div class="col-sm-12 col-md-2">
-													<a href="http://localhost:8080/admin/addcategory" class="btn btn-success">Add New</a>
+													<a href="addcategory" class="btn btn-success">Add New</a>
 											</div>
 										</div>
 									</div>

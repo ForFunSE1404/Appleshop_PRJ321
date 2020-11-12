@@ -151,7 +151,7 @@ public class Account implements java.io.Serializable {
 		this.avartar = avartar;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "account")
 	public Set<Cart> getCarts() {
 		return this.carts;
 	}

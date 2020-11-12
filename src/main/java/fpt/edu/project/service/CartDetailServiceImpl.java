@@ -1,5 +1,7 @@
 package fpt.edu.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,8 @@ public class CartDetailServiceImpl {
 
 	public CartDetail save(CartDetail cartDetail) {
 		return cartDetailRepository.save(cartDetail);
+	}
+	public List<CartDetail> getByCartId(int cartId) {
+		return cartDetailRepository.getByCartId(cartId);
 	}
 }

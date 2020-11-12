@@ -1,6 +1,8 @@
 package fpt.edu.project.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,25 +10,43 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fpt.edu.project.model.Account;
+import fpt.edu.project.model.CartDetail;
+import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
+import fpt.edu.project.service.CartServiceImpl;
+import fpt.edu.project.service.ProductServiceImpl;
 
 @Controller
 public class PageControl {
 
 	@Autowired
 	private AccountServiceImpl accountService;
+	@Autowired
+	private ProductServiceImpl productService;
+	@Autowired
+	private CartServiceImpl cartService;
 
 	@RequestMapping(value = "/")
-	public String index(Authentication authentication, Principal principal, HttpServletRequest request) {
+	public String index(ModelMap model, Authentication authentication, Principal principal,
+			HttpServletRequest request) {
 		if (authentication != null && principal != null) {
 			Account account = accountService.findById(principal.getName()).get();
 			HttpSession session = request.getSession();
 			session.setAttribute("account", account);
 			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
 		}
+		List<String> listLastestProduct = cartService.getLastestProduct();
+		List<Product> listProduct = new ArrayList<>();
+		for (int i = 0; i < listLastestProduct.size(); i++) {
+			Product product = productService.findById(listLastestProduct.get(i)).get();
+			listProduct.add(product);
+		}
+		System.out.println(listProduct.size()+"=================");
+		model.addAttribute("listProduct", listProduct);
 		return "user/index";
 	}
 
@@ -38,9 +58,31 @@ public class PageControl {
 
 	@RequestMapping(value = "/changepassword")
 	public String changepassword() {
-
+		
 		return "user/changepassword";
 	}
-
 	
+	@RequestMapping(value = "/information")
+	public String inputaddress() {
+		
+		return "user/information";
+	}
+	
+	@RequestMapping(value = "/inforuser")
+	public String inforuser() {
+		
+		return "user/inforuser";
+	}
+	
+
+	@RequestMapping(value = "/wishlist")
+	public String wishlist() {
+		return "user/wishlist";
+	}
+	
+	@RequestMapping(value = "/404page")
+	public String errorpage() {
+
+		return "user/404";
+	}
 }
