@@ -160,7 +160,7 @@ public class Account implements java.io.Serializable {
 		this.carts = carts;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
 	public Set<WishList> getWishLists() {
 		return this.wishLists;
 	}

@@ -14,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fpt.edu.project.model.Account;
-import fpt.edu.project.model.CartDetail;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.CartDetailServiceImpl;
@@ -68,12 +67,7 @@ public class PageControl {
 
 		return "user/inforuser";
 	}
-
-	@RequestMapping(value = "/wishlist")
-	public String wishlist() {
-		return "user/wishlist";
-	}
-
+  
 	@RequestMapping(value = "/404page")
 	public String errorpage() {
 
