@@ -12,4 +12,7 @@ import fpt.edu.project.model.CartDetail;
 public interface CartDetailRepository extends JpaRepository<CartDetail, Integer> {
 	@Query(value = "SELECT * FROM CartDetail WHERE cartId = :cartId", nativeQuery = true)
 	List<CartDetail> getByCartId(@Param("cartId") int cartId);
+
+	@Query(value = "SELECT TOP(5) productId FROM CartDetail GROUP BY productId ORDER BY count(productId) DESC", nativeQuery = true)
+	List<String> getLastestProduct();
 }

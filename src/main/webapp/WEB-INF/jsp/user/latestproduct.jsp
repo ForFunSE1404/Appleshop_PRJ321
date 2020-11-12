@@ -9,6 +9,7 @@
 </head>
 <body>
 	<!-- Latest Products -->
+	<jsp:useBean class="fpt.edu.project.service.CartDetailServiceImpl" id="cartdetailservice" scope="page"></jsp:useBean>
 	<section class="section latest__products" id="latest">
 		<div class="title__container">
 			<div class="section__title active" data-id="Latest Products">
