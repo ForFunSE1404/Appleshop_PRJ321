@@ -85,6 +85,31 @@
 					</c:if>
 				</table>
 		</div>
+		<div class="center">
+			<div class="pagination">
+				<a href="historybilling?page=${param.page - 1}">&laquo;</a>
+				<c:forEach begin="0" end="${numpage}" var="i">
+					<c:if test="${ param.page == null}">
+						<c:if test="${ i == 0}">
+							<a class="active" href="historybilling?page=${i}">${i}</a>
+						</c:if>
+						<c:if test="${ i != 0}">
+							<a href="historybilling?page=${i}">${i}</a>
+						</c:if>
+					</c:if>
+					<c:if test="${ param.page != null}">
+						<c:if test="${i == param.page}">
+							<a class="active" href="historybilling?page=${i}">${i}</a>
+						</c:if>
+						<c:if test="${i != param.page}">
+							<a href="historybilling?page=${i}">${i}</a>
+						</c:if>
+					</c:if>
+				</c:forEach>
+				<a href="historybilling?page=${param.page + 1}">&raquo;</a>
+			</div>
+		</div>
+		<br>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- Glide Carousel Script -->

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fpt.edu.project.model.Account;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
+import fpt.edu.project.service.CartDetailServiceImpl;
 import fpt.edu.project.service.CartServiceImpl;
 import fpt.edu.project.service.ProductServiceImpl;
 
@@ -27,7 +28,7 @@ public class PageControl {
 	@Autowired
 	private ProductServiceImpl productService;
 	@Autowired
-	private CartServiceImpl cartService;
+	private CartDetailServiceImpl cartDetailService;
 
 	@RequestMapping(value = "/")
 	public String index(ModelMap model, Authentication authentication, Principal principal,
@@ -38,13 +39,7 @@ public class PageControl {
 			session.setAttribute("account", account);
 			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
 		}
-		List<String> listLastestProduct = cartService.getLastestProduct();
-		List<Product> listProduct = new ArrayList<>();
-		for (int i = 0; i < listLastestProduct.size(); i++) {
-			Product product = productService.findById(listLastestProduct.get(i)).get();
-			listProduct.add(product);
-		}
-		System.out.println(listProduct.size() + "=================");
+		List<Product> listProduct = cartDetailService.getLastestProduct();
 		model.addAttribute("listProduct", listProduct);
 		return "user/index";
 	}
@@ -72,7 +67,7 @@ public class PageControl {
 
 		return "user/inforuser";
 	}
-
+  
 	@RequestMapping(value = "/404page")
 	public String errorpage() {
 
