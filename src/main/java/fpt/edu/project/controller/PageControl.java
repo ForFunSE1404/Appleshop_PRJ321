@@ -73,6 +73,7 @@ public class PageControl {
 		
 		return "user/inforuser";
 	}
+	
 
 	@RequestMapping(value = "/wishlist")
 	public String wishlist() {

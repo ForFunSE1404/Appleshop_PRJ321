@@ -123,7 +123,7 @@
                           </svg>
 									</a></li>
 									<li><a data-tip="Add To Wishlist" data-place="left"
-										href="#"> <svg>
+										href="/addtowishlist?productId=${product.productId}"> <svg>
 														<use xlink:href="./images/sprite.svg#icon-heart-o"></use>
 													</svg>
 									</a></li>

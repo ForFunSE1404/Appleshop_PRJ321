@@ -194,7 +194,7 @@ public class Product implements java.io.Serializable {
 		this.ratings = ratings;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
 	public Set<WishList> getWishLists() {
 		return this.wishLists;
 	}
