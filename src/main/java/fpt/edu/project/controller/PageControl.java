@@ -14,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fpt.edu.project.model.Account;
-import fpt.edu.project.model.CartDetail;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.CartServiceImpl;
@@ -45,7 +44,7 @@ public class PageControl {
 			Product product = productService.findById(listLastestProduct.get(i)).get();
 			listProduct.add(product);
 		}
-		System.out.println(listProduct.size()+"=================");
+		System.out.println(listProduct.size() + "=================");
 		model.addAttribute("listProduct", listProduct);
 		return "user/index";
 	}
@@ -58,28 +57,22 @@ public class PageControl {
 
 	@RequestMapping(value = "/changepassword")
 	public String changepassword() {
-		
+
 		return "user/changepassword";
 	}
-	
+
 	@RequestMapping(value = "/information")
 	public String inputaddress() {
-		
+
 		return "user/information";
 	}
-	
+
 	@RequestMapping(value = "/inforuser")
 	public String inforuser() {
-		
+
 		return "user/inforuser";
 	}
-	
 
-	@RequestMapping(value = "/wishlist")
-	public String wishlist() {
-		return "user/wishlist";
-	}
-	
 	@RequestMapping(value = "/404page")
 	public String errorpage() {
 
