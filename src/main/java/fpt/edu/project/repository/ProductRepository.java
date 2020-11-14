@@ -1,5 +1,7 @@
 package fpt.edu.project.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fpt.edu.project.bean.CategoryProductCount;
 import fpt.edu.project.model.Product;
 
 @Repository
@@ -17,8 +20,20 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 	@Query("SELECT P FROM Product P")
 	Page<Product> findProducts(Pageable pageable);
 
+	@Query("SELECT p FROM Product p WHERE p.productName LIKE %:productName%")
+	Page<Product> findProductByName(@Param("productName") String productName, Pageable pageable);
+
+	@Query("SELECT p FROM Product p WHERE p.category.categoryId = :categoryId")
+	Page<Product> findProductByCategory(@Param("categoryId") String catId, Pageable pageable);
+
 	@Query("SELECT count(P) FROM Product P")
-	long count();
+	long countAllProducts();
+
+	@Query("SELECT count(p) FROM Product p WHERE p.productName LIKE %:productName%")
+	long countProductsByName(@Param("productName") String productName);
+
+	@Query("SELECT count(p) FROM Product p WHERE p.category.categoryId = :categoryId")
+	long countProductsByCategory(@Param("categoryId") String catId);
 
 	@Modifying
 	@Query(value = "Insert Into Product(productId, categoryId, productName, updateDate, quantity, price, thumbnail, description, visibility) "
@@ -42,5 +57,8 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
 	@Query(value = "SELECT p FROM Product p WHERE p.productName LIKE %?1%")
 	Page<Product> findByName(Pageable pageable, String productName);
+
+	@Query("SELECT new fpt.edu.project.bean.CategoryProductCount(p.category.categoryName, COUNT(p.category.categoryName)) FROM Product p GROUP BY p.category.categoryName")
+	public List<CategoryProductCount> findCategoryCount();
 
 }

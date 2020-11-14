@@ -17,17 +17,22 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 	@Query("SELECT A FROM Account A")
 	Page<Account> findAccount(Pageable pageable);
 
-	@Query("SELECT count(P) FROM Account P")
-	long count();
+	@Query("SELECT count(A) FROM Account A")
+	long countAllAccount();
+
+	@Query("SELECT A FROM Account A WHERE A.fullname LIKE %:fullname%")
+	Page<Account> findAccountByName(@Param("fullname") String fullname, Pageable pageable);
+
+	@Query("SELECT count(a) FROM Account a WHERE a.fullname LIKE %:fullname%")
+	long countAccountByName(@Param("fullname") String fullname);
 
 	@Query(value = "SELECT A.email FROM Account A WHERE email = ?1", nativeQuery = true)
 	List<String> findByEmail(String email);
-	
+
 	@Modifying
-	@Query(value ="UPDATE Account a SET a.roleId = :roleId WHERE a.userId = :userId", nativeQuery = true)
-	void updateAccount(@Param("roleId") int roleId,@Param("userId") String userId);
+	@Query(value = "UPDATE Account a SET a.roleId = :roleId WHERE a.userId = :userId", nativeQuery = true)
+	void updateAccount(@Param("roleId") int roleId, @Param("userId") String userId);
 
 	@Query("SELECT a FROM Account a WHERE a.email = ?1")
 	Account findAccountEmail(String email);
 }
-

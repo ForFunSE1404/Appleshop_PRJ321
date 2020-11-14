@@ -1,8 +1,6 @@
 package fpt.edu.project.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import fpt.edu.project.model.Category;
-import fpt.edu.project.model.Image;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.service.CategoryServiceImpl;
 import fpt.edu.project.service.ImageServiceImpl;
@@ -45,13 +43,24 @@ public class ProductAdminController {
 	@Autowired
 	public ImageServiceImpl imageService;
 
-	@RequestMapping(value = "admin/products", method = RequestMethod.GET)
-	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model) {
+	@RequestMapping(value = "admin/products")
+	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
+			@RequestParam(name = "keySearch", required = false) String keySearch, ModelMap model) {
+		page = page - 1;
+		long numpage = 1;
+		List<Product> listProduct = null;
 		Pageable pageable = PageRequest.of(page, size);
-		int num = (int) Math.ceil(productService.count() / 10);
-		model.addAttribute("numpage", num);
-		model.addAttribute("listproduct", productService.findProducts(pageable).getContent());
+		if (keySearch == null) {
+			listProduct = productService.findProducts(pageable).getContent();
+			numpage = productService.countAllProducts();
+		} else {
+			listProduct = productService.findProductByName(keySearch, pageable).getContent();
+			numpage = productService.countProductsByName(keySearch);
+		}
+
+		model.addAttribute("listproduct", listProduct);
+		model.addAttribute("numpage", ((long) numpage / size) + 1);
 		return "admin/showallproduct";
 	}
 
@@ -135,7 +144,7 @@ public class ProductAdminController {
 			}
 		}
 		model.addAttribute("listCate", cateService.findAll());
-		return "admin/addproduct";
+		return "redirect:admin/products";
 	}
 
 	@RequestMapping(value = "admin/deleteproduct", method = RequestMethod.POST)
@@ -246,16 +255,16 @@ public class ProductAdminController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
-	@RequestMapping(value = "admin/searchproducts", method = RequestMethod.GET)
-	public String searchproduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model,
-			@RequestParam(name = "txtName") String name) {
-		Pageable pageable = PageRequest.of(page, size);
-		int num = (int) Math.ceil(productService.count() / 10);
-		model.addAttribute("numpage", num);
-		model.addAttribute("listproduct", productService.searchproduct(pageable, name).getContent());
-		return "admin/showallproduct";
-	}
+//	@RequestMapping(value = "admin/searchproducts", method = RequestMethod.GET)
+//	public String searchproduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
+//			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model,
+//			@RequestParam(name = "txtName") String name) {
+//		Pageable pageable = PageRequest.of(page, size);
+//		int num = (int) Math.ceil(productService.count() / 10);
+//		model.addAttribute("numpage", num);
+//		model.addAttribute("listproduct", productService.searchproduct(pageable, name).getContent());
+//		return "admin/showallproduct";
+//	}
 
 	public static void deleteDir(File file) {
 		// neu file la thu muc thi xoa het thu muc con va file cua no

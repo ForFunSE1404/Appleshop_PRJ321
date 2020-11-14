@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+
 
 <!DOCTYPE html>
 <html>
@@ -42,9 +44,9 @@
 			<section class="category__section section" id="category">
 				<div class="tab__list">
 					<div class="title__container tabs no-margin">
-						<form action="product_search">
+						<form action="product">
 							Search Product <input type="text" class="input-search"
-								name="proName" /> <input type="submit" class="btn"
+								name="keySearch" /> <input type="submit" class="btn"
 								value="Search" />
 						</form>
 					</div>
@@ -133,29 +135,36 @@
 
 					</div>
 				</div>
+<!-- 				get param của url -->
+				<c:set var="paramUrl" value="${pageContext.request.queryString}"/>
+<!-- 				nếu param có chứa page= thì xóa nó đi -->
+				<c:if test="${fn:contains(paramUrl, 'page=')}">
+								<c:set var="page" value="&page=${param.page}" />
+					 <c:set var = "paramUrl" value = "${fn:replace(paramUrl, page , '')}" />
+				</c:if>
 				
 				<div class="center">
 					<div class="pagination">
-						<a href="product?page=${param.page - 1}">&laquo;</a>
-						<c:forEach begin="0" end="${numpage}" var="i">
+						<a href="product?${paramUrl}&page=${param.page - 1}">&laquo;</a>
+						<c:forEach begin="1" end="${numpage}" var="i">
 							<c:if test="${ param.page == null}">
-							<c:if test="${ i == 0}">
-								<a class="active" href="product?page=${i}">${i}</a>
+							<c:if test="${ i == 1}">
+								<a class="active" href="product?${paramUrl}&page=${i}">${i}</a>
 							</c:if>
-							<c:if test="${ i != 0}">
-								<a  href="product?page=${i}">${i}</a>
+							<c:if test="${ i != 1}">
+								<a  href="product?${paramUrl}&page=${i}">${i}</a>
 							</c:if>
 							</c:if>
 							<c:if test="${ param.page != null}">
 							<c:if test="${i == param.page}">
-									<a class="active" href="product?page=${i}">${i}</a>
+									<a class="active" href="product?${paramUrl}&page=${i}">${i}</a>
 								</c:if>
 								<c:if test="${i != param.page}">
-									<a href="product?page=${i}">${i}</a>
+									<a href="product?${paramUrl}&page=${i}">${i}</a>
 								</c:if>
 							</c:if>
 						</c:forEach>
-						<a href="product?page=${param.page + 1}">&raquo;</a>
+						<a href="product?${paramUrl}&page=${param.page + 1}">&raquo;</a>
 					</div>
 				</div>
 			</section>
