@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Product</h2>
+						<h2 class="pageheader-title">Show All Bills</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
@@ -49,8 +49,8 @@
 										class="breadcrumb-link">Apple Shop</a></li>
 									<li class="breadcrumb-item"><a href="/admin"
 										class="breadcrumb-link">Management</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data
-										Product</li>
+									<li class="breadcrumb-item active" aria-current="page">Show
+										All Bills</li>
 								</ol>
 							</nav>
 						</div>
@@ -66,27 +66,24 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Data Product Table</h5>
+						<h5 class="card-header">All Bills</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
-
 										<div class="col-sm-10 col-md-10">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<form action="searchproducts" method="GET">
+												<form action="searchbills" method="GET">
 													<label><input type="text"
 														class="form-control form-control-sm" placeholder=""
-														aria-controls="DataTables_Table_0" name="txtName"></label>
+														aria-controls="DataTables_Table_0" name="userId"></label>
 													<button type="submit" class="btn btn-brand">Search</button>
 												</form>
-
 											</div>
-
 										</div>
 										<div class="col-sm-2 col-md-2">
-											<a href="addproduct" class="btn btn-success">Add New</a>
+											<a href="${pageContext.request.contextPath}/admin/bills" class="btn btn-success">List All Bills</a>
 
 										</div>
 									</div>
@@ -101,132 +98,148 @@
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" aria-sort="ascending" style="width: 50px;">ID</th>
+															colspan="1" aria-sort="ascending"
+															aria-label="Name: activate to sort column descending"
+															style="width: 50px;">#ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Cate ID</th>
+															colspan="1"
+															aria-label="Office: activate to sort column ascending"
+															style="width: 80px;">User ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 200px;">Product Name</th>
+															colspan="1"
+															aria-label="Age: activate to sort column ascending"
+															style="width: 100px;">Full Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Update Date</th>
+															colspan="1"
+															aria-label="Age: activate to sort column ascending"
+															style="width: 100px;">Phone Number</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 60px;">Price</th>
+															colspan="1"
+															aria-label="Start date: activate to sort column ascending"
+															style="width: 100px;">Create Date</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 120px;">Quantity</th>
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 70px;">Total Price</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Thumbnail</th>
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 100px;">Status</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Description</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Visibility</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Edit</th>
+															colspan="1"
+															aria-label="Salary: activate to sort column ascending"
+															style="width: 100px;"></th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listproduct}" var="product">
+													<c:forEach items="${listSearchCart}" var="cart">
 														<tr role="row" class="odd">
-															<td class="sorting_1">${product.productId}</td>
-															<td>${product.category.categoryId }</td>
-															<td>${product.productName }</td>
-															<td>${product.updateDate }</td>
-															<td>${product.price }$</td>
-															<td>${product.quantity }</td>
-															<td><img style="width: 100px;"
-																src="${pageContext.request.contextPath}/${product.thumbnail}" /></td>
-															<td>${product.description }</td>
-															<td><c:if test="${product.visibility}">
-																	<input type="checkbox" class="disable" checked
-																		name="name1" />&nbsp;
-															</c:if> <c:if test="${product.visibility == false}">
-																	<input type="checkbox" class="disable" name="name1" />&nbsp;
-															</c:if></td>
+															<td>${cart.cartId}</td>
+															<td>${cart.account.userId}</td>
+															<td>${cart.account.fullname}</td>
+															<td>${cart.account.infoUser.phone}</td>
+															<td>${cart.createDate}</td>
+															<td>${cart.totalprice}$</td>
+															<c:if test="${cart.status == false}">
+																<td>
+																	<p
+																		style="color: navy; font-size: 20px; text-align: center;">Unconfirmed</p>
+																	<a
+																	style="background-color: green; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
+																	href="confirm?cartId=${cart.cartId}"
+																	class="btn btn-primary">Confirm</a>
+																</td>
+															</c:if>
+															<c:if test="${cart.status == true}">
+																<td>
+																	<p
+																		style="color: green; font-size: 20px; text-align: center;">Confirmed</p>
+																	<a
+																	style="background-color: navy; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
+																	href="unconfirm?cartId=${cart.cartId}"
+																	class="btn btn-primary">Unconfirm</a>
+																</td>
+															</c:if>
 															<td><a
-																href="${pageContext.request.contextPath}/admin/editproduct?productId=${product.productId }"
-																class="btn btn-primary">Edit</a></td>
-
+																style="display: block; margin-left: auto; margin-right: auto;"
+																href="viewcartdetail?cartId=${cart.cartId}&userId=${cart.account.userId}"
+																class="btn btn-primary">Views Detail</a></td>
 														</tr>
 													</c:forEach>
-
 												</tbody>
-
 											</table>
 										</div>
 									</div>
 									<br>
-									<div class="row">
-										<nav aria-label="Page navigation example"
-											style="padding-left: 20px;">
-											<ul class="pagination">
-												<c:if test="${param.page == 0 }">
-													<li class="page-item disabled"><a class="page-link"
-														href="products?page=${param.page - 1}">Previous</a></li>
-												</c:if>
-												<c:if test="${param.page != 0 }">
-													<li class="page-item"><a class="page-link"
-														href="products?page=${param.page - 1}">Previous</a></li>
-												</c:if>
-												<c:forEach begin="0" end="${numpage}" var="i">
-													<c:if test="${ param.page == null}">
-														<c:if test="${ i == 0}">
-
-															<li class="page-item active"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-														</c:if>
-														<c:if test="${ i != 0}">
-															<li class="page-item"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
+									<div class="col-sm-12 col-md-12">
+										<div class="row">
+											<nav aria-label="Page navigation example"
+												style="padding-left: 20px;">
+												<ul class="pagination">
+													<c:if test="${param.page == 0 }">
+														<li class="page-item disabled"><a class="page-link"
+															href="searchbills?page=${param.page - 1}">Previous</a></li>
 													</c:if>
-													<c:if test="${ param.page != null}">
-														<c:if test="${i == param.page}">
-															<li class="page-item active"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
-														<c:if test="${i != param.page}">
-															<li class="page-item"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
+													<c:if test="${param.page != 0 }">
+														<li class="page-item"><a class="page-link"
+															href="searchbills?page=${param.page - 1}">Previous</a></li>
 													</c:if>
-												</c:forEach>
-												<c:if test="${param.page == (numpage  )}">
-													<li class="page-item disabled"><a class="page-link"
-														href="products?page=${param.page + 1}">Next</a></li>
-												</c:if>
-												<c:if test="${param.page != (numpage ) }">
-													<li class="page-item"><a class="page-link"
-														href="products?page=${param.page + 1}">Next</a></li>
-												</c:if>
+													<c:forEach begin="0" end="${numpage}" var="i">
+														<c:if test="${ param.page == null}">
+															<c:if test="${ i == 0}">
 
-											</ul>
-										</nav>
+																<li class="page-item active"><a class="page-link"
+																	href="searchbills?page=${i}">${i}</a></li>
+															</c:if>
+															<c:if test="${ i != 0}">
+																<li class="page-item"><a class="page-link"
+																	href="searchbills?page=${i}">${i}</a></li>
+
+															</c:if>
+														</c:if>
+														<c:if test="${ param.page != null}">
+															<c:if test="${i == param.page}">
+																<li class="page-item active"><a class="page-link"
+																	href="searchbills?page=${i}">${i}</a></li>
+
+															</c:if>
+															<c:if test="${i != param.page}">
+																<li class="page-item"><a class="page-link"
+																	href="searchbills?page=${i}">${i}</a></li>
+
+															</c:if>
+														</c:if>
+													</c:forEach>
+													<c:if test="${param.page == (numpage  )}">
+														<li class="page-item disabled"><a class="page-link"
+															href="searchbills?page=${param.page + 1}">Next</a></li>
+													</c:if>
+													<c:if test="${param.page != (numpage ) }">
+														<li class="page-item"><a class="page-link"
+															href="searchbills?page=${param.page + 1}">Next</a></li>
+													</c:if>
+
+												</ul>
+											</nav>
+										</div>
 									</div>
-
-
-
-
-
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- ============================================================== -->
-					<!-- end basic table  -->
-					<!-- ============================================================== -->
 				</div>
-
+				<!-- ============================================================== -->
+				<!-- end basic table  -->
+				<!-- ============================================================== -->
 			</div>
+
 		</div>
 		<!-- ============================================================== -->
 		<!-- footer -->

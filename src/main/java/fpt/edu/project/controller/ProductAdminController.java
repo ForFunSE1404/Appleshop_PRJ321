@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,15 +47,26 @@ public class ProductAdminController {
 	public ImageServiceImpl imageService;
 
 	@RequestMapping(value = "admin/products", method = RequestMethod.GET)
-	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size, ModelMap model) {
-		Pageable pageable = PageRequest.of(page, size);
-		int num = (int) Math.ceil(productService.count() / 10);
+	public String showProduct(HttpServletRequest request ,@RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
+			@RequestParam(name = "size", required = false, defaultValue = "3") Integer size, ModelMap model) {		
+		Pageable pageable = null;
+		String keySearch = "iphone";
+		List<Product> listproduct = null;
+		if (keySearch == null) {
+			 pageable = PageRequest.of(page, size);
+			 listproduct = productService.findProducts(pageable).getContent();
+		}else {
+			listproduct = productService.findProductsByName(pageable, keySearch).getContent();
+		}
+		int num = (int) Math.ceil(listproduct.size() / 3);
+		System.out.print("numpage" + num);
 		model.addAttribute("numpage", num);
-		model.addAttribute("listproduct", productService.findProducts(pageable).getContent());
+		model.addAttribute("listproduct", listproduct);
 		return "admin/showallproduct";
 	}
 
+
+	
 	@RequestMapping(value = "admin/addproduct", method = RequestMethod.GET)
 	public String addviewProduct(ModelMap model) {
 		model.addAttribute("listCate", cateService.findAll());

@@ -57,6 +57,9 @@ public class ProductServiceImpl {
 		return productRepository.findProducts(pageable);
 	}
 
+	public Page<Product> findProductsByName(Pageable pageable, String productName) {
+		return productRepository.findProductsByName(pageable, productName);
+	}
 	public long count() {
 		return productRepository.count();
 	}

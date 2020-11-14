@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Product</h2>
+						<h2 class="pageheader-title">Show All Cart</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
@@ -49,8 +49,8 @@
 										class="breadcrumb-link">Apple Shop</a></li>
 									<li class="breadcrumb-item"><a href="/admin"
 										class="breadcrumb-link">Management</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data
-										Product</li>
+									<li class="breadcrumb-item active" aria-current="page">Show
+										All Cart</li>
 								</ol>
 							</nav>
 						</div>
@@ -66,28 +66,21 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Data Product Table</h5>
+						<h5 class="card-header">Cart Detail</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
 
-										<div class="col-sm-10 col-md-10">
+										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<form action="searchproducts" method="GET">
-													<label><input type="text"
-														class="form-control form-control-sm" placeholder=""
-														aria-controls="DataTables_Table_0" name="txtName"></label>
-													<button type="submit" class="btn btn-brand">Search</button>
-												</form>
-
+												<br>
+												<p style="font-size: 15px;">Full Name: ${fullname}</p>
+												<p style="font-size: 15px;">City: ${city}</p>
+												<p style="font-size: 15px;">Address: ${address}</p>
+												<p style="font-size: 15px;">Phone Number: ${phone}</p>
 											</div>
-
-										</div>
-										<div class="col-sm-2 col-md-2">
-											<a href="addproduct" class="btn btn-success">Add New</a>
-
 										</div>
 									</div>
 									<br>
@@ -101,132 +94,62 @@
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" aria-sort="ascending" style="width: 50px;">ID</th>
+															colspan="1" aria-sort="ascending"
+															aria-label="Name: activate to sort column descending"
+															style="width: 50px;">#ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Cate ID</th>
+															colspan="1"
+															aria-label="Office: activate to sort column ascending"
+															style="width: 80px;">Image</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 200px;">Product Name</th>
+															colspan="1"
+															aria-label="Age: activate to sort column ascending"
+															style="width: 100px;">Product Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Update Date</th>
+															colspan="1"
+															aria-label="Age: activate to sort column ascending"
+															style="width: 100px;">Quantity</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 60px;">Price</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 120px;">Quantity</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Thumbnail</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Description</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Visibility</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Edit</th>
+															colspan="1"
+															aria-label="Start date: activate to sort column ascending"
+															style="width: 100px;">Price</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listproduct}" var="product">
+													<c:forEach items="${listCartDetail}" var="cartdetail">
 														<tr role="row" class="odd">
-															<td class="sorting_1">${product.productId}</td>
-															<td>${product.category.categoryId }</td>
-															<td>${product.productName }</td>
-															<td>${product.updateDate }</td>
-															<td>${product.price }$</td>
-															<td>${product.quantity }</td>
-															<td><img style="width: 100px;"
-																src="${pageContext.request.contextPath}/${product.thumbnail}" /></td>
-															<td>${product.description }</td>
-															<td><c:if test="${product.visibility}">
-																	<input type="checkbox" class="disable" checked
-																		name="name1" />&nbsp;
-															</c:if> <c:if test="${product.visibility == false}">
-																	<input type="checkbox" class="disable" name="name1" />&nbsp;
-															</c:if></td>
-															<td><a
-																href="${pageContext.request.contextPath}/admin/editproduct?productId=${product.productId }"
-																class="btn btn-primary">Edit</a></td>
-
+															<td style="text-align: center;">${cartdetail.cart.cartId}</td>
+															<td><img
+																style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;"
+																src="${cartdetail.product.thumbnail}" /></td>
+															<td style="text-align: center;">${cartdetail.product.productName}</td>
+															<td style="text-align: center;">${cartdetail.quantity}</td>
+															<td style="text-align: center;">${cartdetail.price}
+																$</td>
 														</tr>
 													</c:forEach>
-
+													<p style="text-align: right; font-size: 20px; color: red;">Total
+														price : ${total} $</p>
+													<br>
 												</tbody>
-
 											</table>
 										</div>
 									</div>
 									<br>
-									<div class="row">
-										<nav aria-label="Page navigation example"
-											style="padding-left: 20px;">
-											<ul class="pagination">
-												<c:if test="${param.page == 0 }">
-													<li class="page-item disabled"><a class="page-link"
-														href="products?page=${param.page - 1}">Previous</a></li>
-												</c:if>
-												<c:if test="${param.page != 0 }">
-													<li class="page-item"><a class="page-link"
-														href="products?page=${param.page - 1}">Previous</a></li>
-												</c:if>
-												<c:forEach begin="0" end="${numpage}" var="i">
-													<c:if test="${ param.page == null}">
-														<c:if test="${ i == 0}">
-
-															<li class="page-item active"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-														</c:if>
-														<c:if test="${ i != 0}">
-															<li class="page-item"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
-													</c:if>
-													<c:if test="${ param.page != null}">
-														<c:if test="${i == param.page}">
-															<li class="page-item active"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
-														<c:if test="${i != param.page}">
-															<li class="page-item"><a class="page-link"
-																href="products?page=${i}">${i}</a></li>
-
-														</c:if>
-													</c:if>
-												</c:forEach>
-												<c:if test="${param.page == (numpage  )}">
-													<li class="page-item disabled"><a class="page-link"
-														href="products?page=${param.page + 1}">Next</a></li>
-												</c:if>
-												<c:if test="${param.page != (numpage ) }">
-													<li class="page-item"><a class="page-link"
-														href="products?page=${param.page + 1}">Next</a></li>
-												</c:if>
-
-											</ul>
-										</nav>
-									</div>
-
-
-
-
-
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- ============================================================== -->
-					<!-- end basic table  -->
-					<!-- ============================================================== -->
 				</div>
-
+				<!-- ============================================================== -->
+				<!-- end basic table  -->
+				<!-- ============================================================== -->
 			</div>
+
 		</div>
 		<!-- ============================================================== -->
 		<!-- footer -->

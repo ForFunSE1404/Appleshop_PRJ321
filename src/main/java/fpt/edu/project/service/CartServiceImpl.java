@@ -18,13 +18,23 @@ public class CartServiceImpl {
 	public long count() {
 		return cartRepository.count();
 	}
+
 	public Cart save(Cart cart) {
 		return cartRepository.save(cart);
 	}
-	public List<Cart> getById(String userId) {
-		return cartRepository.getCartById(userId);
+
+	public Page<Cart> getByUserId(String userId, Pageable pageable) {
+		return cartRepository.getByUserId(userId, pageable);
 	}
-	public Page<Cart> getAllCart(Pageable pageable ){
+
+	public Page<Cart> getAllCart(Pageable pageable) {
 		return cartRepository.getAllCart(pageable);
+	}
+	
+	public void unconfirmCart(int cartId) {
+		cartRepository.unconfirmCart(cartId);;
+	}
+	public void confirmCart(int cartId) {
+		cartRepository.confirmCart(cartId);;
 	}
 }
