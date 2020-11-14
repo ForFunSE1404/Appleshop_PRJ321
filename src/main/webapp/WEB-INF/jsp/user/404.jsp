@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>404 - Not Found</title>
 <style>
-	.main{
-  margin-top: 15%;
-}
+
 
 .st0{fill:#fff}
 .st2{fill:#5d89af}

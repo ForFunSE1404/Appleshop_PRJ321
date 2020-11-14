@@ -6,6 +6,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ import fpt.edu.project.service.AccountServiceImpl;
 
 @Controller
 public class ForgotPasswordController {
-
+	@Autowired
+	private JavaMailSender javaMailSender;
 	@Autowired
 	private AccountServiceImpl accountService;
 
@@ -126,12 +128,12 @@ public class ForgotPasswordController {
 					+ "        <td style=\"font-family: sans-serif; font-size: 14px; vertical-align: top;\">&nbsp;</td>\r\n"
 					+ "      </tr>\r\n" + "    </table>\r\n" + "  </body>\r\n" + "</html>";
 			try {
-//				MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-//				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-//				helper.setSubject("Reset Password - AppleShop.com");
-//				helper.setTo(account.getEmail());
-//				helper.setText(htmlString, true);
-//				javaMailSender.send(mimeMessage);
+				MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+				helper.setSubject("Reset Password - AppleShop.com");
+				helper.setTo(account.getEmail());
+				helper.setText(htmlString, true);
+				javaMailSender.send(mimeMessage);
 			} catch (Exception e) {
 
 			}

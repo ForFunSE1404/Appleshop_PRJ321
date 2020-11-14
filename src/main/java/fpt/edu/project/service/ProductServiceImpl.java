@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import fpt.edu.project.bean.CategoryProductCount;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.repository.ProductRepository;
 
@@ -41,12 +42,10 @@ public class ProductServiceImpl {
 		productRepository.insertProduct(id, cateId, name, date, quantity, price, thumbnail, description, visibility);
 	}
 
-
 	public void updateProduct(String id, String cateId, String name, String date, int quantity, double price,
 			String thumbnail, String description, boolean visibility) {
 		productRepository.updateProduct(id, cateId, name, date, quantity, price, thumbnail, description, visibility);
 	}
-
 
 	public Page<Product> searchproduct(Pageable page, String name) {
 		System.out.print(name);
@@ -57,10 +56,28 @@ public class ProductServiceImpl {
 		return productRepository.findProducts(pageable);
 	}
 
-	public Page<Product> findProductsByName(Pageable pageable, String productName) {
-		return productRepository.findProductsByName(pageable, productName);
+
+	public Page<Product> findProductByName(String productName, Pageable pageable) {
+		return productRepository.findProductByName(productName, pageable);
 	}
-	public long count() {
-		return productRepository.count();
+
+	public Page<Product> findProductByCategory(String catId, Pageable pageable) {
+		return productRepository.findProductByCategory(catId, pageable);
+	}
+
+	public long countProductsByCategory(String catId) {
+		return productRepository.countProductsByCategory(catId);
+	}
+
+	public long countProductsByName(String productName) {
+		return productRepository.countProductsByName(productName);
+	}
+
+	public long countAllProducts() {
+		return productRepository.countAllProducts();
+	}
+
+	public List<CategoryProductCount> findCategoryCount() {
+		return productRepository.findCategoryCount();
 	}
 }

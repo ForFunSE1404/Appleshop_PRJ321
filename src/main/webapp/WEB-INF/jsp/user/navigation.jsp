@@ -76,7 +76,7 @@
               <svg class="icon__cart">
                 <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
               </svg>
-              <span id="cart__total">${sessionScope.totalquantity == 0 ? 0 : sessionScope.totalquantity}</span>
+              <span id="cart__total">${sessionScope.totalquantity == null ? '0' : sessionScope.totalquantity}</span>
             </a>
           </div>
         </nav>
