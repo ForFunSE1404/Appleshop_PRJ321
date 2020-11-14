@@ -34,7 +34,7 @@
                                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/products">Product Management</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/carousel.html">Bill Management</a>
+                                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/bills">Bill Management</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="${pageContext.request.contextPath}/admin/category">Category Management</a>

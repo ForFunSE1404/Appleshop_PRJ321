@@ -60,7 +60,7 @@
 							<p style="text-align: center;">${item.cart.cartId}</p>
 						</td>
 						<td>
-							<img style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;" src="${item.product.thumbnail}"/>
+							<img style="width: 500px; height: 300px; display: block; margin-left: auto; margin-right: auto;" src="${item.product.thumbnail}"/>
 						</td>
 						<td>
 							<p style="text-align: center;">${item.product.productName}</p>

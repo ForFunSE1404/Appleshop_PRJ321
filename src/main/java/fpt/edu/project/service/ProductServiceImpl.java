@@ -56,6 +56,7 @@ public class ProductServiceImpl {
 		return productRepository.findProducts(pageable);
 	}
 
+
 	public Page<Product> findProductByName(String productName, Pageable pageable) {
 		return productRepository.findProductByName(productName, pageable);
 	}
