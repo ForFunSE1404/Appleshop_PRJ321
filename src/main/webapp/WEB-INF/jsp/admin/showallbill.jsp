@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <!doctype html>
 <html lang="en">
 
@@ -15,11 +13,9 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css">
-<link
-	href="${pageContext.request.contextPath}/assets/vendor/fonts/circular-std/style.css"
+<link href="${pageContext.request.contextPath}/assets/vendor/fonts/circular-std/style.css"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/libs/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/libs/css/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 <link rel="stylesheet"
@@ -41,6 +37,9 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
 						<h2 class="pageheader-title">Data Product</h2>
+						<p class="pageheader-text">Proin placerat ante duiullam
+							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
+							lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
@@ -67,30 +66,30 @@
 					<div class="card">
 						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
-							<div class="table-responsive" style="overflow-x: hidden;">
-
-
-
-
+							<div class="table-responsive">
+							
+	
+							
+							
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
 
 										<div class="col-sm-10 col-md-10">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<form action="products" method="GET">
+												<form action="searchproducts" method="GET">
 													<label><input type="text"
 														class="form-control form-control-sm" placeholder=""
-														aria-controls="DataTables_Table_0" name="keySearch"></label>
+														aria-controls="DataTables_Table_0" name="txtName"></label>
 													<button type="submit" class="btn btn-brand">Search</button>
 												</form>
-
+												
 											</div>
-
+											
 										</div>
 										<div class="col-sm-2 col-md-2">
 											<a href="addproduct" class="btn btn-success">Add New</a>
-
+										
 										</div>
 									</div>
 									<br>
@@ -104,35 +103,45 @@
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" aria-sort="ascending" style="width: 50px;">ID</th>
+															colspan="1" aria-sort="ascending"
+															style="width: 50px;">ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Cate ID</th>
+															colspan="1"
+															style="width: 50px;">Cate ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 200px;">Product Name</th>
+															colspan="1"
+															style="width: 200px;">Product Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Update Date</th>
+															colspan="1"
+															style="width: 150px;">Update Date</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 60px;">Price</th>
+															colspan="1"
+															style="width: 60px;">Price</th>
+															<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															style="width: 120px;">Quantity</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 120px;">Quantity</th>
+															colspan="1"
+															style="width: 80px;">Thumbnail</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Thumbnail</th>
+															colspan="1"
+															style="width: 150px;">Description</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 150px;">Description</th>
+															colspan="1"
+															style="width: 50px;">Visibility</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Visibility</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 80px;">Edit</th>
-
+															colspan="1"
+															style="width: 80px;">Edit</th>
+													
 													</tr>
 												</thead>
 												<tbody>
@@ -142,9 +151,9 @@
 															<td>${product.category.categoryId }</td>
 															<td>${product.productName }</td>
 															<td>${product.updateDate }</td>
-															<td>$${product.price }</td>
+															<td>${product.price }$</td>
 															<td>${product.quantity }</td>
-															<td><img style="width: 70px; height: 100px;"
+															<td><img style="width:100px;"
 																src="${pageContext.request.contextPath}/${product.thumbnail}" /></td>
 															<td>${product.description }</td>
 															<td><c:if test="${product.visibility}">
@@ -155,8 +164,8 @@
 															</c:if></td>
 															<td><a
 																href="${pageContext.request.contextPath}/admin/editproduct?productId=${product.productId }"
-																class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-
+																class="btn btn-primary">Edit</a></td>
+															
 														</tr>
 													</c:forEach>
 
@@ -166,65 +175,60 @@
 										</div>
 									</div>
 									<br>
-									<!-- 				get param của url -->
-									<c:set var="paramUrl"
-										value="${pageContext.request.queryString}" />
-									<!-- 				nếu param có chứa page= thì xóa nó đi -->
-									<c:if test="${fn:contains(paramUrl, 'page=')}">
-										<c:set var="page" value="&page=${param.page}" />
-										<c:set var="paramUrl"
-											value="${fn:replace(paramUrl, page , '')}" />
-									</c:if>
 									<div class="row">
-										<nav aria-label="Page navigation example"
-											style="padding-left: 20px;">
-											<ul class="pagination">
-												<c:if test="${param.page == 1 }">
+										<nav aria-label="Page navigation example" style="padding-left: 20px;">
+											<ul class="pagination" >
+												<c:if test="${param.page == 0 }">
 													<li class="page-item disabled"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page - 1}">Previous</a></li>
+														href="products?page=${param.page - 1}">Previous</a></li>
 												</c:if>
-												<c:if test="${param.page != 1 }">
+												<c:if test="${param.page != 0 }">
 													<li class="page-item"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page - 1}">Previous</a></li>
+														href="products?page=${param.page - 1}">Previous</a></li>
 												</c:if>
-												<c:forEach begin="1" end="${numpage}" var="i">
+												<c:forEach begin="0" end="${numpage}" var="i">
 													<c:if test="${ param.page == null}">
-														<c:if test="${ i == 1}">
+														<c:if test="${ i == 0}">
 
 															<li class="page-item active"><a class="page-link"
-																href="products?${paramUrl}&page=${i}">${i}</a></li>
+																href="products?page=${i}">${i}</a></li>
 														</c:if>
-														<c:if test="${ i != 1}">
+														<c:if test="${ i != 0}">
 															<li class="page-item"><a class="page-link"
-																href="products?${paramUrl}&page=${i}">${i}</a></li>
+																href="products?page=${i}">${i}</a></li>
 
 														</c:if>
 													</c:if>
 													<c:if test="${ param.page != null}">
 														<c:if test="${i == param.page}">
 															<li class="page-item active"><a class="page-link"
-																href="products?${paramUrl}&page=${i}">${i}</a></li>
+																href="products?page=${i}">${i}</a></li>
 
 														</c:if>
 														<c:if test="${i != param.page}">
 															<li class="page-item"><a class="page-link"
-																href="products?${paramUrl}&page=${i}">${i}</a></li>
+																href="products?page=${i}">${i}</a></li>
 
 														</c:if>
 													</c:if>
 												</c:forEach>
 												<c:if test="${param.page == (numpage  )}">
 													<li class="page-item disabled"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
+														href="products?page=${param.page + 1}">Next</a></li>
 												</c:if>
 												<c:if test="${param.page != (numpage ) }">
 													<li class="page-item"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
+														href="products?page=${param.page + 1}">Next</a></li>
 												</c:if>
 
 											</ul>
 										</nav>
 									</div>
+
+
+
+
+
 								</div>
 							</div>
 						</div>
@@ -235,42 +239,38 @@
 				</div>
 
 			</div>
-		</div>
-		<!-- ============================================================== -->
-		<!-- footer -->
-		<!-- ============================================================== -->
-		<div class="footer">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-						Copyright © 2018 Concept. All rights reserved. Dashboard by <a
-							href="https://colorlib.com/wp/">Colorlib</a>.
-					</div>
-					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-						<div class="text-md-right footer-links d-none d-sm-block">
-							<a href="javascript: void(0);">About</a> <a
-								href="javascript: void(0);">Support</a> <a
-								href="javascript: void(0);">Contact Us</a>
+			</div>
+			<!-- ============================================================== -->
+			<!-- footer -->
+			<!-- ============================================================== -->
+			<div class="footer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							Copyright © 2018 Concept. All rights reserved. Dashboard by <a
+								href="https://colorlib.com/wp/">Colorlib</a>.
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="text-md-right footer-links d-none d-sm-block">
+								<a href="javascript: void(0);">About</a> <a
+									href="javascript: void(0);">Support</a> <a
+									href="javascript: void(0);">Contact Us</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- ============================================================== -->
+			<!-- end footer -->
+			<!-- ============================================================== -->
 		</div>
-		<!-- ============================================================== -->
-		<!-- end footer -->
-		<!-- ============================================================== -->
 	</div>
-</div>
-<script
-	src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-<!-- bootstap bundle js -->
-<script
-	src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-<!-- slimscroll js -->
-<script
-	src="${pageContext.request.contextPath}/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-<!-- main js -->
-<script
-	src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
-</body>
+	<script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<!-- bootstap bundle js -->
+	<script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+	<!-- slimscroll js -->
+	<script src="${pageContext.request.contextPath}/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+	<!-- main js -->
+	<script src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
+	</body>
 </html>

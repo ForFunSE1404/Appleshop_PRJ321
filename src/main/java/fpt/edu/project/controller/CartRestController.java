@@ -35,6 +35,7 @@ public class CartRestController {
 				HashMap<Product, Integer> cart = new HashMap<>();
 				cart.put(product, 1);
 				totalquantity += 1;
+				session.setAttribute("totalquantity", totalquantity);
 				session.setAttribute("cart", cart);
 			} else {
 				HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");

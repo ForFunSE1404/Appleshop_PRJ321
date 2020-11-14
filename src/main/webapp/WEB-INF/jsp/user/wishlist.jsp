@@ -54,44 +54,14 @@
 				<div class="tab__list">
 					<div class="title__container tabs">
 						<div class="section__titles category__titles ">
-							<c:if test="${param.catId == null }">
-								<div class="section__title filter-btn active"
-									data-id="All Products">
-									<span class="dot"></span>
-									<h1 class="primary__title">
-										<a href="product">All Products</a>
-									</h1>
-								</div>
-							</c:if>
-							<c:if test="${param.catId != null }">
-								<div class="section__title filter-btn" data-id="All Products">
-									<span class="dot"></span>
-									<h1 class="primary__title">
-										<a href="product">All Products</a>
-									</h1>
-								</div>
-							</c:if>
-							<c:forEach items="${listCategories}" var="category">
-								<!--Check active -->
-								<c:if test="${category.categoryId == param.catId}">
-									<div class="section__title filter-btn active"
-										data-id="${category.categoryName}">
-										<span class="dot"></span>
-										<h1 class="primary__title">
-											<a href="/product?catId=${category.categoryId}">${category.categoryName}</a>
-										</h1>
-									</div>
-								</c:if>
-								<c:if test="${category.categoryId != param.catId}">
-									<div class="section__title filter-btn"
-										data-id="${category.categoryName}">
-										<span class="dot"></span>
-										<h1 class="primary__title">
-											<a href="/product?catId=${category.categoryId}">${category.categoryName}</a>
-										</h1>
-									</div>
-								</c:if>
-							</c:forEach>
+							<div class="section__title filter-btn active"
+								data-id="All Products">
+								<span class="dot"></span>
+								<h1 class="primary__title">
+									<a href="product">Your Wish List</a>
+								</h1>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -120,11 +90,9 @@
                             <use
 													xlink:href="./images/sprite.svg#icon-eye"></use>
                           </svg>
-									</a>
-									</li>
+									</a></li>
 									<li><a data-tip="Delete " data-place="left"
-										href="deletewishlist?wishlistId=${wishlist.wishListId}">
-											<svg>
+										href="deletewishlist?wishlistId=${wishlist.wishListId}"> <svg>
                             <use
 													xlink:href="./images/sprite.svg#icon-trash"></use>
                           </svg>
