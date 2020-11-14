@@ -47,13 +47,28 @@ public class ProductServiceImpl {
 		productRepository.updateProduct(id, cateId, name, date, quantity, price, thumbnail, description, visibility);
 	}
 
-	public Page<Product> searchproduct(Pageable page, String name) {
-		System.out.print(name);
-		return productRepository.findByName(page, name);
+	public Page<Product> findProductsVisibile(Pageable pageable) {
+		return productRepository.findProductsVisibile(pageable);
 	}
 
 	public Page<Product> findProducts(Pageable pageable) {
 		return productRepository.findProducts(pageable);
+	}
+
+	public Page<Product> findProductByNameVisible(String productName, Pageable pageable) {
+		return productRepository.findProductByNameVisible(productName, pageable);
+	}
+
+	public Page<Product> findProductByCategoryVisible(String catId, Pageable pageable) {
+		return productRepository.findProductByCategoryVisible(catId, pageable);
+	}
+
+	public long countProductsByCategoryVisible(String catId) {
+		return productRepository.countProductsByCategoryVisible(catId);
+	}
+
+	public long countProductsByNameVisible(String productName) {
+		return productRepository.countProductsByNameVisible(productName);
 	}
 
 	public Page<Product> findProductByName(String productName, Pageable pageable) {
@@ -74,6 +89,10 @@ public class ProductServiceImpl {
 
 	public long countAllProducts() {
 		return productRepository.countAllProducts();
+	}
+
+	public long countAllProductsVisibile() {
+		return productRepository.countAllProductsVisibile();
 	}
 
 	public List<CategoryProductCount> findCategoryCount() {

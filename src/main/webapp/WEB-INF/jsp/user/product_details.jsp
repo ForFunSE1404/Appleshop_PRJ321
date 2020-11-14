@@ -78,29 +78,29 @@
 
 							<h3>${product.productName}</h3>
 							<div class="price">
-								<span class="new__price">${product.price}</span>
+								<span class="new__price">$${product.price}</span>
 							</div>
-							<div class="product__review">
-								<div class="rating">
-									<svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                  </svg>
-									<svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                  </svg>
-									<svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                  </svg>
-									<svg>
-                    <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                  </svg>
-									<svg>
-                    <use
-											xlink:href="./images/sprite.svg#icon-star-empty"></use>
-                  </svg>
-								</div>
-								<a href="#" class="rating__quatity">3 reviews</a>
-							</div>
+<!-- 							<div class="product__review"> -->
+<!-- 								<div class="rating"> -->
+<!-- 									<svg> -->
+<!--                     <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                   </svg> -->
+<!-- 									<svg> -->
+<!--                     <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                   </svg> -->
+<!-- 									<svg> -->
+<!--                     <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                   </svg> -->
+<!-- 									<svg> -->
+<!--                     <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                   </svg> -->
+<!-- 									<svg> -->
+<!--                     <use -->
+<!-- 											xlink:href="./images/sprite.svg#icon-star-empty"></use> -->
+<!--                   </svg> -->
+<!-- 								</div> -->
+<!-- 								<a href="#" class="rating__quatity">3 reviews</a> -->
+<!-- 							</div> -->
 							<p>${product.description}</p>
 							<div class="product__info-container">
 								<ul class="product__info">
@@ -174,26 +174,26 @@
 									loremous</li>
 							</ol>
 						</div>
-						<div class="content" id="reviews">
-							<h1>Customer Reviews</h1>
-							<div class="rating">
-								<svg>
-                  <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                </svg>
-								<svg>
-                  <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                </svg>
-								<svg>
-                  <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                </svg>
-								<svg>
-                  <use xlink:href="./images/sprite.svg#icon-star-full"></use>
-                </svg>
-								<svg>
-                  <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
-                </svg>
-							</div>
-						</div>
+<!-- 						<div class="content" id="reviews"> -->
+<!-- 							<h1>Customer Reviews</h1> -->
+<!-- 							<div class="rating"> -->
+<!-- 								<svg> -->
+<!--                   <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                 </svg> -->
+<!-- 								<svg> -->
+<!--                   <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                 </svg> -->
+<!-- 								<svg> -->
+<!--                   <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                 </svg> -->
+<!-- 								<svg> -->
+<!--                   <use xlink:href="./images/sprite.svg#icon-star-full"></use> -->
+<!--                 </svg> -->
+<!-- 								<svg> -->
+<!--                   <use xlink:href="./images/sprite.svg#icon-star-empty"></use> -->
+<!--                 </svg> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 						<div class="content" id="shipping">
 							<h3>Returns Policy</h3>
 							<p>You may return most new, unopened items within 30 days of
@@ -213,8 +213,7 @@
 					</div>
 				</div>
 			</section>
-			<!-- Lates Product -->
-<%-- 			<jsp:include page="latestproduct.jsp"></jsp:include> --%>
+			<jsp:include page="bestsell.jsp"></jsp:include>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>

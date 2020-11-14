@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Product;
+import fpt.edu.project.service.CartDetailServiceImpl;
 import fpt.edu.project.service.CategoryServiceImpl;
 import fpt.edu.project.service.ProductServiceImpl;
 
@@ -22,6 +23,8 @@ public class ProductController {
 	private ProductServiceImpl productService;
 	@Autowired
 	private CategoryServiceImpl categoryService;
+	@Autowired
+	private CartDetailServiceImpl cartDetailService;
 
 	@RequestMapping(value = "/product")
 	public String productCategory(@RequestParam(name = "catId", required = false) String catId,
@@ -34,14 +37,14 @@ public class ProductController {
 		long numpage = 1;
 		Pageable pageable = PageRequest.of(page, size);
 		if (catId == null && keySearch == null) {
-			listProduct = productService.findProducts(pageable).getContent();
-			numpage = productService.countAllProducts();
+			listProduct = productService.findProductsVisibile(pageable).getContent();
+			numpage = productService.countAllProductsVisibile();
 		} else if (catId == null && keySearch != null) {
-			listProduct = productService.findProductByName(keySearch, pageable).getContent();
-			numpage = productService.countProductsByName(keySearch);
+			listProduct = productService.findProductByNameVisible(keySearch, pageable).getContent();
+			numpage = productService.countProductsByNameVisible(keySearch);
 		} else if (catId != null && keySearch == null) {
-			listProduct = productService.findProductByCategory(catId, pageable).getContent();
-			numpage = productService.countProductsByCategory(catId);
+			listProduct = productService.findProductByCategoryVisible(catId, pageable).getContent();
+			numpage = productService.countProductsByCategoryVisible(catId);
 		}
 		model.addAttribute("listProduct", listProduct);
 		model.addAttribute("numpage", ((long) numpage / size) + 1);
@@ -52,6 +55,8 @@ public class ProductController {
 	public String details(@RequestParam String proId, ModelMap model) {
 		Product product = productService.findById(proId).get();
 		model.addAttribute("product", product);
+		List<Product> listProduct = cartDetailService.getLastestProduct();
+		model.addAttribute("listbestsell", listProduct);
 		return "user/product_details";
 	}
 

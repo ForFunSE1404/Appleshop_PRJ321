@@ -54,7 +54,7 @@
 							<div class="cart-info">
 								<img src="${item.key.thumbnail }">
 								<div>
-									<p></p>
+									<small>${item.key.productName} - ${item.key.productId}</small> <br>
 									<small>Price: ${item.key.price }</small> <br> <a
 										class="deletecart"
 										href="deletecart?productId=${item.key.productId}">Remove</a>

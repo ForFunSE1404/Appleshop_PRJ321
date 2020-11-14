@@ -65,7 +65,7 @@
           </div>
       </section>
       <!-- Lates Product -->
-		<jsp:include page="latestproduct.jsp"></jsp:include>
+		<jsp:include page="bestsell.jsp"></jsp:include>
 
 			<!-- Facility Section -->
 			<section class="facility__section section" id="facility">

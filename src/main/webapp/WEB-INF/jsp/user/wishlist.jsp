@@ -73,7 +73,6 @@
 									<img src="${wishlist.product.thumbnail}" alt="product">
 								</div>
 								<div class="product__footer">
-									s
 									<h3>${wishlist.product.productName}</h3>
 									<div class="rating"></div>
 									<div class="product__price">
