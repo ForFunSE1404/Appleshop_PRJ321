@@ -1,5 +1,7 @@
 package fpt.edu.project.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Account;
+import fpt.edu.project.model.Cart;
 import fpt.edu.project.service.CartServiceImpl;
 
 @Controller
@@ -26,10 +29,10 @@ public class HistoryBillingController {
 		Account acc = (Account) session.getAttribute("account");
 		page = page - 1;
 		Pageable pageable = PageRequest.of(page, size);
-		int num = (int) (cartServiceImpl.count() / 10 + 1);
+		int num = (int) (cartServiceImpl.countCart(acc.getUserId()) / 10 + 1);
+		List<Cart> list = null;
 		model.addAttribute("numpage", num);
 		model.addAttribute("listCart", cartServiceImpl.getByUserId(acc.getUserId(), pageable).getContent());
 		return "user/historybilling";
 	}
-
 }

@@ -14,14 +14,15 @@ import fpt.edu.project.model.Cart;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
+
 	@Query(value = "SELECT * FROM Cart WHERE userId LIKE %:userId%", nativeQuery = true)
 	Page<Cart> getByUserId(@Param("userId") String userId, Pageable pageable);
 
-	@Query(value = "SELECT * FROM Cart WHERE userId :userId", nativeQuery = true)
-	Cart getCartByUserId(@Param("userId") String userId);
-
 	@Query("SELECT C FROM Cart C")
 	Page<Cart> getAllCart(Pageable pageable);
+
+	@Query("SELECT count(*) FROM Cart WHERE userId LIKE %:userId%")
+	long countCart(@Param("userId") String userId);
 
 	@Transactional
 	@Modifying

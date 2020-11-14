@@ -128,8 +128,7 @@
 																src="${cartdetail.product.thumbnail}" /></td>
 															<td style="text-align: center;">${cartdetail.product.productName}</td>
 															<td style="text-align: center;">${cartdetail.quantity}</td>
-															<td style="text-align: center;">${cartdetail.price}
-																$</td>
+															<td style="text-align: center;">$ ${cartdetail.price}</td>
 														</tr>
 													</c:forEach>
 													<p style="text-align: right; font-size: 20px; color: red;">Total

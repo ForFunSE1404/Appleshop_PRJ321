@@ -30,8 +30,6 @@
 	href="${pageContext.request.contextPath}/styles.css" />
 
 <title>Apple Shop</title>
-
-<title>Apple Shop</title>
 </head>
 <body>
 	<!-- Header -->
@@ -43,7 +41,12 @@
 	<h2
 		style="text-align: center; font-size: 40px;">HISTORY BILLING</h2>
 	<main id="main">
-		<div class="small-container cart-page">
+		<div class="small-container cart-page">	
+		<p>Full Name: ${fullname}</p>
+		<p>City: ${city}</p>
+		<p>Address: ${address}</p>
+		<p>Phone number: ${phone}</p>
+		<br>
 			<table>
 				<tr>
 					<th>Cart ID</th>
@@ -60,7 +63,7 @@
 							<p style="text-align: center;">${item.cart.cartId}</p>
 						</td>
 						<td>
-							<img style="width: 500px; height: 300px; display: block; margin-left: auto; margin-right: auto;" src="${item.product.thumbnail}"/>
+							<img style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;" src="${item.product.thumbnail}"/>
 						</td>
 						<td>
 							<p style="text-align: center;">${item.product.productName}</p>
