@@ -21,4 +21,16 @@ public class StatisticsServiceImpl {
 	public List<SellingMonth> sellingMonths() {
 		return statisticsRepository.sellingMonths();
 	}
+
+	public List<Integer> totalCustomer() {
+		return statisticsRepository.totalCustomer();
+	}
+
+	public List<Integer> totalOrder() {
+		return statisticsRepository.totalOrder();
+	}
+
+	public List<Integer> totalProductSold() {
+		return statisticsRepository.totalProductSold();
+	}
 }

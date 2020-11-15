@@ -15,13 +15,28 @@ public class StatisticsRestController {
 	@Autowired
 	public StatisticsServiceImpl statisticsServiceImpl;
 
-	@RequestMapping("/getproductcategorycount")
+	@RequestMapping("/statistics/getproductcategorycount")
 	public List<CategoryProductCount> getProductCounts() {
 		return statisticsServiceImpl.findCategoryCount();
 	}
 
-	@RequestMapping("/sellbymonth")
+	@RequestMapping("/statistics/sellbymonth")
 	public List<SellingMonth> getSellByMonth() {
 		return statisticsServiceImpl.sellingMonths();
+	}
+
+	@RequestMapping("/statistics/totalcustomer")
+	public List<Integer> getTotalCustomer() {
+		return statisticsServiceImpl.totalCustomer();
+	}
+
+	@RequestMapping("/statistics/totalorder")
+	public List<Integer> getTotalOrder() {
+		return statisticsServiceImpl.totalOrder();
+	}
+
+	@RequestMapping("/statistics/totalproductsold")
+	public List<Integer> getTotalProductSold() {
+		return statisticsServiceImpl.totalProductSold();
 	}
 }

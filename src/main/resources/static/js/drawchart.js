@@ -19,20 +19,18 @@ let color = [
 	"#0652DD",
 	"#FDA7DF",
 ];
+		let url = window.location.origin;
 
 
-let url = window.location.origin;
-$.getJSON(`${url}/getproductcategorycount`, function (data) {
-	data.map((item, index) => {
-		categoryName = [...categoryName, item.categoryName]
-		categoryCount = [...categoryCount, item.count]
-		backgroundColor = [...backgroundColor, color[index]];
-	});
-
-
-	(function (window, document, $, undefined) {
-		"use strict";
-		$(function () {
+(function (window, document, $, undefined) {
+	"use strict";
+	$(function () {
+		$.getJSON(`${url}/statistics/getproductcategorycount`, function (data) {
+			data.map((item, index) => {
+				categoryName = [...categoryName, item.categoryName]
+				categoryCount = [...categoryCount, item.count]
+				backgroundColor = [...backgroundColor, color[index]];
+			});
 			if ($('#productcategorycount').length) {
 				var ctx = document.getElementById("productcategorycount").getContext('2d');
 				var myChart = new Chart(ctx, {
@@ -65,80 +63,84 @@ $.getJSON(`${url}/getproductcategorycount`, function (data) {
 
 		});
 
-	})(window, document, window.jQuery);
-});
+	});
+	let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	let totalPrice = [];
+	let totalSale = 0;
+	$.getJSON(`${url}/statistics/sellbymonth`, function (data) {
+		data.map((item, index) => {
+			totalPrice[item.month - 1] = item.totalPrice;
+			totalSale += item.totalPrice
+			console.log(totalSale)
+		});
+		$("#totalSale").text(`$${totalSale}`);
+		if ($('#sellingbymonth').length) {
+			var ctx = document.getElementById("sellingbymonth").getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: month,
+					datasets: [{
+						label: 'Total Money',
+						data: totalPrice,
+						backgroundColor: "#ff407b",
+						borderColor: "#ff600",
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						yAxes: [{
 
-let month = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12"];
-let totalPrice = [];
+						}]
+					},
+					legend: {
+						display: true,
+						position: 'bottom',
 
-let totalSale = 0;
+						labels: {
+							fontColor: '#71748d',
+							fontFamily: 'Circular Std Book',
+							fontSize: 14,
+						}
+					},
 
-$.getJSON(`${url}/sellbymonth`, function (data) {
-	data.map((item, index) => {
-		totalPrice[item.month -1] = item.totalPrice;
-		totalSale += item.totalPrice
-		console.log(totalSale)
+					scales: {
+						xAxes: [{
+							ticks: {
+								fontSize: 13,
+								fontFamily: 'Circular Std Book',
+								fontColor: '#71748d',
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								fontSize: 14,
+								fontFamily: 'Circular Std Book',
+								fontColor: '#71748d',
+							}
+						}]
+					}
+				}
+			});
+		}
 	});
 
-	$("#totalSale").text(`$${totalSale}`);
-	(function (window, document, $, undefined) {
-		"use strict";
-		$(function () {
-			if ($('#sellingbymonth').length) {
-                var ctx = document.getElementById("sellingbymonth").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: month,
-                        datasets: [{
-                            label: 'Total Price',
-                            data: totalPrice,
-                           backgroundColor: "#5969ff",
-                                    borderColor: "rgba(89, 105, 255,0.7)",
-                            borderWidth: 2
-                        },
-                    ]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-
-                            }]
-                        },
-                             legend: {
-                        display: true,
-                        position: 'bottom',
-
-                        labels: {
-                            fontColor: '#71748d',
-                            fontFamily: 'Circular Std Book',
-                            fontSize: 14,
-                        }
-                    },
-
-                    scales: {
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 14,
-                                fontFamily: 'Circular Std Book',
-                                fontColor: '#71748d',
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                fontSize: 14,
-                                fontFamily: 'Circular Std Book',
-                                fontColor: '#71748d',
-                            }
-                        }]
-                    }
-                }
-
-                    
-                });
-            }
-
+	$.getJSON(`${url}/statistics/totalcustomer`, function (data) {
+		data.map((item) => {
+			$("#totalcustomer").text(item);
 		});
-
-	})(window, document, window.jQuery);
-});
+	});
+	
+	$.getJSON(`${url}/statistics/totalorder`, function (data) {
+		data.map((item) => {
+			$("#totalorder").text(item);
+		});
+	});
+	
+	$.getJSON(`${url}/statistics/totalproductsold`, function (data) {
+		data.map((item) => {
+			$("#totalproductsold").text(item);
+		});
+	});
+})(window, document, window.jQuery);
