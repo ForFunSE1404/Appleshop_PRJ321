@@ -16,7 +16,7 @@ public interface StatisticsRepository extends JpaRepository<Account, Integer> {
 	@Query("SELECT new fpt.edu.project.statisticsmodel.CategoryProductCount(p.category.categoryName, COUNT(p.category.categoryName)) FROM Product p GROUP BY p.category.categoryName")
 	public List<CategoryProductCount> findCategoryCount();
 
-	@Query("SELECT new fpt.edu.project.statisticsmodel.SellingMonth(MONTH(c.createDate), ISNULL(SUM(c.totalprice), 0)) FROM Cart c GROUP BY MONTH(c.createDate)")
+	@Query("SELECT new fpt.edu.project.statisticsmodel.SellingMonth(MONTH(c.createDate), ISNULL(SUM(c.totalprice), 0)) FROM Cart c  WHERE c.status = true GROUP BY MONTH(c.createDate)")
 	public List<SellingMonth> sellingMonths();
 
 	@Query("SELECT ISNULL(COUNT(a),0) FROM Account a WHERE a.role.roleId = 3 GROUP BY a.role.roleId")

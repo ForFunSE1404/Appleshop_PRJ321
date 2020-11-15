@@ -103,10 +103,10 @@
 															colspan="1" aria-sort="ascending" style="width: 50px;">ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 50px;">Cate ID</th>
+															colspan="1" style="width: 60px;">Category</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 200px;">Product Name</th>
+															colspan="1" style="width: 210px;">Product Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" style="width: 150px;">Update Date</th>
@@ -115,7 +115,7 @@
 															colspan="1" style="width: 60px;">Price</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 120px;">Quantity</th>
+															colspan="1" style="width: 70px;">Quantity</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" style="width: 80px;">Thumbnail</th>
@@ -141,7 +141,7 @@
 															<td>${product.quantity }</td>
 															<td><img style="width: 70px; height: 100px;"
 																src="${pageContext.request.contextPath}/${product.thumbnail}" /></td>
-															<td>${product.description }</td>
+															<td class="description">${product.description }</td>
 															<td><c:if test="${product.visibility}">
 																	<input type="checkbox" class="disable" checked
 																		name="name1" />&nbsp;
@@ -266,5 +266,14 @@
 <!-- main js -->
 <script
 	src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
+	<script>
+	$(document).ready(function() {
+	    $(".description").each(function(item ) {
+	    	  var text = $(this).text().substring(0, 30) + '...';
+	    	  console.log(text);
+	    	  $(this).text(text);
+	    });
+	});
+	</script>
 </body>
 </html>

@@ -125,15 +125,14 @@
 															<td style="text-align: center;">${cartdetail.cart.cartId}</td>
 															<td><img
 																style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;"
-																src="${cartdetail.product.thumbnail}" /></td>
+																src="${pageContext.request.contextPath}/${cartdetail.product.thumbnail}" /></td>
 															<td style="text-align: center;">${cartdetail.product.productName}</td>
 															<td style="text-align: center;">${cartdetail.quantity}</td>
 															<td style="text-align: center;">$ ${cartdetail.price}</td>
 														</tr>
 													</c:forEach>
 													<p style="text-align: right; font-size: 20px; color: red;">Total
-														price : ${total} $</p>
-													<br>
+														price : $${total} </p>
 												</tbody>
 											</table>
 										</div>
