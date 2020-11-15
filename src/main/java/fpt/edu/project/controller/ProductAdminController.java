@@ -147,15 +147,14 @@ public class ProductAdminController {
 	}
 
 	@RequestMapping(value = "admin/deleteproduct", method = RequestMethod.POST)
-	public String deleteProduct(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String deleteProduct(HttpServletRequest request) {
 		String id = request.getParameter("productId");
 		productService.deleteById(id);
-		model.addAttribute("listproduct", productService.findAll());
-		return "admin/showallproduct";
+		return "redirect:/admin/products";
 	}
 
 	@RequestMapping(value = "admin/editproduct", method = RequestMethod.GET)
-	public String editProductView(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String editProductView(ModelMap model, HttpServletRequest request) {
 		String id = request.getParameter("productId");
 		Product pro = productService.findById(id).get();
 		model.addAttribute("listCate", cateService.findAll());
@@ -164,7 +163,7 @@ public class ProductAdminController {
 	}
 
 	@RequestMapping(value = "admin/editproduct", method = RequestMethod.POST)
-	public String editProduct(Model model, HttpServletRequest request, HttpServletResponse response,
+	public String editProduct(ModelMap model, HttpServletRequest request,
 			@RequestParam("thumbnail") MultipartFile image, @RequestParam("imagesOther") MultipartFile[] imagesOther) {
 		// Lấy ngày và giờ hiện tại
 		Date dateTime = new Date(System.currentTimeMillis());
@@ -182,6 +181,7 @@ public class ProductAdminController {
 		// Kiểm tra nếu ảnh đưa vào số lượng lớn hơn 5 sẽ thông báo chọn dưới 5 ảnh
 		if (imagesOther.length > 5) {
 			model.addAttribute("errImages", "Choose less than 5 images !");
+			return "admin/addproduct";
 		}
 		// Kiểm tra ID đã tồn tại
 		else if (productService.findById(productId).isPresent()) {
@@ -244,8 +244,7 @@ public class ProductAdminController {
 				System.err.println("Error !!!!");
 			}
 		}
-		model.addAttribute("listCate", cateService.findAll());
-		return "admin/addproduct";
+		return "redirect:/admin/products";
 	}
 
 	@InitBinder
