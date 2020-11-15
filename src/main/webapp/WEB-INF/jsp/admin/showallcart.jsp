@@ -99,44 +99,31 @@
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" aria-sort="ascending"
-															aria-label="Name: activate to sort column descending"
-															style="width: 50px;">#ID</th>
+															colspan="1" aria-sort="ascending" style="width: 50px;">#ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Office: activate to sort column ascending"
-															style="width: 80px;">User ID</th>
+															colspan="1" style="width: 80px;">User ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Age: activate to sort column ascending"
-															style="width: 100px;">Full Name</th>
+															colspan="1" style="width: 100px;">Full Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Age: activate to sort column ascending"
-															style="width: 100px;">Phone Number</th>
+															colspan="1" style="width: 100px;">Phone Number</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Start date: activate to sort column ascending"
-															style="width: 100px;">Create Date</th>
+															colspan="1" style="width: 100px;">Create Date</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 70px;">Total Price</th>
+															colspan="1" style="width: 70px;">Total Price</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 100px;">Status</th>
+															colspan="1" style="width: 100px;">Status</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 100px;"></th>
+															colspan="1" style="width: 100px;">Action</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1" style="width: 100px;"></th>
 													</tr>
 												</thead>
 												<tbody>
@@ -151,7 +138,17 @@
 															<c:if test="${cart.status == false}">
 																<td>
 																	<p
-																		style="color: navy; font-size: 20px; text-align: center;">Unconfirmed</p>
+																		style="color: navy;  text-align: center;">Unconfirmed</p>		
+																</td>
+															</c:if>
+															<c:if test="${cart.status == true}">
+																<td>
+																	<p
+																		style="color: green; text-align: center;">Confirmed</p>																	
+																</td>
+															</c:if>
+															<c:if test="${cart.status == false}">
+																<td>
 																	<a
 																	style="background-color: green; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
 																	href="confirm?cartId=${cart.cartId}"
@@ -160,12 +157,7 @@
 															</c:if>
 															<c:if test="${cart.status == true}">
 																<td>
-																	<p
-																		style="color: green; font-size: 20px; text-align: center;">Confirmed</p>
-																	<a
-																	style="background-color: navy; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
-																	href="unconfirm?cartId=${cart.cartId}"
-																	class="btn btn-primary">Unconfirm</a>
+																	
 																</td>
 															</c:if>
 															<td><a

@@ -36,7 +36,7 @@ public class CategoryAdminController {
 		if (!categoryServiceImpl.findById(id).isPresent()) {
 			Category c = new Category(id, name);
 			categoryServiceImpl.save(c);
-			return "admin/showallcategory";
+			return "redirect:/admin/category";
 		} else {
 			model.addAttribute("err", "Exist category ID!");
 			return "admin/addcategory";
@@ -52,10 +52,20 @@ public class CategoryAdminController {
 	}
 
 	@RequestMapping(value = "admin/editcategory", method = RequestMethod.GET)
-	public String editcategory(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String editcategory(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("categoryId");
 		Category category = categoryServiceImpl.findById(id).get();
 		model.addAttribute("category", category);
 		return "admin/addcategory";
+	}
+
+	@RequestMapping(value = "admin/editcategory", method = RequestMethod.POST)
+	public String editcategory(ModelMap model, HttpServletRequest request) {
+		String id = request.getParameter("txtCategoryIdAdd");
+		System.out.print("22222222222 - " + id);
+		String name = request.getParameter("txtCategoryNameAdd");
+		Category category = new Category(id, name);
+		categoryServiceImpl.save(category);
+		return "redirect:/admin/category";
 	}
 }
