@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <!doctype html>
 <html lang="en">
 
@@ -40,7 +38,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Account</h2>
+						<h2 class="pageheader-title">Show All Cart</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
@@ -50,8 +48,9 @@
 									<li class="breadcrumb-item"><a href="/"
 										class="breadcrumb-link">Apple Shop</a></li>
 									<li class="breadcrumb-item"><a href="/admin"
-										class="breadcrumb-link">Management</a></li>	
-									<li class="breadcrumb-item active" aria-current="page">Data Account</li>
+										class="breadcrumb-link">Management</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Show
+										All Cart</li>
 								</ol>
 							</nav>
 						</div>
@@ -67,21 +66,20 @@
 				<!-- ============================================================== -->
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="card">
-						<h5 class="card-header">Data Account Table</h5>
+						<h5 class="card-header">Cart Detail</h5>
 						<div class="card-body">
 							<div class="table-responsive">
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
 
-										<div class="col-sm-10 col-md-10">
+										<div class="col-sm-12 col-md-12">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<form action="account" method="GET">
-													<label><input type="text"
-														class="form-control form-control-sm" placeholder=""
-														aria-controls="DataTables_Table_0" name="keySearch"></label>
-													<button type="submit" class="btn btn-brand">Search</button>
-												</form>
+												<br>
+												<p style="font-size: 15px;">Full Name: ${fullname}</p>
+												<p style="font-size: 15px;">City: ${city}</p>
+												<p style="font-size: 15px;">Address: ${address}</p>
+												<p style="font-size: 15px;">Phone Number: ${phone}</p>
 											</div>
 										</div>
 									</div>
@@ -98,137 +96,49 @@
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" aria-sort="ascending"
 															aria-label="Name: activate to sort column descending"
-															style="width: 100px;">User ID</th>
+															style="width: 50px;">#ID</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Office: activate to sort column ascending"
-															style="width: 250px;">Email</th>
+															style="width: 80px;">Image</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Age: activate to sort column ascending"
-															style="width: 200px;">Fullname</th>
+															style="width: 100px;">Product Name</th>
+														<th class="sorting" tabindex="0"
+															aria-controls="DataTables_Table_0" rowspan="1"
+															colspan="1"
+															aria-label="Age: activate to sort column ascending"
+															style="width: 100px;">Quantity</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
 															aria-label="Start date: activate to sort column ascending"
-															style="width: 80px;">IsActive</th>
-
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Role ID</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Info</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Edit</th>
-														<th class="sorting" tabindex="0"
-															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1"
-															aria-label="Salary: activate to sort column ascending"
-															style="width: 80px;">Delete</th>
+															style="width: 100px;">Price</th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${listaccount}" var="account">
+													<c:forEach items="${listCartDetail}" var="cartdetail">
 														<tr role="row" class="odd">
-															<td>${account.userId }</td>
-															<td>${account.email }</td>
-															<td>${account.fullname }</td>
-															<td><c:if test="${account.isActived}">
-																	<input type="checkbox" disabled checked name="name1" />&nbsp;
-															</c:if> <c:if test="${account.isActived == false}">
-																	<input type="checkbox" disabled name="name1" />&nbsp;
-															</c:if></td>
-															<td>${account.role.roleName }</td>
-															<td><img style="width: 100px;"
-																src="${account.avartar }" /></td>
-
-															<td><a
-																href="editaccount?accountid=${account.userId}"
-																class="btn btn-primary">Edit</a></td>
-															<td><a
-																href="deleteaccount?accountid=${account.userId }"
-																class="btn btn-danger">Delete</a></td>
-
+															<td style="text-align: center;">${cartdetail.cart.cartId}</td>
+															<td><img
+																style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;"
+																src="${cartdetail.product.thumbnail}" /></td>
+															<td style="text-align: center;">${cartdetail.product.productName}</td>
+															<td style="text-align: center;">${cartdetail.quantity}</td>
+															<td style="text-align: center;">$ ${cartdetail.price}</td>
 														</tr>
 													</c:forEach>
-
+													<p style="text-align: right; font-size: 20px; color: red;">Total
+														price : ${total} $</p>
+													<br>
 												</tbody>
-
 											</table>
 										</div>
 									</div>
 									<br>
-									<div class="col-sm-12 col-md-12">
-										<!-- 				get param của url -->
-										<c:set var="paramUrl"
-											value="${pageContext.request.queryString}" />
-										<!-- 				nếu param có chứa page= thì xóa nó đi -->
-										<c:if test="${fn:contains(paramUrl, 'page=')}">
-											<c:set var="page" value="&page=${param.page}" />
-											<c:set var="paramUrl"
-												value="${fn:replace(paramUrl, page , '')}" />
-										</c:if>
-										<div class="row">
-											<nav aria-label="Page navigation example"
-												style="padding-left: 20px;">
-												<ul class="pagination">
-													<c:if test="${param.page == 1 }">
-														<li class="page-item disabled"><a class="page-link"
-															href="account?${paramUrl}&page=${param.page - 1}">Previous</a></li>
-													</c:if>
-													<c:if test="${param.page != 1 }">
-														<li class="page-item"><a class="page-link"
-															href="account?${paramUrl}&page=${param.page - 1}">Previous</a></li>
-													</c:if>
-													<c:forEach begin="1" end="${numpage}" var="i">
-														<c:if test="${ param.page == null}">
-															<c:if test="${ i == 1}">
-
-																<li class="page-item active"><a class="page-link"
-																	href="account?${paramUrl}&page=${i}">${i}</a></li>
-															</c:if>
-															<c:if test="${ i != 1}">
-																<li class="page-item"><a class="page-link"
-																	href="account?${paramUrl}&page=${i}">${i}</a></li>
-
-															</c:if>
-														</c:if>
-														<c:if test="${ param.page != null}">
-															<c:if test="${i == param.page}">
-																<li class="page-item active"><a class="page-link"
-																	href="account?${paramUrl}&page=${i}">${i}</a></li>
-
-															</c:if>
-															<c:if test="${i != param.page}">
-																<li class="page-item"><a class="page-link"
-																	href="account?${paramUrl}&page=${i}">${i}</a></li>
-
-															</c:if>
-														</c:if>
-													</c:forEach>
-													<c:if test="${param.page == (numpage  )}">
-														<li class="page-item disabled"><a class="page-link"
-															href="account?${paramUrl}&page=${param.page + 1}">Next</a></li>
-													</c:if>
-													<c:if test="${param.page != (numpage ) }">
-														<li class="page-item"><a class="page-link"
-															href="account?${paramUrl}&page=${param.page + 1}">Next</a></li>
-													</c:if>
-
-												</ul>
-											</nav>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

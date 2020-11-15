@@ -67,7 +67,6 @@ public class Account implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "userID", unique = true, nullable = false)
 	public String getUserId() {
 		return this.userId;

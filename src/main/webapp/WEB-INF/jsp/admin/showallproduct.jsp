@@ -68,10 +68,6 @@
 						<h5 class="card-header">Data Product Table</h5>
 						<div class="card-body">
 							<div class="table-responsive" style="overflow-x: hidden;">
-
-
-
-
 								<div id="DataTables_Table_0_wrapper"
 									class="dataTables_wrapper dt-bootstrap4">
 									<div class="row">
@@ -132,7 +128,6 @@
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" style="width: 80px;">Edit</th>
-
 													</tr>
 												</thead>
 												<tbody>
@@ -156,7 +151,6 @@
 															<td><a
 																href="${pageContext.request.contextPath}/admin/editproduct?productId=${product.productId }"
 																class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-
 														</tr>
 													</c:forEach>
 

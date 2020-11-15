@@ -43,6 +43,7 @@ public class ProductAdminController {
 	@Autowired
 	public ImageServiceImpl imageService;
 
+
 	@RequestMapping(value = "admin/products")
 	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
@@ -64,6 +65,8 @@ public class ProductAdminController {
 		return "admin/showallproduct";
 	}
 
+
+	
 	@RequestMapping(value = "admin/addproduct", method = RequestMethod.GET)
 	public String addviewProduct(ModelMap model) {
 		model.addAttribute("listCate", cateService.findAll());
