@@ -108,13 +108,13 @@
 															colspan="1" style="width: 100px;">Full Name</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 100px;">Phone Number</th>
+															colspan="1" style="width: 100px;">Phone</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" style="width: 100px;">Create Date</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
-															colspan="1" style="width: 70px;">Total Price</th>
+															colspan="1" style="width: 80px;">Total Price</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1" style="width: 100px;">Status</th>
@@ -134,7 +134,7 @@
 															<td>${cart.account.fullname}</td>
 															<td>${cart.account.infoUser.phone}</td>
 															<td>${cart.createDate}</td>
-															<td>${cart.totalprice}$</td>
+															<td>$${cart.totalprice}</td>
 															<c:if test="${cart.status == false}">
 																<td>
 																	<p

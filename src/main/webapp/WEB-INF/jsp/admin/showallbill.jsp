@@ -37,9 +37,6 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
 						<h2 class="pageheader-title">Data Product</h2>
-						<p class="pageheader-text">Proin placerat ante duiullam
-							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
-							lobortis pulvinar quam.</p>
 						<div class="page-breadcrumb">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
@@ -108,7 +105,7 @@
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
-															style="width: 50px;">Cate ID</th>
+															style="width: 50px;">Category</th>
 														<th class="sorting" tabindex="0"
 															aria-controls="DataTables_Table_0" rowspan="1"
 															colspan="1"
