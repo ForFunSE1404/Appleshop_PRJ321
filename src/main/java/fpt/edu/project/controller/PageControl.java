@@ -3,7 +3,6 @@ package fpt.edu.project.controller;
 import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,9 @@ public class PageControl {
 	private CartDetailServiceImpl cartDetailService;
 
 	@RequestMapping(value = "/")
-	public String index(ModelMap model, Authentication authentication, Principal principal,
-			HttpServletRequest request) {
+	public String index(ModelMap model, Authentication authentication, Principal principal, HttpSession session) {
 		if (authentication != null && principal != null) {
 			Account account = accountService.findById(principal.getName()).get();
-			HttpSession session = request.getSession();
 			session.setAttribute("account", account);
 			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
 		}
@@ -58,8 +55,12 @@ public class PageControl {
 	}
 
 	@RequestMapping(value = "/inforuser")
-	public String inforuser() {
-
+	public String inforuser(HttpSession session, Authentication authentication, Principal principal) {
+		if (authentication != null && principal != null) {
+			Account account = accountService.findById(principal.getName()).get();
+			session.setAttribute("account", account);
+			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
+		}
 		return "user/inforuser";
 	}
 

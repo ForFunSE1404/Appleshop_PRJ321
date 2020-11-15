@@ -1,5 +1,6 @@
 package fpt.edu.project.controller;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +40,13 @@ public class CartController {
 	private CartDetailServiceImpl cartDetailService;
 
 	@RequestMapping(value = "/cart")
-	public String cart(HttpSession session) {
+	public String cart(HttpSession session, Authentication authentication, Principal principal) {
 		HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
+		if (authentication != null && principal != null) {
+			Account account = accountService.findById(principal.getName()).get();
+			session.setAttribute("account", account);
+			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
+		}
 //		for (Product product : cart.keySet()) {
 //			Product newProduct = productService.findById(product.getProductId()).get();
 //			if (!product.getProductId().equals(newProduct)) {
