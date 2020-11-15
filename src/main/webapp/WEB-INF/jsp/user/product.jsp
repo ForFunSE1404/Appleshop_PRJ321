@@ -111,7 +111,7 @@
 										
 									</div>
 									<div class="product__price">
-										<h4>${product.price}$</h4>
+								 		<h4 style="color: red;">$${product.price}</h4>
 									</div>
 									<a href="" class="addtocart" onclick="return addtocart('${product.productId}', 1)"><button type="submit" class="product__btn">Add
 											To Cart</button></a>
