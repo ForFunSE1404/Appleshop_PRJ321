@@ -41,7 +41,6 @@ public class AccountAdminController {
 			listAccount = accountService.findAccountByName(keySearch, pageable).getContent();
 			numpage = accountService.countAccountByName(keySearch);
 		}
-
 		model.addAttribute("listaccount", listAccount);
 		model.addAttribute("numpage", ((long) numpage / size) + 1);
 		return "admin/showallaccount";

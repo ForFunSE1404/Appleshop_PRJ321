@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import fpt.edu.project.bean.CategoryProductCount;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.repository.ProductRepository;
 
@@ -95,7 +94,4 @@ public class ProductServiceImpl {
 		return productRepository.countAllProductsVisibile();
 	}
 
-	public List<CategoryProductCount> findCategoryCount() {
-		return productRepository.findCategoryCount();
-	}
 }

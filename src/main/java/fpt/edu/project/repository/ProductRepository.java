@@ -1,7 +1,5 @@
 package fpt.edu.project.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import fpt.edu.project.bean.CategoryProductCount;
 import fpt.edu.project.model.Product;
 
 @Repository
@@ -75,8 +72,5 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 	@Modifying
 	@Query(value = "Delete from Product p where p.productId = :productId")
 	void deleteProduct(@Param("productId") String productId);
-
-	@Query("SELECT new fpt.edu.project.bean.CategoryProductCount(p.category.categoryName, COUNT(p.category.categoryName)) FROM Product p GROUP BY p.category.categoryName")
-	public List<CategoryProductCount> findCategoryCount();
 
 }

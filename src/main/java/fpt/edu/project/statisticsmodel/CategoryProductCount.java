@@ -1,8 +1,12 @@
-package fpt.edu.project.bean;
+package fpt.edu.project.statisticsmodel;
 
 import java.io.Serializable;
 
 public class CategoryProductCount implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String categoryName;
 	private Long count;
 

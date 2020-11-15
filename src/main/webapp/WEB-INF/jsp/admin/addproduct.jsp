@@ -62,8 +62,8 @@
 										<div class="col-12 col-sm-8 col-lg-6">
 											<input
 												data-parsley-required-message="Please insert Product Code"
-												data-parsley-pattern-message="Product Code In Format [PXXXX] X isdigit"
-												type="text" required="" data-parsley-pattern="[P]\d{4}"
+												data-parsley-pattern-message="Product Code In Format PXXX - X is digits"
+												type="text" required="" data-parsley-pattern="[P]\d{3,}"
 												class="form-control" name="productId">
 										</div>
 									</div>
@@ -101,7 +101,7 @@
 									<div class="form-group row">
 										<label class="col-12 col-sm-3 col-form-label text-sm-right">Price</label>
 										<div class="col-12 col-sm-8 col-lg-6">
-											<input type="text" required="" data-parsley-type="digits"
+											<input type="text" required="" data-parsley-type="number"
 												class="form-control"
 												data-parsley-required-message="Please insert Price"
 												name="price">
@@ -166,8 +166,8 @@
 										<div class="col-12 col-sm-8 col-lg-6">
 											<input
 												data-parsley-required-message="Please insert Product Code"
-												data-parsley-pattern-message="Product Code In Format [PXXXX] X isdigit"
-												type="text" required="" data-parsley-pattern="[P]\d{4}"
+												data-parsley-pattern-message="Product Code In Format PXXX - X is digits"
+												type="text" required="" data-parsley-pattern="[P]\d{3,}"
 												placeholder="" class="form-control" name="productId"
 												readonly value="${product.productId}">
 										</div>

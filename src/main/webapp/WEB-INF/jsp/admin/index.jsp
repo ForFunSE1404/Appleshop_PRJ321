@@ -40,25 +40,91 @@
 			<div class="container-fluid dashboard-content ">
 				<div class="ecommerce-widget">
 					<div class="row">
+						<!-- ============================================================== -->
+						<!-- sales  -->
+						<!-- ============================================================== -->
+						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+							<div class="card border-3 border-top border-top-primary">
+								<div class="card-body">
+									<h5 class="text-muted">Total Sales</h5>
+									<div class="metric-value d-inline-block">
+										<h1 class="mb-1" id="totalSale">$12099</h1>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end sales  -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- new customer  -->
+						<!-- ============================================================== -->
+						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+							<div class="card border-3 border-top border-top-primary">
+								<div class="card-body">
+									<h5 class="text-muted">New Customer</h5>
+									<div class="metric-value d-inline-block">
+										<h1 class="mb-1">1245</h1>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end new customer  -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- visitor  -->
+						<!-- ============================================================== -->
+						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+							<div class="card border-3 border-top border-top-primary">
+								<div class="card-body">
+									<h5 class="text-muted">Visitor</h5>
+									<div class="metric-value d-inline-block">
+										<h1 class="mb-1">13000</h1>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end visitor  -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- total orders  -->
+						<!-- ============================================================== -->
+						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+							<div class="card border-3 border-top border-top-primary">
+								<div class="card-body">
+									<h5 class="text-muted">Total Orders</h5>
+									<div class="metric-value d-inline-block">
+										<h1 class="mb-1">1340</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end total orders  -->
+						<!-- ============================================================== -->
+					</div>
+					<div class="row">
 						<!-- product category  -->
 						<!-- ============================================================== -->
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="card">
+								<h5 class="card-header">Selling by months</h5>
+								<div class="card-body">
+									<canvas id="sellingbymonth"></canvas>
+								</div>
+							</div>
+						</div>
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 							<div class="card">
 								<h5 class="card-header">Product Category</h5>
 								<div class="card-body">
 									<canvas id="productcategorycount"></canvas>
 								</div>
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-							<div class="card">
-								<h5 class="card-header">Total Revenue</h5>
-								<div class="card-body">
-									<div id="saleofmonths"></div>
-								</div>
-								<!--                                     <div class="card-footer"> -->
-								<!--                                         <p class="display-7 font-weight-bold"><span class="text-primary d-inline-block">$26,000</span><span class="text-success float-right">+9.45%</span></p> -->
-								<!--                                     </div> -->
 							</div>
 						</div>
 					</div>
@@ -85,6 +151,9 @@
 	src="${pageContext.request.contextPath}/assets/vendor/charts/morris-bundle/morris.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+
 <!-- chart chartist js -->
 <script
 	src="${pageContext.request.contextPath}/assets/vendor/charts/charts-bundle/Chart.bundle.js"></script>

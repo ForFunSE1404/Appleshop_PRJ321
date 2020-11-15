@@ -1,5 +1,6 @@
 let categoryName = [];
 let categoryCount = [];
+let backgroundColor = [];
 let color = [
 	"#5969ff",
 	"#FFC312",
@@ -18,8 +19,10 @@ let color = [
 	"#0652DD",
 	"#FDA7DF",
 ];
-let backgroundColor = [];
-$.getJSON('http://localhost:8080/getproductcategorycount', function(data) {
+
+
+let url = window.location.origin;
+$.getJSON(`${url}/getproductcategorycount`, function (data) {
 	data.map((item, index) => {
 		categoryName = [...categoryName, item.categoryName]
 		categoryCount = [...categoryCount, item.count]
@@ -27,9 +30,9 @@ $.getJSON('http://localhost:8080/getproductcategorycount', function(data) {
 	});
 
 
-	(function(window, document, $, undefined) {
+	(function (window, document, $, undefined) {
 		"use strict";
-		$(function() {
+		$(function () {
 			if ($('#productcategorycount').length) {
 				var ctx = document.getElementById("productcategorycount").getContext('2d');
 				var myChart = new Chart(ctx, {
@@ -60,29 +63,82 @@ $.getJSON('http://localhost:8080/getproductcategorycount', function(data) {
 				});
 			}
 
-
 		});
 
 	})(window, document, window.jQuery);
 });
-Morris.Area({
-	element: 'saleofmonths',
-	behaveLikeLine: true,
-	data: [
-		{ x: '1 1', y: 0, },
-		{ x: '2 2', y: 7500, },
-		{ x: '3 3', y: 15000, },
-		{ x: '4 4', y: 22500, },
-		{ x: '5 5', y: 30000, },
-		{ x: '6 6', y: 40000, },
-		{ x: '7 7', y: 10123, },
-		{ x: '8 8', y: 123, },
 
-	],
-	xkey: 'x',
-	ykeys: ['y'],
-	labels: ['X'],
-	lineColors: ['#5969ff'],
-	resize: true
+let month = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12"];
+let totalPrice = [];
 
+let totalSale = 0;
+
+$.getJSON(`${url}/sellbymonth`, function (data) {
+	data.map((item, index) => {
+		totalPrice[item.month -1] = item.totalPrice;
+		totalSale += item.totalPrice
+		console.log(totalSale)
+	});
+
+	$("#totalSale").text(`$${totalSale}`);
+	(function (window, document, $, undefined) {
+		"use strict";
+		$(function () {
+			if ($('#sellingbymonth').length) {
+                var ctx = document.getElementById("sellingbymonth").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: month,
+                        datasets: [{
+                            label: 'Total Price',
+                            data: totalPrice,
+                           backgroundColor: "#5969ff",
+                                    borderColor: "rgba(89, 105, 255,0.7)",
+                            borderWidth: 2
+                        },
+                    ]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+
+                            }]
+                        },
+                             legend: {
+                        display: true,
+                        position: 'bottom',
+
+                        labels: {
+                            fontColor: '#71748d',
+                            fontFamily: 'Circular Std Book',
+                            fontSize: 14,
+                        }
+                    },
+
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }]
+                    }
+                }
+
+                    
+                });
+            }
+
+		});
+
+	})(window, document, window.jQuery);
 });
