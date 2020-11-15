@@ -40,7 +40,7 @@
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="page-header">
-						<h2 class="pageheader-title">Data Product</h2>
+						<h2 class="pageheader-title">Data Account</h2>
 						<p class="pageheader-text">Proin placerat ante duiullam
 							scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi
 							lobortis pulvinar quam.</p>
@@ -50,9 +50,8 @@
 									<li class="breadcrumb-item"><a href="/"
 										class="breadcrumb-link">Apple Shop</a></li>
 									<li class="breadcrumb-item"><a href="/admin"
-										class="breadcrumb-link">Management</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Data
-										Account</li>
+										class="breadcrumb-link">Management</a></li>	
+									<li class="breadcrumb-item active" aria-current="page">Data Account</li>
 								</ol>
 							</nav>
 						</div>

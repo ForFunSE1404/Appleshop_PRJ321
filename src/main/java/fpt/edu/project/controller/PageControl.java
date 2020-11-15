@@ -1,7 +1,6 @@
 package fpt.edu.project.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,16 +16,12 @@ import fpt.edu.project.model.Account;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.CartDetailServiceImpl;
-import fpt.edu.project.service.CartServiceImpl;
-import fpt.edu.project.service.ProductServiceImpl;
 
 @Controller
 public class PageControl {
 
 	@Autowired
 	private AccountServiceImpl accountService;
-	@Autowired
-	private ProductServiceImpl productService;
 	@Autowired
 	private CartDetailServiceImpl cartDetailService;
 
@@ -40,7 +35,7 @@ public class PageControl {
 			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
 		}
 		List<Product> listProduct = cartDetailService.getLastestProduct();
-		model.addAttribute("listProduct", listProduct);
+		model.addAttribute("listbestsell", listProduct);
 		return "user/index";
 	}
 
@@ -67,7 +62,7 @@ public class PageControl {
 
 		return "user/inforuser";
 	}
-  
+
 	@RequestMapping(value = "/404page")
 	public String errorpage() {
 

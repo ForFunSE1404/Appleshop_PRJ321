@@ -38,7 +38,16 @@ public class CartController {
 	private CartDetailServiceImpl cartDetailService;
 
 	@RequestMapping(value = "/cart")
-	public String cart() {
+	public String cart(HttpSession session) {
+		HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
+//		for (Product product : cart.keySet()) {
+//			Product newProduct = productService.findById(product.getProductId()).get();
+//			if (!product.getProductId().equals(newProduct)) {
+//				cart.put(newProduct, cart.get(product));
+//				cart.remove(product);
+//			}
+//		}
+//		session.setAttribute("cart", cart);
 		return "user/cart";
 	}
 
@@ -63,9 +72,8 @@ public class CartController {
 				totalquantity += cart.get(product2);
 			}
 			session.setAttribute("totalquantity", totalquantity);
-			session.setAttribute("cart", cart);
 		}
-		return "user/cart";
+		return "redirect:cart";
 	}
 
 	@RequestMapping(value = "updateinfo", method = RequestMethod.POST)
@@ -121,6 +129,7 @@ public class CartController {
 		cart = cartService.save(cart);
 		double totalPrice = 0;
 		for (Product product : cartCheckout.keySet()) {
+			product = productService.findById(product.getProductId()).get();
 			CartDetail cartDetail = new CartDetail();
 			cartDetail.setCart(cart);
 			cartDetail.setProduct(product);
@@ -138,6 +147,6 @@ public class CartController {
 		int totalquantity = 0;
 		session.setAttribute("totalquantity", totalquantity);
 
-		return "redirect:cart";
+		return "redirect:historybilling";
 	}
 }
