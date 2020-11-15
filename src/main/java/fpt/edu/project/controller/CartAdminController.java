@@ -1,6 +1,7 @@
 package fpt.edu.project.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Cart;
 import fpt.edu.project.model.CartDetail;
+import fpt.edu.project.model.Product;
 import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.CartDetailServiceImpl;
 import fpt.edu.project.service.CartServiceImpl;
+import fpt.edu.project.service.ProductServiceImpl;
 
 @Controller
 public class CartAdminController {
@@ -25,6 +28,8 @@ public class CartAdminController {
 	public CartDetailServiceImpl cartDetailServiceImpl;
 	@Autowired
 	public AccountServiceImpl accountServiceImpl;
+	@Autowired
+	ProductServiceImpl productServiceImpl;
 
 	@RequestMapping(value = "admin/bills", method = RequestMethod.GET)
 	public String viewAllCart(ModelMap model,
@@ -50,6 +55,13 @@ public class CartAdminController {
 	@RequestMapping(value = "admin/confirm")
 	public String confirmCart(@RequestParam("cartId") int cartId) {
 		cartServiceImpl.confirmCart(cartId);
+		Cart cart = cartServiceImpl.findById(cartId);
+		Set<CartDetail> setCartDetails = cart.getCartDetails();
+		for (CartDetail cDetail : setCartDetails) {
+			Product product = cDetail.getProduct();
+			product.setQuantity(product.getQuantity() - cDetail.getQuantity());
+			productServiceImpl.save(product);
+		}
 		return "redirect:bills";
 	}
 
