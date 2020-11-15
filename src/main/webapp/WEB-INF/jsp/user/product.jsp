@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
 <!DOCTYPE html>
@@ -66,8 +66,7 @@
 								</div>
 							</c:if>
 							<c:if test="${param.catId != null }">
-								<div class="section__title filter-btn"
-									data-id="All Products">
+								<div class="section__title filter-btn" data-id="All Products">
 									<span class="dot"></span>
 									<h1 class="primary__title">
 										<a href="product">All Products</a>
@@ -107,14 +106,13 @@
 								</div>
 								<div class="product__footer">
 									<h3>${product.productName}</h3>
-									<div class="rating">
-										
-									</div>
+									<div class="rating"></div>
 									<div class="product__price">
-								 		<h4 style="color: red;">$${product.price}</h4>
+										<h4 style="color: red;">$${product.price}</h4>
 									</div>
-									<a href="" class="addtocart" onclick="return addtocart('${product.productId}', 1)"><button type="submit" class="product__btn">Add
-											To Cart</button></a>
+									<a href="" class="addtocart"
+										onclick="return addtocart('${product.productId}', 1)"><button
+											type="submit" class="product__btn">Add To Cart</button></a>
 								</div>
 
 								<ul>
@@ -135,28 +133,28 @@
 
 					</div>
 				</div>
-<!-- 				get param của url -->
-				<c:set var="paramUrl" value="${pageContext.request.queryString}"/>
-<!-- 				nếu param có chứa page= thì xóa nó đi -->
+				<!-- 				get param của url -->
+				<c:set var="paramUrl" value="${pageContext.request.queryString}" />
+				<!-- 				nếu param có chứa page= thì xóa nó đi -->
 				<c:if test="${fn:contains(paramUrl, 'page=')}">
-								<c:set var="page" value="&page=${param.page}" />
-					 <c:set var = "paramUrl" value = "${fn:replace(paramUrl, page , '')}" />
+					<c:set var="page" value="&page=${param.page}" />
+					<c:set var="paramUrl" value="${fn:replace(paramUrl, page , '')}" />
 				</c:if>
-				
+
 				<div class="center">
 					<div class="pagination">
 						<a href="product?${paramUrl}&page=${param.page - 1}">&laquo;</a>
 						<c:forEach begin="1" end="${numpage}" var="i">
 							<c:if test="${ param.page == null}">
-							<c:if test="${ i == 1}">
-								<a class="active" href="product?${paramUrl}&page=${i}">${i}</a>
-							</c:if>
-							<c:if test="${ i != 1}">
-								<a  href="product?${paramUrl}&page=${i}">${i}</a>
-							</c:if>
+								<c:if test="${ i == 1}">
+									<a class="active" href="product?${paramUrl}&page=${i}">${i}</a>
+								</c:if>
+								<c:if test="${ i != 1}">
+									<a href="product?${paramUrl}&page=${i}">${i}</a>
+								</c:if>
 							</c:if>
 							<c:if test="${ param.page != null}">
-							<c:if test="${i == param.page}">
+								<c:if test="${i == param.page}">
 									<a class="active" href="product?${paramUrl}&page=${i}">${i}</a>
 								</c:if>
 								<c:if test="${i != param.page}">
@@ -164,7 +162,12 @@
 								</c:if>
 							</c:if>
 						</c:forEach>
-						<a href="product?${paramUrl}&page=${param.page + 1}">&raquo;</a>
+						<c:if test="${param.page == null}">
+							<a href="product?${paramUrl}&page=2">&raquo;</a>
+						</c:if>
+						<c:if test="${param.page != null}">
+							<a href="product?${paramUrl}&page=${param.page + 1}">&raquo;</a>
+						</c:if>
 					</div>
 				</div>
 			</section>
@@ -172,44 +175,44 @@
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<!-- Glide Carousel Script -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
 	<!-- Animate On Scroll -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 	<!-- Custom JavaScript -->
 	<script src="${pageContext.request.contextPath}/js/products.js"></script>
 	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 	<script src="${pageContext.request.contextPath}/js/slider.js"></script>
 	<script>
-	function addtocart(id, quantity) {
-		$.ajax({
-			type : "GET",
-			contentType : "application/json",
-			url : "/addtocart",
-			data : {
-				id : id,
-				quantity: quantity
-			},
-			dataType : 'json',
-			timeout : 100000,
-			success : function(data) {
-				console.log("SUCCESS: ", data);
-				var result = " " + data+ "<br>"
-				$("#cart__total").html(data.quantitycart);
-			},
-			error : function(e) {
-				console.log("ERROR: ", e);
-			}
-		});
-	}
+		function addtocart(id, quantity) {
+			$.ajax({
+				type : "GET",
+				contentType : "application/json",
+				url : "/addtocart",
+				data : {
+					id : id,
+					quantity : quantity
+				},
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+					var result = " " + data + "<br>"
+					$("#cart__total").html(data.quantitycart);
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+				}
+			});
+		}
 	</script>
 	<script>
-    $(document).ready(function() {                        
-        $('.addtocart').click(function(event) {
-                event.preventDefault();   
-            });
-        });
-
+		$(document).ready(function() {
+			$('.addtocart').click(function(event) {
+				event.preventDefault();
+			});
+		});
 	</script>
 	<!-- End Main -->
 </body>
