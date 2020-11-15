@@ -48,7 +48,7 @@ public class CategoryAdminController {
 		String id = request.getParameter("categoryId");
 		categoryServiceImpl.deleteById(id);
 		model.addAttribute("listcategory", categoryServiceImpl.findAll());
-		return "admin/showallcategory";
+		return "/admin/showallcategory";
 	}
 
 	@RequestMapping(value = "admin/editcategory", method = RequestMethod.GET)
@@ -56,6 +56,6 @@ public class CategoryAdminController {
 		String id = request.getParameter("categoryId");
 		Category category = categoryServiceImpl.findById(id).get();
 		model.addAttribute("category", category);
-		return "admin/addcategory";
+		return "/admin/addcategory";
 	}
 }

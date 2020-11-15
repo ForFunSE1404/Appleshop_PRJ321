@@ -147,7 +147,7 @@ public class ProductAdminController {
 			}
 		}
 		model.addAttribute("listCate", cateService.findAll());
-		return "redirect:admin/products";
+		return "redirect:/admin/products";
 	}
 
 	@RequestMapping(value = "admin/deleteproduct", method = RequestMethod.POST)
