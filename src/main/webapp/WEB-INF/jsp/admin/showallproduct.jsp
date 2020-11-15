@@ -191,7 +191,6 @@
 														<c:if test="${ i != 1}">
 															<li class="page-item"><a class="page-link"
 																href="products?${paramUrl}&page=${i}">${i}</a></li>
-
 														</c:if>
 													</c:if>
 													<c:if test="${ param.page != null}">
@@ -207,13 +206,20 @@
 														</c:if>
 													</c:if>
 												</c:forEach>
-												<c:if test="${param.page == (numpage  )}">
-													<li class="page-item disabled"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
-												</c:if>
-												<c:if test="${param.page != (numpage ) }">
+												<c:if test="${param.page == null}">
 													<li class="page-item"><a class="page-link"
-														href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
+														href="products?${paramUrl}&page=2">Next</a></li>
+												</c:if>
+												<c:if test="${param.page != null}">
+													<c:if test="${param.page == (numpage  )}">
+														<li class="page-item disabled"><a class="page-link"
+															href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
+													</c:if>
+
+													<c:if test="${param.page != (numpage ) }">
+														<li class="page-item"><a class="page-link"
+															href="products?${paramUrl}&page=${param.page + 1}">Next</a></li>
+													</c:if>
 												</c:if>
 
 											</ul>
@@ -266,14 +272,14 @@
 <!-- main js -->
 <script
 	src="${pageContext.request.contextPath}/assets/libs/js/main-js.js"></script>
-	<script>
+<script>
 	$(document).ready(function() {
-	    $(".description").each(function(item ) {
-	    	  var text = $(this).text().substring(0, 30) + '...';
-	    	  console.log(text);
-	    	  $(this).text(text);
-	    });
+		$(".description").each(function(item) {
+			var text = $(this).text().substring(0, 30) + '...';
+			console.log(text);
+			$(this).text(text);
+		});
 	});
-	</script>
+</script>
 </body>
 </html>

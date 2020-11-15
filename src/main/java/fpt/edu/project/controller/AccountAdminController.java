@@ -25,7 +25,7 @@ public class AccountAdminController {
 	public AccountServiceImpl accountService;
 	@Autowired
 	public RoleServiceImpl roleService;
-	
+
 	@RequestMapping(value = "admin/account", method = RequestMethod.GET)
 	public String showAccount(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
@@ -63,7 +63,7 @@ public class AccountAdminController {
 		Account account = accountService.findById(username).get();
 		account.setRole(role);
 		accountService.save(account);
-		return "redirect:admin/account";
+		return "redirect:/admin/account";
 	}
 
 	@RequestMapping(value = "admin/deleteaccount", method = RequestMethod.GET)

@@ -42,7 +42,7 @@ public class CartRestController {
 				if (!cart.containsKey(product)) {
 					cart.put(product, 1);
 				} else {
-					if (cart.get(product) < product.getQuantity()) {
+					if (cart.get(product) < product.getQuantity() && cart.get(product) > 0) {
 						cart.replace(product, cart.get(product) + quantity);
 					}
 				}
@@ -71,7 +71,7 @@ public class CartRestController {
 		int totalquantity = 0;
 		if (product != null) {
 			HashMap<Product, Integer> cart = (HashMap<Product, Integer>) session.getAttribute("cart");
-			if (product.getQuantity() >= quantity) {
+			if (product.getQuantity() >= quantity && quantity > 0) {
 				cart.replace(product, quantity);
 				session.setAttribute("cart", cart);
 			} else {
