@@ -43,7 +43,6 @@ public class ProductAdminController {
 	@Autowired
 	public ImageServiceImpl imageService;
 
-
 	@RequestMapping(value = "admin/products")
 	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
@@ -65,8 +64,6 @@ public class ProductAdminController {
 		return "admin/showallproduct";
 	}
 
-
-	
 	@RequestMapping(value = "admin/addproduct", method = RequestMethod.GET)
 	public String addviewProduct(ModelMap model) {
 		model.addAttribute("listCate", cateService.findAll());
@@ -146,8 +143,7 @@ public class ProductAdminController {
 				System.err.println("Error !!!!");
 			}
 		}
-		model.addAttribute("listCate", cateService.findAll());
-		return "redirect:admin/products";
+		return "redirect:/admin/products";
 	}
 
 	@RequestMapping(value = "admin/deleteproduct", method = RequestMethod.POST)
