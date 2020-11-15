@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!doctype html>
 <html lang="en">
 
@@ -74,17 +75,17 @@
 									<div class="row">
 										<div class="col-sm-10 col-md-10">
 											<div id="DataTables_Table_0_filter" class="dataTables_filter">
-												<form action="searchbills" method="GET">
+												<form action="bills" method="GET">
 													<label><input type="text"
 														class="form-control form-control-sm" placeholder=""
-														aria-controls="DataTables_Table_0" name="userId"></label>
+														aria-controls="DataTables_Table_0" name="keySearch"></label>
 													<button type="submit" class="btn btn-brand">Search</button>
 												</form>
 											</div>
 										</div>
 										<div class="col-sm-2 col-md-2">
-											<a href="${pageContext.request.contextPath}/admin/bills" class="btn btn-success">List All Bills</a>
-
+											<a href="${pageContext.request.contextPath}/admin/bills"
+												class="btn btn-success">List All Bills</a>
 										</div>
 									</div>
 									<br>
@@ -169,7 +170,7 @@
 															</c:if>
 															<td><a
 																style="display: block; margin-left: auto; margin-right: auto;"
-																href="viewcartdetail?cartId=${cart.cartId}&userId=${cart.account.userId}"
+																href="viewcartdetail?cartId=${cart.cartId}"
 																class="btn btn-primary">Views Detail</a></td>
 														</tr>
 													</c:forEach>
@@ -179,51 +180,60 @@
 									</div>
 									<br>
 									<div class="col-sm-12 col-md-12">
+										<!-- 				get param của url -->
+										<c:set var="paramUrl"
+											value="${pageContext.request.queryString}" />
+										<!-- 				nếu param có chứa page= thì xóa nó đi -->
+										<c:if test="${fn:contains(paramUrl, 'page=')}">
+											<c:set var="page" value="&page=${param.page}" />
+											<c:set var="paramUrl"
+												value="${fn:replace(paramUrl, page , '')}" />
+										</c:if>
 										<div class="row">
 											<nav aria-label="Page navigation example"
 												style="padding-left: 20px;">
 												<ul class="pagination">
-													<c:if test="${param.page == 0 }">
+													<c:if test="${param.page == 1 }">
 														<li class="page-item disabled"><a class="page-link"
-															href="bills?page=${param.page - 1}">Previous</a></li>
+															href="bills?${paramUrl}&page=${param.page - 1}">Previous</a></li>
 													</c:if>
-													<c:if test="${param.page != 0 }">
+													<c:if test="${param.page != 1 }">
 														<li class="page-item"><a class="page-link"
-															href="bills?page=${param.page - 1}">Previous</a></li>
+															href="bills?${paramUrl}&page=${param.page - 1}">Previous</a></li>
 													</c:if>
-													<c:forEach begin="0" end="${numpage}" var="i">
+													<c:forEach begin="1" end="${numpage}" var="i">
 														<c:if test="${ param.page == null}">
-															<c:if test="${ i == 0}">
+															<c:if test="${ i == 1}">
 
 																<li class="page-item active"><a class="page-link"
-																	href="bills?page=${i}">${i}</a></li>
+																	href="bills?${paramUrl}&page=${i}">${i}</a></li>
 															</c:if>
-															<c:if test="${ i != 0}">
+															<c:if test="${ i != 1}">
 																<li class="page-item"><a class="page-link"
-																	href="bills?page=${i}">${i}</a></li>
+																	href="bills?${paramUrl}&page=${i}">${i}</a></li>
 
 															</c:if>
 														</c:if>
 														<c:if test="${ param.page != null}">
 															<c:if test="${i == param.page}">
 																<li class="page-item active"><a class="page-link"
-																	href="bills?page=${i}">${i}</a></li>
+																	href="bills?${paramUrl}&page=${i}">${i}</a></li>
 
 															</c:if>
 															<c:if test="${i != param.page}">
 																<li class="page-item"><a class="page-link"
-																	href="bills?page=${i}">${i}</a></li>
+																	href="bills?${paramUrl}&page=${i}">${i}</a></li>
 
 															</c:if>
 														</c:if>
 													</c:forEach>
 													<c:if test="${param.page == (numpage  )}">
 														<li class="page-item disabled"><a class="page-link"
-															href="bills?page=${param.page + 1}">Next</a></li>
+															href="bills?${paramUrl}&page=${param.page + 1}">Next</a></li>
 													</c:if>
 													<c:if test="${param.page != (numpage ) }">
 														<li class="page-item"><a class="page-link"
-															href="bills?page=${param.page + 1}">Next</a></li>
+															href="bills?${paramUrl}&page=${param.page + 1}">Next</a></li>
 													</c:if>
 
 												</ul>

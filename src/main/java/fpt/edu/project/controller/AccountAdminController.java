@@ -25,9 +25,9 @@ public class AccountAdminController {
 	public AccountServiceImpl accountService;
 	@Autowired
 	public RoleServiceImpl roleService;
-
+	
 	@RequestMapping(value = "admin/account", method = RequestMethod.GET)
-	public String showProduct(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+	public String showAccount(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
 			@RequestParam(name = "keySearch", required = false) String keySearch, ModelMap model) {
 		page = page - 1;
@@ -41,7 +41,6 @@ public class AccountAdminController {
 			listAccount = accountService.findAccountByName(keySearch, pageable).getContent();
 			numpage = accountService.countAccountByName(keySearch);
 		}
-
 		model.addAttribute("listaccount", listAccount);
 		model.addAttribute("numpage", ((long) numpage / size) + 1);
 		return "admin/showallaccount";
@@ -59,8 +58,6 @@ public class AccountAdminController {
 	@RequestMapping(value = "admin/editaccount", method = RequestMethod.POST)
 	public String editAccount(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		String username = request.getParameter("username");
-		System.out.print("=======" + username);
-
 		int roleID = Integer.parseInt(request.getParameter("RoleId"));
 		Role role = roleService.findById(roleID).get();
 		Account account = accountService.findById(username).get();
