@@ -25,6 +25,6 @@ public interface StatisticsRepository extends JpaRepository<Account, Integer> {
 	@Query("SELECT COUNT(c) FROM Cart c")
 	public List<Integer> totalOrder();
 
-	@Query("SELECT COUNT(c.product.productId) FROM CartDetail c")
+	@Query("SELECT SUM(c.quantity) FROM CartDetail c")
 	public List<Integer> totalProductSold();
 }
