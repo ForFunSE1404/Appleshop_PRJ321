@@ -39,4 +39,9 @@ public class StatisticsRestController {
 	public List<Integer> getTotalProductSold() {
 		return statisticsServiceImpl.totalProductSold();
 	}
+
+	@RequestMapping("/statistics/totalmoney")
+	public List<Integer> getTotalMoney() {
+		return statisticsServiceImpl.totalMoney();
+	}
 }

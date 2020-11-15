@@ -33,4 +33,8 @@ public class StatisticsServiceImpl {
 	public List<Integer> totalProductSold() {
 		return statisticsRepository.totalProductSold();
 	}
+
+	public List<Integer> totalMoney() {
+		return statisticsRepository.totalMoney();
+	}
 }
