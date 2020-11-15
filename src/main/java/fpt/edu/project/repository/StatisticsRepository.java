@@ -19,12 +19,15 @@ public interface StatisticsRepository extends JpaRepository<Account, Integer> {
 	@Query("SELECT new fpt.edu.project.statisticsmodel.SellingMonth(MONTH(c.createDate), ISNULL(SUM(c.totalprice), 0)) FROM Cart c GROUP BY MONTH(c.createDate)")
 	public List<SellingMonth> sellingMonths();
 
-	@Query("SELECT COUNT(a) FROM Account a WHERE a.role.roleId = 3 GROUP BY a.role.roleId")
+	@Query("SELECT ISNULL(COUNT(a),0) FROM Account a WHERE a.role.roleId = 3 GROUP BY a.role.roleId")
 	public List<Integer> totalCustomer();
 
-	@Query("SELECT COUNT(c) FROM Cart c")
+	@Query("SELECT ISNULL(SUM(c.totalprice), 0) FROM Cart c WHERE c.status = true")
+	public List<Integer> totalMoney();
+
+	@Query("SELECT ISNULL(COUNT(c), 0) FROM Cart c WHERE c.status = true")
 	public List<Integer> totalOrder();
 
-	@Query("SELECT SUM(c.quantity) FROM CartDetail c")
+	@Query("SELECT ISNULL(SUM(cd.quantity), 0) FROM CartDetail cd INNER JOIN Cart c ON cd.cart.cartId = c.cartId WHERE c.status = true")
 	public List<Integer> totalProductSold();
 }

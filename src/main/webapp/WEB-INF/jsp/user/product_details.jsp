@@ -214,6 +214,7 @@
 				</div>
 			</section>
 <%-- 			<jsp:include page="bestsell.jsp"></jsp:include> --%>
+
 		</div>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>

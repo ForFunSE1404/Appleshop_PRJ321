@@ -66,14 +66,11 @@ let color = [
 	});
 	let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	let totalPrice = [];
-	let totalSale = 0;
 	$.getJSON(`${url}/statistics/sellbymonth`, function (data) {
 		data.map((item, index) => {
 			totalPrice[item.month - 1] = item.totalPrice;
-			totalSale += item.totalPrice
 			console.log(totalSale)
 		});
-		$("#totalSale").text(`$${totalSale}`);
 		if ($('#sellingbymonth').length) {
 			var ctx = document.getElementById("sellingbymonth").getContext('2d');
 			var myChart = new Chart(ctx, {
@@ -143,4 +140,10 @@ let color = [
 			$("#totalproductsold").text(item);
 		});
 	});
+		$.getJSON(`${url}/statistics/totalmoney`, function (data) {
+		data.map((item) => {
+			$("#totalSale").text('$' +item);
+		});
+	});
+	
 })(window, document, window.jQuery);
