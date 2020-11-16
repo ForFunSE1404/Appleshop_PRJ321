@@ -70,6 +70,6 @@ public class AccountAdminController {
 	public String deleteaccount(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("accountid");
 		accountService.deleteById(id);
-		return "redirect:admin/account";
+		return "redirect:/admin/account";
 	}
 }
