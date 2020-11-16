@@ -55,8 +55,8 @@
 							id="checkout-form">
 							<div class="form-group">
 								<label for="city"><i class="zmdi zmdi-account"></i></label> <input
-									type="text" required="" name="fullname" id="fullname"
-									value="${sessionScope.account.fullname }"
+									type="text" name="fullname" id="fullname"
+									readonly="readonly" value="${sessionScope.account.fullname }"
 									placeholder="Full Name" />
 							</div>
 							<div class="form-group">
@@ -83,10 +83,10 @@
 							<div class="form-group form-button">
 								<input type="submit" required="" name="signin" id="signin"
 									class="form-submit" value="Check Out" />
-					
+
 							</div>
 						</form>
-						
+
 					</div>
 				</div>
 			</div>

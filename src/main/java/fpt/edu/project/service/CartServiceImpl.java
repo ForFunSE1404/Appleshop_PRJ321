@@ -24,6 +24,10 @@ public class CartServiceImpl {
 		return cartRepository.findById(cartId).get();
 	}
 
+	public void refuse(int cartId) {
+		cartRepository.deleteById(cartId);
+	}
+
 	public long count() {
 		return cartRepository.count();
 	}

@@ -65,6 +65,12 @@ public class CartAdminController {
 		return "redirect:bills";
 	}
 
+	@RequestMapping(value = "admin/refuse")
+	public String refuse(@RequestParam("cartId") int cartId) {
+		cartServiceImpl.refuse(cartId);
+		return "redirect:bills";
+	}
+
 	@RequestMapping(value = "admin/viewcartdetail", method = RequestMethod.GET)
 	public String viewCartDetail(ModelMap model, @RequestParam("cartId") int cartId) {
 		List<CartDetail> listCartDetail = cartDetailServiceImpl.getByCartId(cartId);
