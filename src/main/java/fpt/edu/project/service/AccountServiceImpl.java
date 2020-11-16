@@ -2,8 +2,6 @@ package fpt.edu.project.service;
 
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,8 +12,7 @@ import fpt.edu.project.repository.AccountRepository;
 
 @Service
 public class AccountServiceImpl {
-	@Autowired
-	private EntityManager entityManager;
+
 	@Autowired
 	private AccountRepository accountRepository;
 
