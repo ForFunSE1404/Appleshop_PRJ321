@@ -3,9 +3,13 @@ package fpt.edu.project.controller;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +34,8 @@ public class CartAdminController {
 	public AccountServiceImpl accountServiceImpl;
 	@Autowired
 	ProductServiceImpl productServiceImpl;
+	@Autowired
+	private JavaMailSender javaMailSender;
 
 	@RequestMapping(value = "admin/bills", method = RequestMethod.GET)
 	public String viewAllCart(ModelMap model,
@@ -53,7 +59,7 @@ public class CartAdminController {
 	}
 
 	@RequestMapping(value = "admin/confirm")
-	public String confirmCart(@RequestParam("cartId") int cartId) {
+	public String confirmCart(@RequestParam("cartId") int cartId, HttpServletRequest request) {
 		cartServiceImpl.confirmCart(cartId);
 		Cart cart = cartServiceImpl.findById(cartId);
 		Set<CartDetail> setCartDetails = cart.getCartDetails();
@@ -62,6 +68,15 @@ public class CartAdminController {
 			product.setQuantity(product.getQuantity() - cDetail.getQuantity());
 			productServiceImpl.save(product);
 		}
+		String textString = "Thanks for order in our website click here to view your order";
+		String linkString = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+				+ request.getContextPath() + "/cartdetails?cartID=" + cartId;
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(cart.getAccount().getEmail());
+		message.setSubject(textString);
+		message.setText(textString + "\n" + linkString);
+		// Send Message!
+		javaMailSender.send(message);
 		return "redirect:bills";
 	}
 
