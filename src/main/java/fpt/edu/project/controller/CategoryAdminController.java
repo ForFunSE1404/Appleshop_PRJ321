@@ -1,14 +1,19 @@
 package fpt.edu.project.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Category;
 import fpt.edu.project.service.CategoryServiceImpl;
@@ -24,8 +29,22 @@ public class CategoryAdminController {
 	}
 
 	@RequestMapping(value = "admin/category", method = RequestMethod.GET)
-	public String showCategory(Model model) {
-		model.addAttribute("listcategory", categoryServiceImpl.findAll());
+	public String showCategory(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") Integer size,
+			@RequestParam(name = "keySearch", required = false) String keySearch, ModelMap model) {
+		page = page - 1;
+		long numpage = 1;
+		List<Category> listCategory = null;
+		Pageable pageable = PageRequest.of(page, size);
+		if (keySearch == null) {
+			listCategory = categoryServiceImpl.findAllCategory(pageable).getContent();
+			numpage = categoryServiceImpl.countAllCategory();
+		} else {
+//			listCategory = categoryServiceImpl.findAccountByName(keySearch, pageable).getContent();
+//			numpage = categoryServiceImpl.countAccountByName(keySearch);
+		}
+		model.addAttribute("listcategory", listCategory);
+		model.addAttribute("numpage", ((long) numpage / size) + 1);
 		return "admin/showallcategory";
 	}
 
@@ -46,9 +65,10 @@ public class CategoryAdminController {
 	@RequestMapping(value = "admin/delcategory")
 	public String deleteCategory(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("categoryId");
-		categoryServiceImpl.deleteById(id);
-		model.addAttribute("listcategory", categoryServiceImpl.findAll());
-		return "/admin/showallcategory";
+		if (categoryServiceImpl.findById(id).get().getProducts().size() == 0) {
+			categoryServiceImpl.deleteById(id);
+		}
+		return "redirect:/admin/category";
 	}
 
 	@RequestMapping(value = "admin/editcategory", method = RequestMethod.GET)
@@ -62,7 +82,6 @@ public class CategoryAdminController {
 	@RequestMapping(value = "admin/editcategory", method = RequestMethod.POST)
 	public String editcategory(ModelMap model, HttpServletRequest request) {
 		String id = request.getParameter("txtCategoryIdAdd");
-		System.out.print("22222222222 - " + id);
 		String name = request.getParameter("txtCategoryNameAdd");
 		Category category = new Category(id, name);
 		categoryServiceImpl.save(category);

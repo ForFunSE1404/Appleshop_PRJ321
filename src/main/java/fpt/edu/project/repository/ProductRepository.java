@@ -47,7 +47,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 	long countProductsByCategory(@Param("categoryId") String catId);
 
 	// list all sản phẩm có category và visibility = true ra trang user
-	@Query("SELECT p FROM Product p WHERE p.category.categoryId = :categoryId")
+	@Query("SELECT p FROM Product p WHERE p.category.categoryId = :categoryId AND p.visibility = true")
 	Page<Product> findProductByCategoryVisible(@Param("categoryId") String catId, Pageable pageable);
 
 	@Query("SELECT count(p) FROM Product p WHERE p.category.categoryId = :categoryId AND p.visibility = true")
