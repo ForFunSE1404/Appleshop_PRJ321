@@ -153,6 +153,11 @@
 																	style="background-color: green; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
 																	href="confirm?cartId=${cart.cartId}"
 																	class="btn btn-primary">Confirm</a>
+																	<br>
+																	<a
+																	style="background-color: red; border: none; width: 100px; display: block; margin-left: auto; margin-right: auto;"
+																	href="refuse?cartId=${cart.cartId}"
+																	class="btn btn-primary">Refuse</a>
 																</td>
 															</c:if>
 															<c:if test="${cart.status == true}">
