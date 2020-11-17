@@ -4,6 +4,7 @@ package fpt.edu.project.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,7 +60,7 @@ public class Role implements java.io.Serializable {
 		this.roleName = roleName;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "role")
 	public Set<Account> getAccounts() {
 		return this.accounts;
 	}

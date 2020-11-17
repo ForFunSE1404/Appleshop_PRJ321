@@ -124,7 +124,6 @@
 																	class="btn btn-warning">Cannot Delete</a>
 															</c:if>
 															</td>
-
 													</tr>
 												</c:forEach>
 
