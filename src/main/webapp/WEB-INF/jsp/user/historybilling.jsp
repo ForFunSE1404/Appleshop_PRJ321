@@ -43,6 +43,9 @@
 	<h2 style="text-align: center; font-size: 40px;">HISTORY BILLING</h2>
 	<main id="main">
 		<div class="small-container cart-page">
+			<a style="background-color: green; border-radius: 2px;"class="btn btn__checkout" href="cart">Cart</a>
+			<br>
+			<br>
 			<c:if test="${listLength != 0}">
 				<table>
 					<tr>

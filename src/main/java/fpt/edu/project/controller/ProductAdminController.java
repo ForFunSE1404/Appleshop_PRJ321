@@ -137,13 +137,15 @@ public class ProductAdminController {
 					}
 
 					System.err.println("Successful !!!!");
+					return "redirect:/admin/products";
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.err.println("Error !!!!");
 			}
 		}
-		return "redirect:/admin/products";
+		model.addAttribute("listCate", cateService.findAll());
+		return "admin/addproduct";
 	}
 
 	@RequestMapping(value = "admin/deleteproduct", method = RequestMethod.POST)

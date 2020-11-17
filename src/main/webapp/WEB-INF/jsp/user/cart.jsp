@@ -40,7 +40,12 @@
 	</header>
 	<!-- End Header -->
 	<main id="main">
+
+	<h1 style="text-align: center;font-size: 50px;">Cart</h1>
 		<div class="small-container cart-page">
+		<a style="background-color: green; border-radius: 2px;"class="btn btn__checkout" href="historybilling">History Billing</a>
+		<br>
+		<br>
 			<table>
 				<tr>
 					<th>Product</th>
