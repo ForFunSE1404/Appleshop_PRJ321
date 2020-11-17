@@ -93,10 +93,14 @@ public class ProductAdminController {
 		// Kiểm tra trùng Id, nếu trùng thì thông báo Id is exist !
 		if (productService.findById(productId).isPresent()) {
 			model.addAttribute("errID", "Product ID " + productId + " is exist !");
+			model.addAttribute("listCate", cateService.findAll());
+			return "admin/addproduct";
 		}
 		// Kiểm tra các ảnh đưa vào số lượng lớn 5, thông báo chọn dưới 5 ảnh
 		else if (imagesOther.length > 5) {
 			model.addAttribute("errImages", "Choose less than 5 images !");
+			model.addAttribute("listCate", cateService.findAll());
+			return "admin/addproduct";
 		}
 		// Lưu ảnh
 		else {

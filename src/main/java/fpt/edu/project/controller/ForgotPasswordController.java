@@ -6,7 +6,6 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Account;
 import fpt.edu.project.service.AccountServiceImpl;
+import fpt.edu.project.utils.MailHelper;
 
 @Controller
 public class ForgotPasswordController {
+
 	@Autowired
-	private JavaMailSender javaMailSender;
+	private MailHelper mailHelper;
 	@Autowired
 	private AccountServiceImpl accountService;
 
@@ -45,7 +46,6 @@ public class ForgotPasswordController {
 			request.setAttribute("message", "Check your email to reset password");
 			String linkString = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 					+ request.getContextPath() + "/resetpass?username=" + account.getUserId() + "&token=" + hashtoken;
-			System.out.print(linkString);
 			String htmlString = "  \r\n" + "<!doctype html>\r\n" + "<html>\r\n" + "  <head>\r\n"
 					+ "    <meta name=\"viewport\" content=\"width=device-width\">\r\n"
 					+ "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n"
@@ -130,12 +130,12 @@ public class ForgotPasswordController {
 					+ "        <td style=\"font-family: sans-serif; font-size: 14px; vertical-align: top;\">&nbsp;</td>\r\n"
 					+ "      </tr>\r\n" + "    </table>\r\n" + "  </body>\r\n" + "</html>";
 			try {
-				MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+				MimeMessage mimeMessage = mailHelper.createMimeMessage();
 				MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 				helper.setSubject("Reset Password - " + web);
 				helper.setTo(account.getEmail());
 				helper.setText(htmlString, true);
-				javaMailSender.send(mimeMessage);
+				mailHelper.send(mimeMessage);
 			} catch (Exception e) {
 
 			}
@@ -152,7 +152,6 @@ public class ForgotPasswordController {
 		if (token.equals(account.getToken())) {
 			model.addAttribute("token", account.getToken());
 			model.addAttribute("username", account.getUserId());
-
 			return "user/changepassword";
 		}
 		return "user/index";

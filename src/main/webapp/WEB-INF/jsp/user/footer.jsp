@@ -82,5 +82,7 @@
     </div>
   </footer>
   <!-- End Footer -->
+  <!-- Load Facebook SDK for JavaScript -->
+
 </body>
 </html>
