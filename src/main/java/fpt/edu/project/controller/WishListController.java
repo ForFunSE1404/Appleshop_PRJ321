@@ -1,5 +1,6 @@
 package fpt.edu.project.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,15 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fpt.edu.project.model.Account;
 import fpt.edu.project.model.Product;
 import fpt.edu.project.model.WishList;
+import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.ProductServiceImpl;
 import fpt.edu.project.service.WishListServiceImpl;
 
@@ -25,10 +27,17 @@ public class WishListController {
 	@Autowired
 	private WishListServiceImpl wishListServiceImpl;
 	@Autowired
+	private AccountServiceImpl accountService;
+	@Autowired
 	private ProductServiceImpl ProductServiceImpl;
 
 	@RequestMapping(value = "/wishlist")
-	public String wishlist(ModelMap model, HttpSession session) {
+	public String wishlist(ModelMap model, HttpSession session, Authentication authentication, Principal principal) {
+		if (authentication != null && principal != null) {
+			Account account = accountService.findById(principal.getName()).get();
+			session.setAttribute("account", account);
+			session.setAttribute("isAdmin", authentication.getAuthorities().toString().contains("ROLE_ADMIN"));
+		}
 		Account account = (Account) session.getAttribute("account");
 		List<WishList> list = wishListServiceImpl.findByUserIdID(account.getUserId());
 		model.addAttribute("listWishList", list);
@@ -48,6 +57,7 @@ public class WishListController {
 		}
 		return "redirect:wishlist";
 	}
+
 	@RequestMapping(value = "/deletewishlist")
 	public String deleteWishList(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		int wishlistId = Integer.parseInt(request.getParameter("wishlistId"));

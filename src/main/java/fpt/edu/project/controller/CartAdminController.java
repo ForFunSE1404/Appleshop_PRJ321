@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ import fpt.edu.project.service.AccountServiceImpl;
 import fpt.edu.project.service.CartDetailServiceImpl;
 import fpt.edu.project.service.CartServiceImpl;
 import fpt.edu.project.service.ProductServiceImpl;
+import fpt.edu.project.utils.MailHelper;
 
 @Controller
 public class CartAdminController {
@@ -35,7 +35,7 @@ public class CartAdminController {
 	@Autowired
 	ProductServiceImpl productServiceImpl;
 	@Autowired
-	private JavaMailSender javaMailSender;
+	private MailHelper mailHelper;
 
 	@RequestMapping(value = "admin/bills", method = RequestMethod.GET)
 	public String viewAllCart(ModelMap model,
@@ -76,7 +76,7 @@ public class CartAdminController {
 		message.setSubject(textString);
 		message.setText(textString + "\n" + linkString);
 		// Send Message!
-		javaMailSender.send(message);
+		mailHelper.send(message);
 		return "redirect:bills";
 	}
 

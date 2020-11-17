@@ -51,36 +51,54 @@
 
 					<div class="signin-form">
 						<h2 class="form-title">User Information</h2>
-						
-						<form action="updateuser" method="POST" class="register-form" id="login-form">
-                       		<div class="form-group">
-                                <label for="city"><i class="zmdi zmdi-account"></i></label>
-                                <input type="text" name="username" id="username" value="${sessionScope.account.userId }" placeholder="Username"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="city"><i class="zmdi zmdi-face"></i></label>
-                                <input type="text" name="fullname" id="fullname" value="${sessionScope.account.fullname }" placeholder="Fullname"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-email"></i></label>
-                                <input type="text" name="email" id="email" value="${sessionScope.account.email }" placeholder="Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-phone-in-talk"></i></label>
-                                <input type="text" required="" data-parsley-pattern-message="Phone must be 10 number" data-parsley-pattern="\d{10}" name="phone" value="${sessionScope.account.infoUser.phone }" id="phone" placeholder="Phone Number"/>
-                            </div>    
-                            <div class="form-group">
-                                <label for="city"><i class="zmdi zmdi-city"></i></label>
-                                <input type="text" required="" name="city" value="${sessionScope.account.infoUser.city }" id="city" placeholder="City"/>
-                            </div>      
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="address" id="address" value="${sessionScope.account.infoUser.address }" placeholder="Address"/>
-                            </div>                     
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Edit"/>
-                            </div>
-                        </form> 
+
+						<form action="updateuser" method="POST" class="register-form"
+							id="login-form">
+							<div class="form-group">
+								<label for="city"><i class="zmdi zmdi-account"></i></label> <input
+									type="text" name="username" id="username"
+									value="${sessionScope.account.userId }" placeholder="Username" />
+							</div>
+							<div class="form-group">
+								<label for="city"><i class="zmdi zmdi-face"></i></label> <input
+									type="text" name="fullname" id="fullname"
+									value="${sessionScope.account.fullname }"
+									placeholder="Fullname" />
+							</div>
+							<div class="form-group">
+								<label for="your_name"><i class="zmdi zmdi-email"></i></label> <input
+									type="text" name="email" id="email"
+									value="${sessionScope.account.email }" placeholder="Email" />
+							</div>
+							<div class="form-group">
+								<label for="your_name"><i
+									class="zmdi zmdi-phone-in-talk"></i></label> <input type="text"
+									required=""
+									data-parsley-pattern-message="Phone must be 10 number"
+									data-parsley-pattern="\d{10}" name="phone"
+									value="${sessionScope.account.infoUser.phone }" id="phone"
+									placeholder="Phone Number" />
+							</div>
+							<div class="form-group">
+								<label for="city"><i class="zmdi zmdi-city"></i></label> <input
+									type="text" required="" name="city"
+									value="${sessionScope.account.infoUser.city }" id="city"
+									placeholder="City" />
+							</div>
+							<div class="form-group">
+								<label for="your_name"><i class="zmdi zmdi-home"></i></label> <input
+									type="text" name="address" id="address"
+									value="${sessionScope.account.infoUser.address }"
+									placeholder="Address" />
+							</div>
+							<div class="form-group form-button">
+								<input type="submit" name="signin" id="signin"
+									class="form-submit" value="Edit" /> <a class="btn btn-success"
+									href="/changepassuser">Change Password</a>
+
+							</div>
+
+						</form>
 
 					</div>
 				</div>
